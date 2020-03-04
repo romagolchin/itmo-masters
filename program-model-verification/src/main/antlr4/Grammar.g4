@@ -2,51 +2,85 @@ grammar Grammar;
 
 
 source:
-    (stat ';')* EOF
+    sourceItem* EOF
     ;
 
-stat:
-    | expr
-    | IDENTIFIER ':=' expr
+sourceItem:
+    'method' funcSignature (body|';');
+
+funcSignature: IDENTIFIER '(' argDefList ')'
+    (':' typeRef)?
+;
+
+typeRef: BUILTIN # builtin
+         | IDENTIFIER # custom
+         | typeRef  '(' (',')* ')' # array
+;
+
+argDefList: (argDef (',' argDef)*)?;
+
+argDef: IDENTIFIER (':' typeRef)?;
+
+identifierList: (IDENTIFIER (',' IDENTIFIER)*)?;
+body:
+    ('var' (identifierList (':' typeRef)? ';')*)?
+    block;
+
+block: 'begin' statement* 'end' ';';
+
+statement:
+    expr ';' # expression
+    | IDENTIFIER ':=' expr ';' # assign
+    | 'if' expr 'then' statement ('else' statement)? # if
+    | block # block1
+    | 'while' expr 'do' statement # while
+    | 'repeat' statement ('while'|'until') expr ';' # do
+    | 'break' ';' # break
     ;
+
 
 expr:
-|binary
-|unary
-|braces
-|call
-|indexer
-|IDENTIFIER
-|literal
+    operand
+    | binary
     ;
 
 
-binary: unary BIN_OP expr;
-// changed
-unary: unOp expr;
+binary: operand ('+' | '-' | '*' | '/' | '%' | '=' | '&&' | '||') expr;
+operand:
+        unary
+        | call
+        | indexer
+        | literal
+        | braces
+        | IDENTIFIER;
+unary: ('-' | '!') expr;
 braces: '(' expr ')';
-// changed
-call: IDENTIFIER ('(' args ')')+;
-args: | expr ',' (',' expr)*;
-// changed
-indexer: IDENTIFIER '[' expr ']';
-literal: bool|STR|CHAR|HEX|BITS|DEC;
+call: IDENTIFIER ('(' exprList ')')+;
+exprList:
+|
+| expr (',' expr)*;
+indexer: IDENTIFIER '[' exprList ']';
+literal: BOOL|STR|CHAR|HEX|BITS|DEC;
 
 
-// fixme
-
-bool: 'true' | 'false';
 WS
     :   [ \t\r\n]+ -> skip
     ;
-//STR: '"([^"](\\")?)*[^"]?"';
-STR: '"' ~('"') '"';
-CHAR: '\'' ~('\'') '\'' | '\'' '\\' '\'' '\'';
+fragment NotEscapedQuote : '\\\\' | ~('\\'|'"');
+fragment EscapedQuote : '\\' '"';
+fragment Quote : '"';
+BOOL: 'true' | 'false';
+STR:
+    Quote NotEscapedQuote*  Quote
+    | Quote (NotEscapedQuote*? EscapedQuote)* (~'"')*? Quote
+    ;
+CHAR:
+    '\'' ~('\'') '\''
+    | '\'' '\\' '\'' '\'';
 
 BUILTIN: 'bool'|'byte'|'int'|'uint'|'long'|'ulong'|'char'|'string';
 IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
-HEX: '0x' [0-9a-zA-Z]+;
-BITS: '0b' [01]+;
-DEC: [1-9][0-9]+;
-BIN_OP: '+' | '-' | '*' | '/';
-unOp: '-';
+HEX: '0' [xX][0-9a-zA-Z]+;
+BITS: '0' [bB][01]+;
+DEC: [1-9]?[0-9]+;
+BIN_OP: '+' | '*' | '/';

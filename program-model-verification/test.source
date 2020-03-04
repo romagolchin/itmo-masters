@@ -1,5 +1,45 @@
-abc;
-a:=true;
-c := 12 - d[e * (98 / f)];
-h := 'x';
-false;
+method gcd(a: int, b: int)
+begin
+    if a = 0
+        then b;
+        else
+            begin
+                if b = 0
+                    then a;
+                    else gcd(b, b % a);
+            end;
+end;
+
+method f(z: byte)
+    var
+        a,b: int;
+        x, y: char;
+begin
+    print(x, b);
+    a := z * z;
+    a;
+end;
+
+method main ()
+begin
+    f(-10);
+    a---b;
+    -(b+c*d);
+    c := 12 - d[-42 -Y(z), e * (98 / f)];
+    a:=true;
+    h := 'x';
+    while true do begin
+        print("hello");
+        if tired then break;
+    end;
+    if k(t + 0xa) then
+        begin
+            'x';
+            z := 3 + "abc";
+            if true then true;
+        end;
+        else 'y';
+    x := f('y', '\'', "z\"zz\"z", 1+2);
+    "\"\"\"";
+    "\"a\"\"";
+end;
