@@ -24,7 +24,9 @@ public class CfgVisitor extends GrammarBaseVisitor<Cfg> {
     }
 
     private String getText(RuleContext ctx) {
-        return ctx.getText().replace("\"", "\\\"");
+        return ctx.getText()
+                .replace("\\", "\\\\")
+                .replace("\"", "\\\"");
     }
 
     @Override

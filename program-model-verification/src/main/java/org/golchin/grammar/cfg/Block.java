@@ -18,7 +18,7 @@ public class Block extends Cfg {
     @Override
     public Node getStart() {
         if (cfgs.isEmpty())
-            return null;
+            return end;
         return cfgs.get(0).getStart();
     }
 

@@ -1,4 +1,0 @@
-digraph {
-    1[label="x=y;\nz=t;"];
-    1 -> 2[label=""];
-}

@@ -4,7 +4,6 @@ import org.golchin.grammar.graph.Edge;
 import org.golchin.grammar.graph.Graph;
 import org.golchin.grammar.graph.Node;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +12,7 @@ public abstract class Cfg extends Graph {
     private Graph graph;
     protected List<Node> exitPoints;
     protected boolean isBreak;
-    protected Node end = new Node(Collections.emptyList());
+    protected Node end = new Node(List.of());
 
     public Cfg(List<Node> exitPoints) {
         this.exitPoints = exitPoints;

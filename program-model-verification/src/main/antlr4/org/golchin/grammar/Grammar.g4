@@ -14,7 +14,7 @@ funcSignature: IDENTIFIER '(' argDefList ')'
 
 typeRef: BUILTIN # builtin
          | IDENTIFIER # custom
-         | typeRef  '(' (',')* ')' # array
+         | typeRef  '[' (',')* ']' 'of' typeRef # array
 ;
 
 argDefList: (argDef (',' argDef)*)?;

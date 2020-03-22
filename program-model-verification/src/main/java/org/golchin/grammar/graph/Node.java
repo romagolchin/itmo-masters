@@ -39,4 +39,8 @@ public class Node {
         edge.destination.inEdges.remove(edge);
     }
 
+    @Override
+    public String toString() {
+        return String.join("\n", labels);
+    }
 }

@@ -1,37 +1,41 @@
 package org.golchin.grammar.cfg;
 
-import guru.nidi.graphviz.engine.Format;
-import guru.nidi.graphviz.engine.Graphviz;
-import guru.nidi.graphviz.model.MutableGraph;
-import guru.nidi.graphviz.parse.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.golchin.grammar.CallGraphVisitor;
+import org.golchin.grammar.FunctionNode;
 import org.golchin.grammar.ParseResult;
+import org.golchin.grammar.Signature;
 import org.golchin.grammar.graph.Graph;
+import org.golchin.grammar.graph.Node;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class CfgMain {
 
+    public static final Signature MAIN = new Signature("main", List.of("array[]ofstring"));
+
     public static void main(String[] args) throws Exception {
-        GraphWriter graphWriter = new GraphWriter();
         CfgVisitor cfgVisitor = new CfgVisitor();
         CallGraphVisitor callGraphVisitor = new CallGraphVisitor();
         String directory = args[0];
-        Files.createDirectories(Paths.get(directory));
         for (int j = 1; j < args.length; j++) {
             String sourceFile = args[j];
             ParseTree tree = ParseResult.parse(sourceFile).getTree();
             Graph graph = callGraphVisitor.visit(tree);
+            Optional<Node> main = graph.getNodes().stream()
+                    .filter(node -> node instanceof FunctionNode &&
+                            Objects.equals(MAIN, ((FunctionNode) node).getSignature()))
+                    .findFirst();
+            if (main.isPresent()) {
+                graph = Graph.fromNode(main.get());
+            }
             String nameWithoutExtension = removeExtension(sourceFile);
-            outputGraph(directory, nameWithoutExtension, graph, graphWriter);
+            GraphWriter.outputGraph(directory, nameWithoutExtension, graph);
             for (int i = 0; i < tree.getChildCount() - 1; i++) {
                 Cfg cfg = cfgVisitor.visit(tree.getChild(i));
-                outputGraph(directory, nameWithoutExtension + "." + cfg.name, cfg, graphWriter);
+                GraphWriter.outputGraph(directory, nameWithoutExtension + "." + cfg.name, cfg);
             }
         }
     }
@@ -41,17 +45,4 @@ public class CfgMain {
         return fileName.substring(0, index);
     }
 
-    private static void outputGraph(String outDir, String dotFileName, Graph graph, GraphWriter graphWriter) throws IOException {
-        Path dotFile = Paths.get(outDir, dotFileName + ".dot");
-        graphWriter.write(graph, dotFile);
-        dotToSvg(dotFile, Paths.get(outDir, dotFileName + ".svg"));
-    }
-
-    private static void dotToSvg(Path inFile, Path outFile) throws IOException {
-        try (InputStream inputStream = Files.newInputStream(inFile)) {
-            MutableGraph g = new Parser().read(inputStream);
-            Graphviz.fromGraph(g).render(Format.SVG)
-                    .toOutputStream(Files.newOutputStream(outFile));
-        }
-    }
 }
