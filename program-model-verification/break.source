@@ -1,0 +1,3 @@
+method breaking() begin
+    while
+end;

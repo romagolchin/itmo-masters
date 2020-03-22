@@ -1,0 +1,11 @@
+method gcd(a: int, b: int)
+var t: int;
+begin
+    while !tired do begin
+        writeln("ever");
+        if tooMuch then
+            begin
+                break;
+            end;
+    end;
+end;
