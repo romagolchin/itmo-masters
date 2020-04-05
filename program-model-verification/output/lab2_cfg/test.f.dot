@@ -1,8 +1,8 @@
 digraph {
-  0 [label="print(x,b);"];
-  1 [label=""];
-  2 [label="a:=z*z;
+  0 [label=""];
+  1 [label="a:=z*z;
 a;"];
+  2 [label="print(x,b);"];
   2 -> 1 [label=""];
-  0 -> 2 [label=""];
+  1 -> 0 [label=""];
 }

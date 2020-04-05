@@ -1,13 +1,11 @@
 package org.golchin.grammar.cfg;
 
-import org.golchin.grammar.graph.Edge;
 import org.golchin.grammar.graph.Graph;
 import org.golchin.grammar.graph.Node;
 
 import java.util.List;
-import java.util.Set;
 
-public abstract class Cfg extends Graph {
+public abstract class Cfg {
     public String name;
     private Graph graph;
     protected List<Node> exitPoints;
@@ -24,17 +22,8 @@ public abstract class Cfg extends Graph {
         }
     }
 
-    public Set<Edge> getEdges() {
-        initialize();
-        return graph.getEdges();
-    }
-
-    public Set<Node> getNodes() {
-        initialize();
-        return graph.getNodes();
-    }
-
     public Graph getGraph() {
+        initialize();
         return graph;
     }
 

@@ -35,7 +35,7 @@ public class CfgMain {
             GraphWriter.outputGraph(directory, nameWithoutExtension, graph);
             for (int i = 0; i < tree.getChildCount() - 1; i++) {
                 Cfg cfg = cfgVisitor.visit(tree.getChild(i));
-                GraphWriter.outputGraph(directory, nameWithoutExtension + "." + cfg.name, cfg);
+                GraphWriter.outputGraph(directory, nameWithoutExtension + "." + cfg.name, cfg.getGraph());
             }
         }
     }
