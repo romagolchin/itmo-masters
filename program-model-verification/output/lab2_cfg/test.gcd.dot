@@ -1,17 +1,17 @@
 digraph {
-  0 [label="writeln(\"hw!\");"];
-  1 [label=""];
+  0 [label="a;"];
+  1 [label="gcd(b,b%a);"];
   2 [label="b=0"];
-  3 [label="a=0"];
-  4 [label="b;"];
-  5 [label="gcd(b,b%a);"];
-  6 [label="a;"];
-  3 -> 4 [label="T"];
-  2 -> 5 [label="F"];
-  4 -> 0 [label=""];
-  0 -> 1 [label=""];
-  2 -> 6 [label="T"];
-  6 -> 0 [label=""];
-  3 -> 2 [label="F"];
-  5 -> 0 [label=""];
+  3 [label="b;"];
+  4 [label=""];
+  5 [label="writeln(\"hw!\");"];
+  6 [label="a=0"];
+  1 -> 5 [label=""];
+  5 -> 4 [label=""];
+  3 -> 5 [label=""];
+  6 -> 2 [label="F"];
+  2 -> 1 [label="F"];
+  0 -> 5 [label=""];
+  2 -> 0 [label="T"];
+  6 -> 3 [label="T"];
 }

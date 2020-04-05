@@ -1,17 +1,13 @@
-package org.golchin.grammar;
+package org.golchin.grammar.cg;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Signature {
     public final String name;
-    public List<String> types;
+    public List<Type> types;
 
-    public Signature(String name) {
-        this.name = name;
-    }
-
-    public Signature(String name, List<String> types) {
+    public Signature(String name, List<Type> types) {
         this.name = name;
         this.types = types;
     }

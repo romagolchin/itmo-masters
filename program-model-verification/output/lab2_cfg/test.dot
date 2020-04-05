@@ -1,12 +1,16 @@
 digraph {
   0 [label="print"];
   1 [label="f"];
-  2 [label="Y"];
-  3 [label="k"];
-  4 [label="main"];
-  4 -> 2 [label=""];
-  4 -> 1 [label=""];
+  2 [label="gcd"];
+  3 [label="Y"];
+  4 [label="k"];
+  5 [label="writeln"];
+  6 [label="main"];
+  6 -> 3 [label=""];
+  6 -> 1 [label=""];
+  2 -> 5 [label=""];
   1 -> 0 [label=""];
-  4 -> 0 [label=""];
-  4 -> 3 [label=""];
+  2 -> 2 [label=""];
+  6 -> 0 [label=""];
+  6 -> 4 [label=""];
 }

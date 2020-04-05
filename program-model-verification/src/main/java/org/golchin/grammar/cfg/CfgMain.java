@@ -1,10 +1,8 @@
 package org.golchin.grammar.cfg;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.golchin.grammar.CallGraphVisitor;
-import org.golchin.grammar.FunctionNode;
 import org.golchin.grammar.ParseResult;
-import org.golchin.grammar.Signature;
+import org.golchin.grammar.cg.*;
 import org.golchin.grammar.graph.Graph;
 import org.golchin.grammar.graph.Node;
 
@@ -12,9 +10,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static org.golchin.grammar.cg.BuiltinTypeName.STRING;
+
 public class CfgMain {
 
-    public static final Signature MAIN = new Signature("main", List.of("array[]ofstring"));
+    public static final Signature MAIN = new Signature("main", List.of(new Array(new BuiltinType(STRING), 1)));
 
     public static void main(String[] args) throws Exception {
         CfgVisitor cfgVisitor = new CfgVisitor();
