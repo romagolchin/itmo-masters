@@ -1,0 +1,468 @@
+L1,C0 source method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;\n\nmethod f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;\n\nmethod main (args: array[] of string)\nbegin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+  L1,C0 sourceItem method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+    L1,C0 'method': method
+    L1,C7 funcSignature gcd(a: int, b: int)
+      L1,C7 identifier: gcd
+      L1,C10 '(': (
+      L1,C11 argDefList a: int, b: int
+        L1,C11 argDef a: int
+          L1,C11 identifier: a
+          L1,C12 ':': :
+          L1,C14 typeRef.builtin int
+            L1,C14 builtin: int
+        L1,C17 ',': ,
+        L1,C19 argDef b: int
+          L1,C19 identifier: b
+          L1,C20 ':': :
+          L1,C22 typeRef.builtin int
+            L1,C22 builtin: int
+      L1,C25 ')': )
+    L2,C0 body begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+      L2,C0 block begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+        L2,C0 'begin': begin
+        L3,C4 statement.if if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+          L3,C4 'if': if
+          L3,C7 expr a = 0
+            L3,C7 binary a = 0
+              L3,C7 expr a
+                L3,C7 identifier: a
+              L3,C9 '=': =
+              L3,C11 expr 0
+                L3,C11 expr 0
+                  L3,C11 literal 0
+                    L3,C11 dec: 0
+          L4,C8 'then': then
+          L4,C13 statement.expression b;
+            L4,C13 expr b
+              L4,C13 expr b
+                L4,C13 identifier: b
+            L4,C14 ';': ;
+          L5,C8 'else': else
+          L6,C12 statement.block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+            L6,C12 block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+              L6,C12 'begin': begin
+              L7,C16 statement.if if b = 0\n                    then a;\n                    else gcd(b, b % a);
+                L7,C16 'if': if
+                L7,C19 expr b = 0
+                  L7,C19 binary b = 0
+                    L7,C19 expr b
+                      L7,C19 identifier: b
+                    L7,C21 '=': =
+                    L7,C23 expr 0
+                      L7,C23 expr 0
+                        L7,C23 literal 0
+                          L7,C23 dec: 0
+                L8,C20 'then': then
+                L8,C25 statement.expression a;
+                  L8,C25 expr a
+                    L8,C25 expr a
+                      L8,C25 identifier: a
+                  L8,C26 ';': ;
+                L9,C20 'else': else
+                L9,C25 statement.expression gcd(b, b % a);
+                  L9,C25 expr gcd(b, b % a)
+                    L9,C25 expr gcd(b, b % a)
+                      L9,C25 call gcd(b, b % a)
+                        L9,C25 identifier: gcd
+                        L9,C28 '(': (
+                        L9,C29 exprList b, b % a
+                          L9,C29 expr b
+                            L9,C29 expr b
+                              L9,C29 identifier: b
+                          L9,C30 ',': ,
+                          L9,C32 expr b % a
+                            L9,C32 binary b % a
+                              L9,C32 expr b
+                                L9,C32 identifier: b
+                              L9,C34 '%': %
+                              L9,C36 expr a
+                                L9,C36 expr a
+                                  L9,C36 identifier: a
+                        L9,C37 ')': )
+                  L9,C38 ';': ;
+              L10,C12 'end': end
+              L10,C15 ';': ;
+        L12,C4 statement.expression writeln("hw!");
+          L12,C4 expr writeln("hw!")
+            L12,C4 expr writeln("hw!")
+              L12,C4 call writeln("hw!")
+                L12,C4 identifier: writeln
+                L12,C11 '(': (
+                L12,C12 exprList "hw!"
+                  L12,C12 expr "hw!"
+                    L12,C12 expr "hw!"
+                      L12,C12 literal "hw!"
+                        L12,C12 str: "hw!"
+                L12,C17 ')': )
+          L12,C18 ';': ;
+        L13,C0 'end': end
+        L13,C3 ';': ;
+  L15,C0 sourceItem method f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+    L15,C0 'method': method
+    L15,C7 funcSignature f(z: byte)
+      L15,C7 identifier: f
+      L15,C8 '(': (
+      L15,C9 argDefList z: byte
+        L15,C9 argDef z: byte
+          L15,C9 identifier: z
+          L15,C10 ':': :
+          L15,C12 typeRef.builtin byte
+            L15,C12 builtin: byte
+      L15,C16 ')': )
+    L16,C4 body var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+      L16,C4 'var': var
+      L17,C8 identifierList a,b
+        L17,C8 identifier: a
+        L17,C9 ',': ,
+        L17,C10 identifier: b
+      L17,C11 ':': :
+      L17,C13 typeRef.builtin int
+        L17,C13 builtin: int
+      L17,C16 ';': ;
+      L18,C8 identifierList x, y
+        L18,C8 identifier: x
+        L18,C9 ',': ,
+        L18,C11 identifier: y
+      L18,C12 ':': :
+      L18,C14 typeRef.builtin char
+        L18,C14 builtin: char
+      L18,C18 ';': ;
+      L19,C0 block begin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+        L19,C0 'begin': begin
+        L20,C4 statement.expression print(x, b);
+          L20,C4 expr print(x, b)
+            L20,C4 expr print(x, b)
+              L20,C4 call print(x, b)
+                L20,C4 identifier: print
+                L20,C9 '(': (
+                L20,C10 exprList x, b
+                  L20,C10 expr x
+                    L20,C10 expr x
+                      L20,C10 identifier: x
+                  L20,C11 ',': ,
+                  L20,C13 expr b
+                    L20,C13 expr b
+                      L20,C13 identifier: b
+                L20,C14 ')': )
+          L20,C15 ';': ;
+        L21,C4 statement.assign a := z * z;
+          L21,C4 identifier: a
+          L21,C6 ':=': :=
+          L21,C9 expr z * z
+            L21,C9 binary z * z
+              L21,C9 expr z
+                L21,C9 identifier: z
+              L21,C11 '*': *
+              L21,C13 expr z
+                L21,C13 expr z
+                  L21,C13 identifier: z
+          L21,C14 ';': ;
+        L22,C4 statement.expression a;
+          L22,C4 expr a
+            L22,C4 expr a
+              L22,C4 identifier: a
+          L22,C5 ';': ;
+        L23,C0 'end': end
+        L23,C3 ';': ;
+  L25,C0 sourceItem method main (args: array[] of string)\nbegin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+    L25,C0 'method': method
+    L25,C7 funcSignature main (args: array[] of string)
+      L25,C7 identifier: main
+      L25,C12 '(': (
+      L25,C13 argDefList args: array[] of string
+        L25,C13 argDef args: array[] of string
+          L25,C13 identifier: args
+          L25,C17 ':': :
+          L25,C19 typeRef.array array[] of string
+            L25,C19 typeRef.custom array
+              L25,C19 identifier: array
+            L25,C24 '[': [
+            L25,C25 ']': ]
+            L25,C27 'of': of
+            L25,C30 typeRef.builtin string
+              L25,C30 builtin: string
+      L25,C36 ')': )
+    L26,C0 body begin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+      L26,C0 block begin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+        L26,C0 'begin': begin
+        L27,C4 statement.expression f(-10);
+          L27,C4 expr f(-10)
+            L27,C4 expr f(-10)
+              L27,C4 call f(-10)
+                L27,C4 identifier: f
+                L27,C5 '(': (
+                L27,C6 exprList -10
+                  L27,C6 expr -10
+                    L27,C6 expr -10
+                      L27,C6 unary -10
+                        L27,C6 '-': -
+                        L27,C7 expr 10
+                          L27,C7 expr 10
+                            L27,C7 literal 10
+                              L27,C7 dec: 10
+                L27,C9 ')': )
+          L27,C10 ';': ;
+        L28,C4 statement.expression a---b;
+          L28,C4 expr a---b
+            L28,C4 binary a---b
+              L28,C4 expr a
+                L28,C4 identifier: a
+              L28,C5 '-': -
+              L28,C6 expr --b
+                L28,C6 expr --b
+                  L28,C6 unary --b
+                    L28,C6 '-': -
+                    L28,C7 expr -b
+                      L28,C7 expr -b
+                        L28,C7 unary -b
+                          L28,C7 '-': -
+                          L28,C8 expr b
+                            L28,C8 expr b
+                              L28,C8 identifier: b
+          L28,C9 ';': ;
+        L29,C4 statement.expression -(b+c*d);
+          L29,C4 expr -(b+c*d)
+            L29,C4 expr -(b+c*d)
+              L29,C4 unary -(b+c*d)
+                L29,C4 '-': -
+                L29,C5 expr (b+c*d)
+                  L29,C5 expr (b+c*d)
+                    L29,C5 braces (b+c*d)
+                      L29,C5 '(': (
+                      L29,C6 expr b+c*d
+                        L29,C6 binary b+c*d
+                          L29,C6 expr b
+                            L29,C6 identifier: b
+                          L29,C7 '+': +
+                          L29,C8 expr c*d
+                            L29,C8 binary c*d
+                              L29,C8 expr c
+                                L29,C8 identifier: c
+                              L29,C9 '*': *
+                              L29,C10 expr d
+                                L29,C10 expr d
+                                  L29,C10 identifier: d
+                      L29,C11 ')': )
+          L29,C12 ';': ;
+        L30,C4 statement.assign c := 12 - d[-42 -Y(z), e * (98 / f)];
+          L30,C4 identifier: c
+          L30,C6 ':=': :=
+          L30,C9 expr 12 - d[-42 -Y(z), e * (98 / f)]
+            L30,C9 binary 12 - d[-42 -Y(z), e * (98 / f)]
+              L30,C9 expr 12
+                L30,C9 literal 12
+                  L30,C9 dec: 12
+              L30,C12 '-': -
+              L30,C14 expr d[-42 -Y(z), e * (98 / f)]
+                L30,C14 expr d[-42 -Y(z), e * (98 / f)]
+                  L30,C14 indexer d[-42 -Y(z), e * (98 / f)]
+                    L30,C14 identifier: d
+                    L30,C15 '[': [
+                    L30,C16 exprList -42 -Y(z), e * (98 / f)
+                      L30,C16 expr -42 -Y(z)
+                        L30,C16 expr -42 -Y(z)
+                          L30,C16 unary -42 -Y(z)
+                            L30,C16 '-': -
+                            L30,C17 expr 42 -Y(z)
+                              L30,C17 binary 42 -Y(z)
+                                L30,C17 expr 42
+                                  L30,C17 literal 42
+                                    L30,C17 dec: 42
+                                L30,C20 '-': -
+                                L30,C21 expr Y(z)
+                                  L30,C21 expr Y(z)
+                                    L30,C21 call Y(z)
+                                      L30,C21 identifier: Y
+                                      L30,C22 '(': (
+                                      L30,C23 exprList z
+                                        L30,C23 expr z
+                                          L30,C23 expr z
+                                            L30,C23 identifier: z
+                                      L30,C24 ')': )
+                      L30,C25 ',': ,
+                      L30,C27 expr e * (98 / f)
+                        L30,C27 binary e * (98 / f)
+                          L30,C27 expr e
+                            L30,C27 identifier: e
+                          L30,C29 '*': *
+                          L30,C31 expr (98 / f)
+                            L30,C31 expr (98 / f)
+                              L30,C31 braces (98 / f)
+                                L30,C31 '(': (
+                                L30,C32 expr 98 / f
+                                  L30,C32 binary 98 / f
+                                    L30,C32 expr 98
+                                      L30,C32 literal 98
+                                        L30,C32 dec: 98
+                                    L30,C35 '/': /
+                                    L30,C37 expr f
+                                      L30,C37 expr f
+                                        L30,C37 identifier: f
+                                L30,C38 ')': )
+                    L30,C39 ']': ]
+          L30,C40 ';': ;
+        L31,C4 statement.assign a:=true;
+          L31,C4 identifier: a
+          L31,C5 ':=': :=
+          L31,C7 expr true
+            L31,C7 expr true
+              L31,C7 literal true
+                L31,C7 bool: true
+          L31,C11 ';': ;
+        L32,C4 statement.assign h := 'x';
+          L32,C4 identifier: h
+          L32,C6 ':=': :=
+          L32,C9 expr 'x'
+            L32,C9 expr 'x'
+              L32,C9 literal 'x'
+                L32,C9 char: 'x'
+          L32,C12 ';': ;
+        L33,C4 statement.while while true do begin\n        print("hello");\n        if tired then break;\n    end;
+          L33,C4 'while': while
+          L33,C10 expr true
+            L33,C10 expr true
+              L33,C10 literal true
+                L33,C10 bool: true
+          L33,C15 'do': do
+          L33,C18 statement.block begin\n        print("hello");\n        if tired then break;\n    end;
+            L33,C18 block begin\n        print("hello");\n        if tired then break;\n    end;
+              L33,C18 'begin': begin
+              L34,C8 statement.expression print("hello");
+                L34,C8 expr print("hello")
+                  L34,C8 expr print("hello")
+                    L34,C8 call print("hello")
+                      L34,C8 identifier: print
+                      L34,C13 '(': (
+                      L34,C14 exprList "hello"
+                        L34,C14 expr "hello"
+                          L34,C14 expr "hello"
+                            L34,C14 literal "hello"
+                              L34,C14 str: "hello"
+                      L34,C21 ')': )
+                L34,C22 ';': ;
+              L35,C8 statement.if if tired then break;
+                L35,C8 'if': if
+                L35,C11 expr tired
+                  L35,C11 expr tired
+                    L35,C11 identifier: tired
+                L35,C17 'then': then
+                L35,C22 statement.break break;
+                  L35,C22 'break': break
+                  L35,C27 ';': ;
+              L36,C4 'end': end
+              L36,C7 ';': ;
+        L37,C4 statement.if if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';
+          L37,C4 'if': if
+          L37,C7 expr k(t + 0xa)
+            L37,C7 expr k(t + 0xa)
+              L37,C7 call k(t + 0xa)
+                L37,C7 identifier: k
+                L37,C8 '(': (
+                L37,C9 exprList t + 0xa
+                  L37,C9 expr t + 0xa
+                    L37,C9 binary t + 0xa
+                      L37,C9 expr t
+                        L37,C9 identifier: t
+                      L37,C11 '+': +
+                      L37,C13 expr 0xa
+                        L37,C13 expr 0xa
+                          L37,C13 literal 0xa
+                            L37,C13 hex: 0xa
+                L37,C16 ')': )
+          L37,C18 'then': then
+          L38,C8 statement.block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
+            L38,C8 block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
+              L38,C8 'begin': begin
+              L39,C12 statement.expression 'x';
+                L39,C12 expr 'x'
+                  L39,C12 expr 'x'
+                    L39,C12 literal 'x'
+                      L39,C12 char: 'x'
+                L39,C15 ';': ;
+              L40,C12 statement.assign z := 3 + "abc";
+                L40,C12 identifier: z
+                L40,C14 ':=': :=
+                L40,C17 expr 3 + "abc"
+                  L40,C17 binary 3 + "abc"
+                    L40,C17 expr 3
+                      L40,C17 literal 3
+                        L40,C17 dec: 3
+                    L40,C19 '+': +
+                    L40,C21 expr "abc"
+                      L40,C21 expr "abc"
+                        L40,C21 literal "abc"
+                          L40,C21 str: "abc"
+                L40,C26 ';': ;
+              L41,C12 statement.if if true then true;
+                L41,C12 'if': if
+                L41,C15 expr true
+                  L41,C15 expr true
+                    L41,C15 literal true
+                      L41,C15 bool: true
+                L41,C20 'then': then
+                L41,C25 statement.expression true;
+                  L41,C25 expr true
+                    L41,C25 expr true
+                      L41,C25 literal true
+                        L41,C25 bool: true
+                  L41,C29 ';': ;
+              L42,C8 'end': end
+              L42,C11 ';': ;
+          L43,C8 'else': else
+          L43,C13 statement.expression 'y';
+            L43,C13 expr 'y'
+              L43,C13 expr 'y'
+                L43,C13 literal 'y'
+                  L43,C13 char: 'y'
+            L43,C16 ';': ;
+        L44,C4 statement.assign x := f('y', '\'', "z\"zz\"z", 1+2);
+          L44,C4 identifier: x
+          L44,C6 ':=': :=
+          L44,C9 expr f('y', '\'', "z\"zz\"z", 1+2)
+            L44,C9 expr f('y', '\'', "z\"zz\"z", 1+2)
+              L44,C9 call f('y', '\'', "z\"zz\"z", 1+2)
+                L44,C9 identifier: f
+                L44,C10 '(': (
+                L44,C11 exprList 'y', '\'', "z\"zz\"z", 1+2
+                  L44,C11 expr 'y'
+                    L44,C11 expr 'y'
+                      L44,C11 literal 'y'
+                        L44,C11 char: 'y'
+                  L44,C14 ',': ,
+                  L44,C16 expr '\''
+                    L44,C16 expr '\''
+                      L44,C16 literal '\''
+                        L44,C16 char: '\''
+                  L44,C20 ',': ,
+                  L44,C22 expr "z\"zz\"z"
+                    L44,C22 expr "z\"zz\"z"
+                      L44,C22 literal "z\"zz\"z"
+                        L44,C22 str: "z\"zz\"z"
+                  L44,C32 ',': ,
+                  L44,C34 expr 1+2
+                    L44,C34 binary 1+2
+                      L44,C34 expr 1
+                        L44,C34 literal 1
+                          L44,C34 dec: 1
+                      L44,C35 '+': +
+                      L44,C36 expr 2
+                        L44,C36 expr 2
+                          L44,C36 literal 2
+                            L44,C36 dec: 2
+                L44,C37 ')': )
+          L44,C38 ';': ;
+        L45,C4 statement.expression "\"\"\"";
+          L45,C4 expr "\"\"\""
+            L45,C4 expr "\"\"\""
+              L45,C4 literal "\"\"\""
+                L45,C4 str: "\"\"\""
+          L45,C12 ';': ;
+        L46,C4 statement.expression "\"a\"\"";
+          L46,C4 expr "\"a\"\""
+            L46,C4 expr "\"a\"\""
+              L46,C4 literal "\"a\"\""
+                L46,C4 str: "\"a\"\""
+          L46,C13 ';': ;
+        L47,C0 'end': end
+        L47,C3 ';': ;
+  L47,C4 : <EOF>

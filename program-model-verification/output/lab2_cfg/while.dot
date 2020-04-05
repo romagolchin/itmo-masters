@@ -1,0 +1,5 @@
+digraph {
+  0 [label="gcd"];
+  1 [label="writeln"];
+  0 -> 1 [label=""];
+}

@@ -41,8 +41,9 @@ public class CfgMain {
     }
 
     private static String removeExtension(String fileName) {
-        int index = fileName.lastIndexOf('.');
-        return fileName.substring(0, index);
+        int slashIndex = fileName.lastIndexOf('/');
+        int dotIndex = fileName.lastIndexOf('.');
+        return fileName.substring(slashIndex + 1, dotIndex);
     }
 
 }

@@ -20,7 +20,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        ParseResult parseResult = ParseResult.parse("test.source");
+        ParseResult parseResult = ParseResult.parse("sources/test.source");
         GrammarParser parser = parseResult.getParser();
         ParseTree tree = parseResult.getTree();
         try(BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(args[0]))) {
@@ -67,7 +67,6 @@ public class Main {
             };
             parseTreeVisitor.visit(tree);
         }
-//        TestRig.main(new String[]{"Grammar", "source", "-tokens"});
         TestRig.main(new String[]{"org.golchin.grammar.Grammar", "source", "-gui"});
     }
 }

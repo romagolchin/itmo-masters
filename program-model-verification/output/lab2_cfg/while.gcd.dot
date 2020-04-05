@@ -1,0 +1,31 @@
+digraph {
+  0 [label="tired"];
+  1 [label="t:=a;
+a:=b;
+b:=t%b;"];
+  2 [label="b;"];
+  3 [label="a=0"];
+  4 [label="writeln(\"hw!\");"];
+  5 [label="(a>0)&&(b>0)"];
+  6 [label="tooMuch"];
+  7 [label="writeln(\"hw1!\");
+writeln(\"hw2!\");"];
+  8 [label=""];
+  9 [label="!tired"];
+  10 [label="a;"];
+  9 -> 0 [label="F"];
+  5 -> 3 [label="F"];
+  4 -> 0 [label=""];
+  5 -> 1 [label="T"];
+  0 -> 8 [label="T"];
+  9 -> 7 [label="T"];
+  7 -> 6 [label=""];
+  1 -> 5 [label=""];
+  3 -> 2 [label="T"];
+  0 -> 4 [label="F"];
+  10 -> 9 [label=""];
+  6 -> 9 [label="F"];
+  6 -> 0 [label="T"];
+  2 -> 9 [label=""];
+  3 -> 10 [label="F"];
+}
