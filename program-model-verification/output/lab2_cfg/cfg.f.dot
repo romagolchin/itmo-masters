@@ -1,0 +1,5 @@
+digraph {
+  0 [label=""];
+  1 [label="g(1+h(k(a[45]),x));"];
+  1 -> 0 [label=""];
+}

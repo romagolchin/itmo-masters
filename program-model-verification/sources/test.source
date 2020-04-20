@@ -8,6 +8,8 @@ begin
                     then a;
                     else gcd(b, b % a);
             end;
+
+    writeln("hw!");
 end;
 
 method f(z: byte)
@@ -20,7 +22,7 @@ begin
     a;
 end;
 
-method main ()
+method main (args: array[] of string)
 begin
     f(-10);
     a---b;

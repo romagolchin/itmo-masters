@@ -1,0 +1,18 @@
+method gcd(a: int, b: int)
+var t: int;
+begin
+    while (a > 0) && (b > 0) do begin
+        t := a;
+        a := b;
+        b := t % b;
+    end;
+    if a = 0 then b; else a;
+    while !tired do begin
+        writeln("hw1!");
+        writeln("hw2!");
+        if tooMuch then break;
+    end;
+    repeat
+        writeln("hw!");
+    until tired;
+end;

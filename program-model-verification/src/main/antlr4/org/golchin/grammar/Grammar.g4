@@ -14,8 +14,10 @@ funcSignature: IDENTIFIER '(' argDefList ')'
 
 typeRef: BUILTIN # builtin
          | IDENTIFIER # custom
-         | typeRef  '(' (',')* ')' # array
+         | typeRef  arrayDepthSpec 'of' typeRef # array
 ;
+
+arrayDepthSpec: '[' (',')* ']';
 
 argDefList: (argDef (',' argDef)*)?;
 
@@ -34,9 +36,11 @@ statement:
     | 'if' expr 'then' statement ('else' statement)? # if
     | block # block1
     | 'while' expr 'do' statement # while
-    | 'repeat' statement ('while'|'until') expr ';' # do
+    | 'repeat' statement whileSpec expr ';' # do
     | 'break' ';' # break
     ;
+
+whileSpec: ('while'|'until');
 
 
 expr:
@@ -45,7 +49,7 @@ expr:
     ;
 
 
-binary: operand ('+' | '-' | '*' | '/' | '%' | '=' | '&&' | '||') expr;
+binary: operand ('+' | '-' | '*' | '/' | '%' | '=' | '<' | '>' | '&&' | '||') expr;
 operand:
         unary
         | call
@@ -83,4 +87,3 @@ IDENTIFIER: [a-zA-Z][a-zA-Z0-9_]*;
 HEX: '0' [xX][0-9a-zA-Z]+;
 BITS: '0' [bB][01]+;
 DEC: [1-9]?[0-9]+;
-BIN_OP: '+' | '*' | '/';

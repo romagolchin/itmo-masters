@@ -1,3 +1,5 @@
+package org.golchin.grammar;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.Writer;

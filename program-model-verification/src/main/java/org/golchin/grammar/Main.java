@@ -1,10 +1,13 @@
-import org.antlr.v4.runtime.*;
+package org.golchin.grammar;
+
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.misc.TestRig;
 import org.antlr.v4.runtime.tree.*;
 
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -17,15 +20,11 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        ANTLRInputStream is = new ANTLRInputStream(new FileInputStream("test.source"));
-        GrammarLexer lexer = new GrammarLexer(is);
-        // create a buffer of tokens pulled from the lexer
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        // create a parser that feeds off the tokens buffer
-        GrammarParser parser = new GrammarParser(tokens);
+        ParseResult parseResult = ParseResult.parse("sources/test.source");
+        GrammarParser parser = parseResult.getParser();
+        ParseTree tree = parseResult.getTree();
         try(BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(args[0]))) {
             IndentedWriter indentedWriter = new IndentedWriter(bufferedWriter);
-            ParseTree tree = parser.source(); // begin parsing at init rule
             System.out.println(tree.toStringTree(parser)); // print LISP-style tree
             String[] ruleNames = parser.getRuleNames();
             String[] tokenNames = parser.getTokenNames();
@@ -48,7 +47,7 @@ public class Main {
                     ParserRuleContext sourceContext = (ParserRuleContext) node;
                     String position = positionToString(sourceContext.start);
                     Interval interval = Interval.of(sourceContext.start.getStartIndex(), sourceContext.stop.getStopIndex());
-                    String text = is.getText(interval)
+                    String text = parseResult.getIs().getText(interval)
                             .replace("\n", "\\n");
                     RuleContext ruleContext = node.getRuleContext();
                     String alternativeName =
@@ -68,7 +67,6 @@ public class Main {
             };
             parseTreeVisitor.visit(tree);
         }
-//        TestRig.main(new String[]{"Grammar", "source", "-tokens"});
-        TestRig.main(new String[]{"Grammar", "source", "-gui"});
+        TestRig.main(new String[]{"org.golchin.grammar.Grammar", "source", "-gui"});
     }
 }

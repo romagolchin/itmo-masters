@@ -1,0 +1,37 @@
+digraph {
+  0 [label="k(t+0xa)"];
+  1 [label=""];
+  2 [label="f(-10);"];
+  3 [label="x:=f('y','\\'',\"z\\\"zz\\\"z\",1+2);"];
+  4 [label="print(\"hello\");"];
+  5 [label="true;"];
+  6 [label="'x';
+z:=3+\"abc\";"];
+  7 [label="tired"];
+  8 [label="\"\\\"\\\"\\\"\";
+\"\\\"a\\\"\\\"\";"];
+  9 [label="true"];
+  10 [label="a---b;
+-(b+c*d);
+c:=12-d[-42-Y(z),e*(98/f)];
+a:=true;
+h:='x';"];
+  11 [label="'y';"];
+  12 [label="true"];
+  12 -> 4 [label="T"];
+  12 -> 0 [label="F"];
+  0 -> 11 [label="F"];
+  0 -> 6 [label="T"];
+  2 -> 10 [label=""];
+  7 -> 12 [label="F"];
+  3 -> 8 [label=""];
+  7 -> 0 [label="T"];
+  4 -> 7 [label=""];
+  5 -> 3 [label=""];
+  10 -> 12 [label=""];
+  11 -> 3 [label=""];
+  8 -> 1 [label=""];
+  6 -> 9 [label=""];
+  9 -> 3 [label="F"];
+  9 -> 5 [label="T"];
+}

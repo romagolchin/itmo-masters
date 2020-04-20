@@ -1,0 +1,33 @@
+method gcd(a: int, b: int)
+begin
+    if a = 0
+        then b;
+        else
+            begin
+                if b = 0
+                    then a;
+                    else gcd(b, b % a) * 1;
+            end;
+
+    writeln("hw!");
+end;
+
+method g(a: bool, b: int): int
+begin
+    empty();
+    43;
+end;
+
+method f(x: int): int
+begin
+    g(1 + h(k(a[45]), x));
+end;
+
+method h(y: int): bool
+begin
+    42;
+end;
+
+method empty()
+begin
+end;
