@@ -7,10 +7,9 @@ public abstract class Type {
         if (typeRef == null) {
             return null;
         }
-        if (typeRef instanceof GrammarParser.CustomContext)
-            return new CustomType(((GrammarParser.CustomContext) typeRef).IDENTIFIER().toString());
-        if (typeRef instanceof GrammarParser.ArrayContext) {
-            GrammarParser.ArrayContext arrayContext = (GrammarParser.ArrayContext) typeRef;
+        if (typeRef instanceof GrammarParser.CustomContext customContext)
+            return new CustomType(customContext.IDENTIFIER().toString());
+        if (typeRef instanceof GrammarParser.ArrayContext arrayContext) {
             var arrayDepthSpec = arrayContext.arrayDepthSpec().getText();
             var commasCount = 0;
             for (int i = 0; i < arrayDepthSpec.length(); i++) {
