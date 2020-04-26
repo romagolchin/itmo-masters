@@ -41,7 +41,7 @@ public class CallGraphVisitor extends GrammarBaseVisitor<Graph> {
     }
 
     @Override
-    public Graph visitSourceItem(GrammarParser.SourceItemContext ctx) {
+    public Graph visitFuncDefAlt(GrammarParser.FuncDefAltContext ctx) {
         Graph graph = visitChildren(ctx);
         FunctionDefinition functionDefinition = createFunctionDefinition(ctx);
         FunctionNode curFunction = nameToNode.computeIfAbsent(functionDefinition.getName(), FunctionNode::new);
@@ -51,8 +51,8 @@ public class CallGraphVisitor extends GrammarBaseVisitor<Graph> {
         return graph;
     }
 
-    private FunctionDefinition createFunctionDefinition(GrammarParser.SourceItemContext ctx) {
-        GrammarParser.FuncSignatureContext funcSignatureContext = ctx.funcSignature();
+    private FunctionDefinition createFunctionDefinition(GrammarParser.FuncDefAltContext ctx) {
+        GrammarParser.FuncSignatureContext funcSignatureContext = ctx.funcDef().funcSignature();
         LinkedHashMap<String, Type> parameterTypes = new LinkedHashMap<>();
         for (GrammarParser.ArgDefContext context : funcSignatureContext.argDefList().argDef()) {
             parameterTypes.put(context.IDENTIFIER().toString(), Type.createInstance(context.typeRef()));

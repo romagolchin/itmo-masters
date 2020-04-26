@@ -5,8 +5,19 @@ source:
     sourceItem* EOF
     ;
 
+importSpec: 'from' (method 'in')? className ';';
+className: STR;
+method: STR;
+modifier: 'public'|'private';
+
 sourceItem:
-    'method' funcSignature (body|';');
+    funcDef # funcDefAlt
+    | 'class' IDENTIFIER varsSpec 'begin' member* 'end' # classDef
+    ;
+
+funcDef: 'method' funcSignature (body|';'|importSpec);
+
+member: modifier? funcDef;
 
 funcSignature: IDENTIFIER '(' argDefList ')'
     (':' typeRef)?
@@ -25,8 +36,10 @@ argDef: IDENTIFIER (':' typeRef)?;
 
 identifierList: (IDENTIFIER (',' IDENTIFIER)*)?;
 body:
-    ('var' (identifierList (':' typeRef)? ';')*)?
+    varsSpec?
     block;
+
+varsSpec: ('var' (identifierList (':' typeRef)? ';')*);
 
 block: 'begin' statement* 'end' ';';
 
@@ -52,14 +65,16 @@ expr:
 binary: operand ('+' | '-' | '*' | '/' | '%' | '=' | '<' | '>' | '&&' | '||') expr;
 operand:
         unary
-        | call
+        | memberAccessChain
         | indexer
         | literal
         | braces
         | IDENTIFIER;
 unary: ('-' | '!') expr;
 braces: '(' expr ')';
-call: IDENTIFIER ('(' exprList ')')+;
+memberAccessChain: memberAccess ('.' memberAccess)*;
+memberAccess: IDENTIFIER | call;
+call: IDENTIFIER ('(' exprList ')');
 exprList:
 |
 | expr (',' expr)*;

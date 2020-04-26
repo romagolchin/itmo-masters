@@ -13,9 +13,10 @@ import static java.util.Collections.singletonList;
 
 public class CfgVisitor extends GrammarBaseVisitor<Cfg> {
     @Override
-    public Cfg visitSourceItem(GrammarParser.SourceItemContext ctx) {
-        Cfg cfg = ctx.body().block().getRuleContext().accept(this);
-        cfg.name = ctx.funcSignature().IDENTIFIER().getSymbol().getText();
+    public Cfg visitFuncDefAlt(GrammarParser.FuncDefAltContext ctx) {
+        GrammarParser.FuncDefContext funcDefContext = ctx.funcDef();
+        Cfg cfg = funcDefContext.body().block().getRuleContext().accept(this);
+        cfg.name = funcDefContext.funcSignature().IDENTIFIER().getSymbol().getText();
         return cfg;
     }
 

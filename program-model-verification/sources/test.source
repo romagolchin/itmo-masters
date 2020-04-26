@@ -1,3 +1,15 @@
+class C
+    var
+        a,b: int;
+        x, y: char;
+begin
+    method getA(): int
+    begin
+        B().b(x, yz(b, a).zzz(1));
+        a;
+    end;
+end
+
 method gcd(a: int, b: int)
 begin
     if a = 0
