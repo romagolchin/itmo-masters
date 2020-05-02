@@ -10,6 +10,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static ru.golchin.data.representations.TableSchema.createSchema;
 import static ru.golchin.data.representations.conditions.BiColumnExpression.gtField;
 import static ru.golchin.data.representations.conditions.Conjunction.and;
 import static ru.golchin.data.representations.conditions.Disjunction.or;
@@ -19,7 +20,7 @@ import static ru.golchin.data.representations.conditions.SingleColumnExpression.
 class MemoryDataAccessorTest {
     public static final Column<Integer> INT_COLUMN = new Column<>("c1", int.class);
     public static final Column<String> STRING_COLUMN = new Column<>("c2", String.class);
-    public static final TableSchema TABLE_SCHEMA = new TableSchema("a", List.of(INT_COLUMN, STRING_COLUMN));
+    public static final TableSchema TABLE_SCHEMA = createSchema("a", List.of(INT_COLUMN, STRING_COLUMN));
     private DataAccessor accessor;
 
     @BeforeEach
@@ -59,7 +60,7 @@ class MemoryDataAccessorTest {
     @Test
     void update() {
         List<Column<?>> columns = List.of(new Column<>("c", String.class), new Column<>("d", String.class));
-        var tableSchema = new TableSchema("b", columns);
+        var tableSchema = createSchema("b", columns);
         accessor.createTable(tableSchema);
         accessor.insert(new Row(tableSchema, List.of("x", "z")));
         var query = new Query("b", Condition.TRUE);
@@ -80,7 +81,7 @@ class MemoryDataAccessorTest {
         var c1 = new Column<>("c1", String.class);
         var c2 = new Column<>("c2", String.class);
         List<Column<?>> columns = List.of(c1, c2);
-        var schema = new TableSchema("b", columns);
+        var schema = createSchema("b", columns);
         accessor.createTable(schema);
         var row = new Row(schema, List.of("1", "2"));
         accessor.insert(row);

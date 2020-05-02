@@ -9,7 +9,7 @@ public class TableSchema {
     private final List<Column<?>> columns;
     private final Map<String, Integer> columnNameToIndex = new HashMap<>();
 
-    public TableSchema(String name, List<Column<?>> columns) {
+    private TableSchema(String name, List<Column<?>> columns) {
         this.name = name;
         this.columns = columns;
         for (int i = 0; i < columns.size(); i++) {
@@ -19,6 +19,13 @@ public class TableSchema {
                 throw new IllegalArgumentException("Duplicate column name " + columnName);
             columnNameToIndex.put(columnName, i);
         }
+    }
+
+    public static TableSchema createSchema(String name, List<Column<?>> columns) {
+        TableSchema tableSchema = new TableSchema(name, columns);
+        for (Column<?> column : columns)
+            column.setTableSchema(tableSchema);
+        return tableSchema;
     }
 
     public String getName() {
