@@ -8,14 +8,24 @@ public class Row {
     private final TableSchema tableSchema;
     private final List<Comparable<?>> fields = new ArrayList<>();
 
+    public Row(List<Comparable<?>> fields) {
+        this(null, fields);
+    }
+
     public Row(TableSchema tableSchema, List<Comparable<?>> fields) {
         this.tableSchema = tableSchema;
         this.fields.addAll(fields);
     }
 
+    public boolean hasField(Column<?> column) {
+        return tableSchema.getColumnIndex(column.getName()) == null;
+    }
+
     @SuppressWarnings("unchecked")
     public <T extends Comparable<T>> T getField(Column<T> column) {
         var columnIndex = tableSchema.getColumnIndex(column.getName());
+        if (columnIndex == null)
+            throw new IllegalArgumentException("no such field: " + column.getName());
         return (T) fields.get(columnIndex);
     }
 
@@ -39,5 +49,13 @@ public class Row {
     @Override
     public int hashCode() {
         return Objects.hash(tableSchema, fields);
+    }
+
+    @Override
+    public String toString() {
+        return "Row{" +
+                "tableSchema=" + tableSchema +
+                ", fields=" + fields +
+                '}';
     }
 }

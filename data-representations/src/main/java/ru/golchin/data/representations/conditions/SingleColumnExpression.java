@@ -3,6 +3,8 @@ package ru.golchin.data.representations.conditions;
 import ru.golchin.data.representations.Column;
 import ru.golchin.data.representations.Row;
 
+import java.util.stream.Stream;
+
 public class SingleColumnExpression<T extends Comparable<T>> extends Conjunct {
     private final Column<T> column;
     private final T value;
@@ -35,7 +37,13 @@ public class SingleColumnExpression<T extends Comparable<T>> extends Conjunct {
     }
 
     @Override
-    public boolean test(Row row) {
-        return operation.test(row.getField(column), value);
+    public boolean test(Row row, Row... rows) {
+        T field = getField(column, row, rows);
+        return operation.test(field, value);
+    }
+
+    @Override
+    public Stream<Column<?>> columns() {
+        return Stream.of(column);
     }
 }

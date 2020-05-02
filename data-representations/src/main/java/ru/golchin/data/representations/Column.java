@@ -26,4 +26,11 @@ public class Column<T extends Comparable<T>> {
     public void setTableSchema(TableSchema tableSchema) {
         this.tableSchema = tableSchema;
     }
+
+    @Override
+    public String toString() {
+        if (tableSchema != null)
+            return tableSchema.getName() + "." + name;
+        return name;
+    }
 }

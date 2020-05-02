@@ -1,6 +1,9 @@
 package ru.golchin.data.representations.conditions;
 
+import ru.golchin.data.representations.Column;
 import ru.golchin.data.representations.Row;
+
+import java.util.stream.Stream;
 
 public class Negation extends Conjunct {
     private final Conjunct conjunct;
@@ -14,7 +17,12 @@ public class Negation extends Conjunct {
     }
 
     @Override
-    public boolean test(Row row) {
-        return !conjunct.test(row);
+    public boolean test(Row row, Row... rows) {
+        return !conjunct.test(row, rows);
+    }
+
+    @Override
+    public Stream<Column<?>> columns() {
+        return conjunct.columns();
     }
 }

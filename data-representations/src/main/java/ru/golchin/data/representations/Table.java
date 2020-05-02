@@ -64,4 +64,8 @@ public class Table {
             row.getFields().set(columnIndex, value);
         });
     }
+
+    public TableSchema getSchema() {
+        return schema;
+    }
 }

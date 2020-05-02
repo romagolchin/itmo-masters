@@ -4,16 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.golchin.data.representations.conditions.Condition;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static ru.golchin.data.representations.TableSchema.createSchema;
+import static ru.golchin.data.representations.conditions.BiColumnExpression.eqField;
 import static ru.golchin.data.representations.conditions.BiColumnExpression.gtField;
 import static ru.golchin.data.representations.conditions.Conjunction.and;
 import static ru.golchin.data.representations.conditions.Disjunction.or;
+import static ru.golchin.data.representations.conditions.Negation.not;
 import static ru.golchin.data.representations.conditions.SingleColumnExpression.eq;
 import static ru.golchin.data.representations.conditions.SingleColumnExpression.lt;
 
@@ -32,6 +31,12 @@ class MemoryDataAccessorTest {
     @Test
     void selectFail() {
         assertThrows(IllegalArgumentException.class, () -> accessor.select(new Query("b", Condition.TRUE)));
+        Column<String> c3 = new Column<>("c3", String.class);
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> accessor.select(new Query("a", eq(c3, "1"))));
+        assertTrue(exception.getMessage().contains("c3"));
+        List<Join> joins = List.of(new Join("a", eq(c3, "1")));
+        assertThrows(IllegalArgumentException.class, () -> accessor.select(new Query("a", Condition.TRUE, joins)));
     }
 
     @Test
@@ -52,6 +57,34 @@ class MemoryDataAccessorTest {
     }
 
     @Test
+    void join() {
+        var row1 = new Row(TABLE_SCHEMA, List.of(1, "2"));
+        var row2 = new Row(TABLE_SCHEMA, List.of(3, "4"));
+        accessor.insert(row2);
+        accessor.insert(row1);
+
+        Column<String> bColumn = new Column<>("c2", String.class);
+        TableSchema bSchema = createSchema("b", List.of(bColumn));
+        accessor.createTable(bSchema);
+        var row3 = new Row(bSchema, List.of("4"));
+        var row4 = new Row(bSchema, List.of("5"));
+        accessor.insert(row3);
+        accessor.insert(row4);
+
+        Condition joinCondition = eqField(STRING_COLUMN, bColumn);
+        List<Join> joins = List.of(new Join("b", joinCondition));
+        Collection<Row> rows = accessor.select(new Query("a", Condition.TRUE, joins));
+        assertEquals(List.of(new Row(null, List.of(3, "4", "4"))), rows);
+
+        joinCondition = gtField(bColumn, STRING_COLUMN);
+        rows = accessor.select(new Query("a", not(eq(bColumn, "4")),
+                List.of(new Join("b", joinCondition))));
+        Set<Row> expected = new HashSet<>(List.of(
+                new Row(List.of(1, "2", "4")), new Row(List.of(1, "2", "5")), new Row(List.of(3, "4", "5"))));
+        assertEquals(expected, new HashSet<>(rows));
+    }
+
+    @Test
     void insertFail() {
         assertThrows(IllegalArgumentException.class, () -> accessor.insert(new Row(TABLE_SCHEMA, List.of(1, "2", "3"))));
         assertThrows(IllegalArgumentException.class, () -> accessor.insert(new Row(TABLE_SCHEMA, List.of("1", 2))));
@@ -65,7 +98,7 @@ class MemoryDataAccessorTest {
         accessor.insert(new Row(tableSchema, List.of("x", "z")));
         var query = new Query("b", Condition.TRUE);
         accessor.update(query, new Update(Map.of("c", "y")));
-        assertEquals(List.of(new Row(tableSchema, List.of("y", "z"))), accessor.select(query));
+        assertIterableEquals(List.of(new Row(tableSchema, List.of("y", "z"))), accessor.select(query));
     }
 
     @Test

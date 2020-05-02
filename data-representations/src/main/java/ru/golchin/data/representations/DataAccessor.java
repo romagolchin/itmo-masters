@@ -1,11 +1,13 @@
 package ru.golchin.data.representations;
 
+import java.util.Collection;
+
 public interface DataAccessor {
     void insert(Row row);
 
     void update(Query query, Update update);
 
-    Iterable<Row> select(Query query);
+    Collection<Row> select(Query query);
 
     void remove(Query query);
 

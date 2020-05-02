@@ -1,8 +1,8 @@
 package ru.golchin.data.representations;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import ru.golchin.data.representations.conditions.Condition;
+
+import java.util.*;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.stream.Collectors.toList;
@@ -23,25 +23,71 @@ public class MemoryDataAccessor implements DataAccessor {
     public void update(Query query, Update update) {
         String tableName = query.getTableName();
         var table = checkTableExists(tableName);
+        checkArgument(query.getJoins().isEmpty(), "no joins allowed for update");
         List<Row> rows = table.getRows();
         var condition = query.getCondition();
         rows.stream()
-                .filter(condition)
+                .filter(condition::test)
                 .forEach(row -> table.update(row, update));
     }
 
     @Override
-    public Iterable<Row> select(Query query) {
-        return checkTableExists(query.getTableName()).getRows()
-                .stream()
-                .filter(query.getCondition())
+    public Collection<Row> select(Query query) {
+        Table table = checkTableExists(query.getTableName());
+        List<Column<?>> columnsFromCondition = query.getCondition().columns()
                 .collect(toList());
+        Set<Column<?>> columns = new HashSet<>(table.getSchema().getColumns());
+
+        List<List<Row>> rows = table.getRows().stream()
+                .map(r -> new ArrayList<>(List.of(r))).collect(toList());
+        for (Join join : query.getJoins()) {
+            Table joinTable = checkTableExists(join.getTableName());
+            columns.addAll(joinTable.getSchema().getColumns());
+            columnsFromCondition.addAll(join.getJoinCondition().columns()
+                    .collect(toList()));
+            rows = join(rows, joinTable.getRows(), join.getJoinCondition());
+        }
+
+        columnsFromCondition.stream()
+                .dropWhile(columns::contains)
+                .findFirst()
+                .ifPresent(column -> {
+                    throw new IllegalArgumentException("no such column: " + column);
+                });
+
+        return rows.stream()
+                .map(this::union)
+                .filter(query.getCondition()::test)
+                .collect(toList());
+    }
+
+    private List<List<Row>> join(List<List<Row>> rows, List<Row> otherRows, Condition condition) {
+        List<List<Row>> result = new ArrayList<>();
+        for (List<Row> joinedRow : rows)
+            for (Row otherRow : otherRows)
+                if (condition.test(otherRow, joinedRow.toArray(new Row[0]))) {
+                    ArrayList<Row> joinedRowCopy = new ArrayList<>(joinedRow);
+                    joinedRowCopy.add(otherRow);
+                    result.add(joinedRowCopy);
+                }
+        return result;
+    }
+
+    private Row union(List<Row> rows) {
+        if (rows.size() == 1)
+            return rows.get(0);
+        List<Comparable<?>> fields = rows.stream()
+                .map(Row::getFields)
+                .flatMap(Collection::stream)
+                .collect(toList());
+        return new Row(null, fields);
     }
 
     @Override
     public void remove(Query query) {
+        checkArgument(query.getJoins().isEmpty(), "no joins allowed for remove");
         var rows = checkTableExists(query.getTableName()).getRows();
-        rows.removeIf(query.getCondition());
+        rows.removeIf(query.getCondition()::test);
     }
 
     @Override

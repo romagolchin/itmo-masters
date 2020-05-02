@@ -3,6 +3,8 @@ package ru.golchin.data.representations.conditions;
 import ru.golchin.data.representations.Column;
 import ru.golchin.data.representations.Row;
 
+import java.util.stream.Stream;
+
 public class BiColumnExpression<T extends Comparable<T>> extends Conjunct {
     private final Column<T> firstColumn;
     private final Column<T> secondColumn;
@@ -15,10 +17,15 @@ public class BiColumnExpression<T extends Comparable<T>> extends Conjunct {
     }
 
     @Override
-    public boolean test(Row row) {
-        T firstField = row.getField(firstColumn);
-        T secondField = row.getField(secondColumn);
+    public boolean test(Row row, Row... rows) {
+        T firstField = getField(firstColumn, row, rows);
+        T secondField = getField(secondColumn, row, rows);
         return operation.test(firstField, secondField);
+    }
+
+    @Override
+    public Stream<Column<?>> columns() {
+        return Stream.of(firstColumn, secondColumn);
     }
 
     public static <T extends Comparable<T>> BiColumnExpression<T> eqField(Column<T> column, Column<T> value) {

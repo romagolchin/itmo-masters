@@ -1,9 +1,11 @@
 package ru.golchin.data.representations.conditions;
 
+import ru.golchin.data.representations.Column;
 import ru.golchin.data.representations.Row;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,8 +26,14 @@ public class Disjunction implements Condition {
                 .collect(toList()));
     }
 
-    public boolean test(final Row row) {
+    public boolean test(Row row, Row... rows) {
         return conjunctions.stream()
                 .anyMatch(c -> c.test(row));
+    }
+
+    @Override
+    public Stream<Column<?>> columns() {
+        return conjunctions.stream()
+                .flatMap(Conjunction::columns);
     }
 }
