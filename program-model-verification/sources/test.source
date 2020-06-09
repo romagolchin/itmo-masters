@@ -1,11 +1,36 @@
+method main ()
+begin
+    f(-10);
+    a---b;
+    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;
+    -(b+c*d);
+    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;
+    a:=true;
+    h := 'x';
+    while true do begin
+        print("hello");
+        if tired then break;
+    end;
+    if k(t + 0xa) then
+        begin
+            'x';
+            z := 3 + "abc";
+            if true then true;
+        end;
+        else 'y';
+    x := f('y', '\'', "z\"zz\"z", 1+2);
+    "\"\"\"";
+    "\"a\"\"";
+end;
+
 class C
     var
         a,b: int;
         x, y: char;
 begin
-    method getA(): int
+    method getA(c: int): int
     begin
-        B().b(x, yz(b, a).zzz(1));
+        new B().b(x, yz(b, a).zzz(1));
         a;
     end;
 end
@@ -32,28 +57,4 @@ begin
     print(x, b);
     a := z * z;
     a;
-end;
-
-method main (args: array[] of string)
-begin
-    f(-10);
-    a---b;
-    -(b+c*d);
-    c := 12 - d[-42 -Y(z), e * (98 / f)];
-    a:=true;
-    h := 'x';
-    while true do begin
-        print("hello");
-        if tired then break;
-    end;
-    if k(t + 0xa) then
-        begin
-            'x';
-            z := 3 + "abc";
-            if true then true;
-        end;
-        else 'y';
-    x := f('y', '\'', "z\"zz\"z", 1+2);
-    "\"\"\"";
-    "\"a\"\"";
 end;

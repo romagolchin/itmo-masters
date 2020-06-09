@@ -1,15 +1,17 @@
 package org.golchin.grammar.cfg;
 
 import org.golchin.grammar.graph.Node;
+import org.golchin.grammar.ir.Instruction;
 
 import java.util.Collections;
+import java.util.List;
 
 public class Do extends Cfg {
-    public Node condition;
+    public Node<List<Instruction>, String> condition;
     public Cfg body;
     public boolean isDoWhile;
 
-    public Do(Node condition, Cfg body, boolean isDoWhile) {
+    public Do(Node<List<Instruction>, String> condition, Cfg body, boolean isDoWhile) {
         super(Collections.emptyList());
         this.condition = condition;
         this.body = body;
@@ -20,7 +22,7 @@ public class Do extends Cfg {
     }
 
     @Override
-    public Node getStart() {
+    public Node<List<Instruction>, String> getStart() {
         return condition;
     }
 

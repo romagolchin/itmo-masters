@@ -1,4 +1,4 @@
-package org.golchin.grammar.cg;
+package org.golchin.grammar.model;
 
 import java.util.List;
 import java.util.Objects;

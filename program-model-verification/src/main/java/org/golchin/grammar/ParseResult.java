@@ -8,9 +8,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ParseResult {
-    private ANTLRInputStream is;
-    private GrammarParser parser;
-    private ParseTree tree;
+    private final ANTLRInputStream is;
+    private final GrammarParser parser;
+    private final ParseTree tree;
 
     public ParseResult(ANTLRInputStream is, GrammarParser parser, ParseTree tree) {
         this.is = is;

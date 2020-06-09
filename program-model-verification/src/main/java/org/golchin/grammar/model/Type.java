@@ -1,9 +1,10 @@
-package org.golchin.grammar.cg;
+package org.golchin.grammar.model;
 
+import com.android.dx.TypeId;
 import org.golchin.grammar.GrammarParser;
 
-public abstract class Type {
-    public static Type createInstance(GrammarParser.TypeRefContext typeRef) {
+public interface Type {
+    static Type createInstance(GrammarParser.TypeRefContext typeRef) {
         if (typeRef == null) {
             return null;
         }
@@ -19,6 +20,10 @@ public abstract class Type {
             return new Array(createInstance(arrayContext.typeRef(0)), commasCount + 1);
         }
         String text = ((GrammarParser.BuiltinContext) typeRef).BUILTIN().getText().toUpperCase();
-        return new BuiltinType(BuiltinTypeName.valueOf(text));
+        return BuiltinType.valueOf(text);
     }
+
+    TypeId<?> toJavaTypeId();
+
+    boolean canAssignTo(Type other);
 }

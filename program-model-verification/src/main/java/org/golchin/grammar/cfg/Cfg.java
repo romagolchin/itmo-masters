@@ -1,18 +1,21 @@
 package org.golchin.grammar.cfg;
 
+import lombok.Getter;
 import org.golchin.grammar.graph.Graph;
 import org.golchin.grammar.graph.Node;
+import org.golchin.grammar.ir.Instruction;
 
 import java.util.List;
 
 public abstract class Cfg {
     public String name;
-    private Graph graph;
-    protected List<Node> exitPoints;
+    private Graph<List<Instruction>, String> graph;
+    @Getter
+    protected List<Node<List<Instruction>, String>> exitPoints;
     protected boolean isBreak;
-    protected Node end = new Node(List.of());
+    protected Node<List<Instruction>, String> end = new Node<>(List.of());
 
-    public Cfg(List<Node> exitPoints) {
+    public Cfg(List<Node<List<Instruction>, String>> exitPoints) {
         this.exitPoints = exitPoints;
     }
 
@@ -22,18 +25,14 @@ public abstract class Cfg {
         }
     }
 
-    public Graph getGraph() {
+    public Graph<List<Instruction>, String> getGraph() {
         initialize();
         return graph;
     }
 
-    public abstract Node getStart();
+    public abstract Node<List<Instruction>, String> getStart();
 
-    public List<Node> getExitPoints() {
-        return exitPoints;
-    }
-
-    public void resetNext(Node node) {
+    public void resetNext(Node<List<Instruction>, String> node) {
         end.addEdge(node);
     }
 

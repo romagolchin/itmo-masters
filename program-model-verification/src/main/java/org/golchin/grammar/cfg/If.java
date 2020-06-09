@@ -1,15 +1,16 @@
 package org.golchin.grammar.cfg;
 
 import org.golchin.grammar.graph.Node;
+import org.golchin.grammar.ir.Instruction;
 
 import java.util.List;
 
 public class If extends Cfg {
-    public Node condition;
+    public Node<List<Instruction>, String> condition;
     public Cfg thenCfg;
     public Cfg elseCfg;
 
-    public If(Node condition, Cfg thenCfg, Cfg elseCfg, List<Node> exitPoints) {
+    public If(Node<List<Instruction>, String> condition, Cfg thenCfg, Cfg elseCfg, List<Node<List<Instruction>, String>> exitPoints) {
         super(exitPoints);
         this.condition = condition;
         this.thenCfg = thenCfg;
@@ -25,7 +26,7 @@ public class If extends Cfg {
     }
 
     @Override
-    public Node getStart() {
+    public Node<List<Instruction>, String> getStart() {
         return condition;
     }
 
