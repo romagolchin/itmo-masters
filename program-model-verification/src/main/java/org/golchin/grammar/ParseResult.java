@@ -1,8 +1,8 @@
 package org.golchin.grammar;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.golchin.grammar.ir.CompilationError;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -37,6 +37,17 @@ public class ParseResult {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         // create a parser that feeds off the tokens buffer
         GrammarParser parser = new GrammarParser(tokens);
+        parser.addErrorListener(new BaseErrorListener() {
+            @Override
+            public void syntaxError(Recognizer<?, ?> recognizer,
+                                    Object offendingSymbol,
+                                    int line,
+                                    int charPositionInLine,
+                                    String msg,
+                                    RecognitionException e) {
+                throw new CompilationError("Syntax error: " + msg);
+            }
+        });
         ParseTree tree = parser.source();
         return new ParseResult(is, parser, tree);
     }

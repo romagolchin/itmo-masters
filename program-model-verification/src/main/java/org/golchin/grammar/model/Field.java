@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Field {
     private final String name;
     private final Type type;
-    private final CustomType declaringType;
+    private final ReferenceType declaringType;
 
     @Override
     public boolean equals(Object o) {
@@ -24,5 +24,10 @@ public class Field {
     @Override
     public int hashCode() {
         return Objects.hash(name, declaringType);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + type;
     }
 }

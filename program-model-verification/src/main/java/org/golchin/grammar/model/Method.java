@@ -2,20 +2,28 @@ package org.golchin.grammar.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.LocalScope;
+import org.golchin.grammar.GrammarParser;
 import org.golchin.grammar.cg.FunctionDefinition;
 import org.golchin.grammar.ir.Instruction;
+import org.golchin.grammar.ir.LocalScope;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
 public class Method {
-    private final CustomType declaringType;
+    private final ReferenceType declaringType;
     private final FunctionDefinition functionDefinition;
     private final LocalScope localScope;
-    private final List<Instruction> instructions;
+    private final GrammarParser.BodyContext bodyContext;
+    private final List<Instruction> instructions = new ArrayList<>();
+    private final Visibility visibility;
+
+    public String getName() {
+        return getFunctionDefinition().getName();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,6 +37,11 @@ public class Method {
     @Override
     public int hashCode() {
         return Objects.hash(declaringType, functionDefinition);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(functionDefinition);
     }
 }
 

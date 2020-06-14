@@ -1,38 +1,23 @@
 method main ()
+var x: int;
 begin
-    f(-10);
-    a---b;
-    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;
-    -(b+c*d);
-    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;
-    a:=true;
-    h := 'x';
-    while true do begin
-        print("hello");
-        if tired then break;
-    end;
-    if k(t + 0xa) then
-        begin
-            'x';
-            z := 3 + "abc";
-            if true then true;
-        end;
-        else 'y';
-    x := f('y', '\'', "z\"zz\"z", 1+2);
-    "\"\"\"";
-    "\"a\"\"";
 end;
 
-class C
+class CC
     var
         a,b: int;
         x, y: char;
 begin
     method getA(c: int): int
     begin
-        new B().b(x, yz(b, a).zzz(1));
-        a;
+        #new B().b(x, yz(b, a).zzz(1));
+        this.a;
     end;
+end
+
+class B
+var
+begin
 end
 
 method gcd(a: int, b: int)
@@ -54,7 +39,6 @@ method f(z: byte)
         a,b: int;
         x, y: char;
 begin
-    print(x, b);
     a := z * z;
     a;
 end;

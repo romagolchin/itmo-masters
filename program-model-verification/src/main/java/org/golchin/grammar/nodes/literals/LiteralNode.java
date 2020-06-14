@@ -1,22 +1,18 @@
 package org.golchin.grammar.nodes.literals;
 
-import com.android.dx.Local;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
-import org.golchin.grammar.bytecode.CompilationError;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.CompilationError;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 import org.golchin.grammar.model.BuiltinType;
+import org.golchin.grammar.model.Literal;
 import org.golchin.grammar.nodes.ExpressionNode;
 
 import java.math.BigInteger;
 
 @Getter
 public abstract class LiteralNode<T> extends ExpressionNode {
-    private final T value;
-
-    public LiteralNode(T value, BuiltinType builtinType) {
-        this.value = value;
-        type = builtinType;
-    }
+    private final Literal<T> literal;
 
     private static final BigInteger MAX_INT = BigInteger.valueOf(Integer.MAX_VALUE);
     private static final BigInteger MIN_INT = BigInteger.valueOf(Integer.MIN_VALUE);
@@ -24,6 +20,11 @@ public abstract class LiteralNode<T> extends ExpressionNode {
     private static final BigInteger MIN_LONG = BigInteger.valueOf(Long.MIN_VALUE);
     private static final BigInteger MIN_UINT = BigInteger.valueOf(0);
     private static final BigInteger MAX_UINT = BigInteger.valueOf((1L << 32) - 1);
+
+    protected LiteralNode(T value, BuiltinType builtinType) {
+        literal = new Literal<>(value, builtinType);
+        type = builtinType;
+    }
 
     public static LiteralNode<?> getOrCreateNumeric(String text) {
         int radix = 10;
@@ -45,7 +46,12 @@ public abstract class LiteralNode<T> extends ExpressionNode {
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitLiteralNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitLiteralNode(this);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(literal.getValue());
     }
 }

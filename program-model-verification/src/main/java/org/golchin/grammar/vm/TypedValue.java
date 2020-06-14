@@ -5,7 +5,6 @@ import org.golchin.grammar.model.Type;
 
 @AllArgsConstructor
 public abstract class TypedValue<T> {
-    private final Type type;
     private final T value;
 
     public static TypedValue<?> createDefault(Type type) {

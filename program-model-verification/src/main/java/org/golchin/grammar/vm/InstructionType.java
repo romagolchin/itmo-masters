@@ -25,7 +25,7 @@ enum InstructionType {
     CONSTRUCTOR(1),
     ALLOCATE_ARRAY(1)
     ;
-    int opCount;
+    final int opCount;
 
     InstructionType(int opCount) {
         this.opCount = opCount;

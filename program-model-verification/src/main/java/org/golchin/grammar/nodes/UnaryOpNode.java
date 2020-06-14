@@ -1,35 +1,38 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.Local;
-import com.android.dx.UnaryOp;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
-import org.golchin.grammar.bytecode.CompilationError;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.CompilationError;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
+import org.golchin.grammar.ir.UnaryOperation;
 import org.golchin.grammar.model.BuiltinType;
 
 import java.util.List;
 
+import static org.golchin.grammar.model.BuiltinType.BOOL;
+
 @Getter
 public class UnaryOpNode extends ExpressionNode {
     private final ExpressionNode operand;
-    private final UnaryOp unaryOp;
+    private final UnaryOperation unaryOp;
 
-    public UnaryOpNode(UnaryOp unaryOp, ExpressionNode node) {
+    public UnaryOpNode(UnaryOperation unaryOp, ExpressionNode node) {
         super(List.of(node));
         this.unaryOp = unaryOp;
         operand = node;
-        local = node.getLocal();
         if (node.getType() instanceof BuiltinType builtinType) {
-            if (!builtinType.isNumeric())
+            if (unaryOp == UnaryOperation.NEGATE && !builtinType.isNumeric())
                 throw new CompilationError("Unary minus can be used only with numeric types");
+            if (unaryOp == UnaryOperation.NOT && builtinType != BOOL)
+                throw new CompilationError("Not can be used only with boolean");
             type = builtinType;
         }
-        else throw new CompilationError("Unary minus can be used only with built-in types");
+        else throw new CompilationError("Unary operations can be used only with built-in types");
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitUnaryOpNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitUnaryOpNode(this);
     }
 
     @Override

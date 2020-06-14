@@ -1,13 +1,15 @@
 package org.golchin.grammar.nodes;
 
 import lombok.Getter;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 import org.golchin.grammar.model.Field;
 
 import java.util.List;
 import java.util.Objects;
 
 @Getter
-public class FieldAccess extends ExpressionNode {
+public class FieldAccess extends LValue {
     private final ExpressionNode instance;
     private final Field field;
 
@@ -29,5 +31,10 @@ public class FieldAccess extends ExpressionNode {
     @Override
     public int hashCode() {
         return Objects.hash(field);
+    }
+
+    @Override
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitFieldAccess(this);
     }
 }

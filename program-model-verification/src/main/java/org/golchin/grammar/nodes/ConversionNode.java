@@ -1,7 +1,7 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.Local;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 import org.golchin.grammar.model.Type;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class ConversionNode extends ExpressionNode {
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitConversionNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitConversionNode(this);
     }
 }

@@ -1,16 +1,17 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.Local;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 
 @Getter
-public class LocalVariableNode extends ExpressionNode {
+public class LocalVariableNode extends LValue {
     private final LocalVariable localVariable;
 
     public LocalVariableNode(LocalVariable localVariable) {
         this.localVariable = localVariable;
         type = localVariable.getInstanceType();
+        address = localVariable;
     }
 
     public String getName() {
@@ -18,8 +19,8 @@ public class LocalVariableNode extends ExpressionNode {
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitLocalVariableNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitLocalVariableNode(this);
     }
 
     @Override

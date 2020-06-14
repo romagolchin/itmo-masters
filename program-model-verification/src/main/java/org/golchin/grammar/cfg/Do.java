@@ -1,17 +1,18 @@
 package org.golchin.grammar.cfg;
 
 import org.golchin.grammar.graph.Node;
-import org.golchin.grammar.ir.Instruction;
+import org.golchin.grammar.ir.CommonCfgVisitor;
+import org.golchin.grammar.model.Type;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Do extends Cfg {
-    public Node<List<Instruction>, String> condition;
-    public Cfg body;
-    public boolean isDoWhile;
+public class Do<T> extends Cfg<T> {
+    public final Node<List<T>, String> condition;
+    public final Cfg<T> body;
+    public final boolean isDoWhile;
 
-    public Do(Node<List<Instruction>, String> condition, Cfg body, boolean isDoWhile) {
+    public Do(Node<List<T>, String> condition, Cfg<T> body, boolean isDoWhile) {
         super(Collections.emptyList());
         this.condition = condition;
         this.body = body;
@@ -22,8 +23,13 @@ public class Do extends Cfg {
     }
 
     @Override
-    public Node<List<Instruction>, String> getStart() {
-        return condition;
+    public Node<List<T>, String> getStart() {
+        return body.getStart();
+    }
+
+    @Override
+    public void accept(CommonCfgVisitor<T> visitor, Type returnType) {
+        visitor.visitDo(this);
     }
 
 }

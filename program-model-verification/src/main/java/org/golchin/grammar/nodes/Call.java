@@ -1,9 +1,9 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.Local;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
-import org.golchin.grammar.bytecode.CompilationError;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.CompilationError;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 import org.golchin.grammar.model.Method;
 import org.golchin.grammar.model.Type;
 
@@ -18,8 +18,8 @@ public class Call extends ExpressionNode {
     public Call(ExpressionNode instance, Method method, List<ExpressionNode> args) {
         super(addHead(instance, args));
         this.instance = instance;
-        this.method = method;
         this.args = args;
+        setMethod(method);
     }
 
     private static List<ExpressionNode> addHead(ExpressionNode head, List<ExpressionNode> list) {
@@ -43,14 +43,14 @@ public class Call extends ExpressionNode {
             Map.Entry<String, Type> parameter = iterator.next();
             if (!arg.getType().canAssignTo(parameter.getValue())) {
                 throw new CompilationError("Wrong type of argument " + parameter.getKey() +
-                        ": cannot convert " + arg.getType() + "to " + parameter.getValue());
+                        ": cannot convert " + arg.getType() + " to " + parameter.getValue());
             }
         }
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitCall(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitCall(this);
     }
 
     @Override

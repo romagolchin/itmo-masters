@@ -1,31 +1,32 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.BinaryOp;
-import com.android.dx.Local;
 import lombok.Getter;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
-import org.golchin.grammar.bytecode.CompilationError;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.BinaryOperation;
+import org.golchin.grammar.ir.CompilationError;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 import org.golchin.grammar.model.BuiltinType;
-import org.golchin.grammar.model.Type;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.android.dx.BinaryOp.*;
+import static org.golchin.grammar.ir.BinaryOperation.*;
+import static org.golchin.grammar.model.BuiltinType.BOOL;
+
 
 @Getter
 public class BinaryOpNode extends ExpressionNode {
-    private static final Map<String, BinaryOp> OPS =
+    private static final Map<String, BinaryOperation> OPS =
             Map.of("+", ADD,
                     "-", SUBTRACT,
                     "*", MULTIPLY,
                     "/", DIVIDE,
                     "%", REMAINDER);
-    private final BinaryOp op;
+    private final BinaryOperation op;
     private ExpressionNode left;
     private ExpressionNode right;
 
-    public BinaryOpNode(BinaryOp op, ExpressionNode left, ExpressionNode right) {
+    public BinaryOpNode(BinaryOperation op, ExpressionNode left, ExpressionNode right) {
         super(List.of(left, right));
         this.op = op;
         this.left = left;
@@ -34,10 +35,22 @@ public class BinaryOpNode extends ExpressionNode {
     }
 
     private void determineType() {
-        var leftType = checkAndGetBuiltinType(left.getType());
-        var rightType = checkAndGetBuiltinType(right.getType());
+        var leftType = BuiltinType.checkAndGetBuiltinType(left.getType());
+        var rightType = BuiltinType.checkAndGetBuiltinType(right.getType());
+        if (leftType == BOOL && rightType != BOOL)
+            throw new CompilationError("Left operand is bool but right is not");
+        if (leftType != BOOL && rightType == BOOL)
+            throw new CompilationError("Right operand is bool but left is not");
+        if (leftType == BOOL) {
+            type = BOOL;
+            return;
+        }
         if (!leftType.isNumeric() || !rightType.isNumeric())
             throw new CompilationError("Non-numeric types in numeric operation");
+        if (leftType.equals(rightType)) {
+            type = leftType;
+            return;
+        }
         if (leftType.getByteCount() > rightType.getByteCount()) {
             type = leftType;
         } else if (rightType.getByteCount() > leftType.getByteCount()) {
@@ -71,14 +84,8 @@ public class BinaryOpNode extends ExpressionNode {
         children.set(1, right);
     }
 
-    private BuiltinType checkAndGetBuiltinType(Type type) {
-        if (type instanceof BuiltinType builtinType) {
-            return builtinType;
-        } else throw new IllegalArgumentException("Expected built-in type");
-    }
-
-    public static BinaryOp parseBinaryOp(String op) {
-        BinaryOp binaryOp = OPS.get(op);
+    public static BinaryOperation parseBinaryOp(String op) {
+        BinaryOperation binaryOp = OPS.get(op);
         if (binaryOp == null) {
             throw new IllegalArgumentException("no such operation: " + op);
         }
@@ -86,12 +93,8 @@ public class BinaryOpNode extends ExpressionNode {
     }
 
     @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitBinaryOpNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitBinaryOpNode(this);
     }
 
-    @Override
-    public String toString() {
-        return op + " " + super.toString();
-    }
 }

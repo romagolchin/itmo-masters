@@ -3,9 +3,9 @@ package org.golchin.grammar.graph;
 import java.util.Objects;
 
 public class Edge<T, S> {
-    public S label;
-    public Node<T, S> source;
-    public Node<T, S> destination;
+    public final S label;
+    public final Node<T, S> source;
+    public final Node<T, S> destination;
 
     public Edge(S label, Node<T, S> source, Node<T, S> destination) {
         this.label = label;

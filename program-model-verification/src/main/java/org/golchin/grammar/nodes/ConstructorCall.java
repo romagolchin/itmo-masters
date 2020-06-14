@@ -1,11 +1,16 @@
 package org.golchin.grammar.nodes;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.golchin.grammar.model.CustomType;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
+import org.golchin.grammar.model.ReferenceType;
 
-@AllArgsConstructor
-@Getter
 public class ConstructorCall extends ExpressionNode {
-    private final CustomType declaringType;
+    public ConstructorCall(ReferenceType declaringType) {
+        type = declaringType;
+    }
+
+    @Override
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitConstructorCall(this);
+    }
 }

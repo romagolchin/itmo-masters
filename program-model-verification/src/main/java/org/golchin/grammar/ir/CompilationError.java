@@ -1,4 +1,4 @@
-package org.golchin.grammar.bytecode;
+package org.golchin.grammar.ir;
 
 public class CompilationError extends RuntimeException {
     public CompilationError(String message) {

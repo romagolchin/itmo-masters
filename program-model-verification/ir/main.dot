@@ -1,0 +1,22 @@
+digraph {
+  0 [label="t~1 = 0
+t~0 = a > t~1"];
+  1 [label="t~14 = b * d"];
+  2 [label="t~2 = a + b
+t~3 = c * d
+t~4 = t~2 - t~3
+t~5 = 4
+t~6 = INT-to-ULONG t~5
+t~7 = t~6 * veryLong
+t~8 = 4
+t~9 = INT-to-ULONG t~8
+t~10 = t~9 * veryLong
+t~11 = 4
+t~12 = INT-to-ULONG t~11
+t~13 = t~12 * veryLong"];
+  3 [label="t~15 = a + b"];
+  0 -> 1 [label="F"];
+  1 -> 2 [label=""];
+  3 -> 2 [label=""];
+  0 -> 3 [label="T"];
+}

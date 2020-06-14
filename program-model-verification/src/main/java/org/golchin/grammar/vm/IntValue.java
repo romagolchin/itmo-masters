@@ -1,10 +1,8 @@
 package org.golchin.grammar.vm;
 
-import org.golchin.grammar.model.BuiltinType;
-
 public class IntValue extends TypedValue<Integer> implements ArithmeticalOperand<IntValue> {
     public IntValue(Integer value) {
-        super(BuiltinType.INT, value);
+        super(value);
     }
 
     @Override

@@ -1,16 +1,18 @@
 package org.golchin.grammar.model;
 
-import com.android.dx.TypeId;
+import lombok.Getter;
 
-import java.util.Collections;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-public class Array implements Type {
+public class Array extends ReferenceType {
+    @Getter
     private final Type elementType;
+    @Getter
     private final int nDimensions;
 
     public Array(Type elementType, int nDimensions) {
+        super("array");
+        addField(new Field("length", BuiltinType.INT, this));
         this.elementType = elementType;
         this.nDimensions = nDimensions;
     }
@@ -29,24 +31,10 @@ public class Array implements Type {
         return Objects.hash(elementType, nDimensions);
     }
 
-    @Override
-    public TypeId<?> toJavaTypeId() {
-        String prefix = Collections.nCopies(nDimensions, '[').stream()
-                .map(Object::toString)
-                .collect(Collectors.joining());
-        String name = elementType.toJavaTypeId().getName().replace('.', '/');
-        try {
-            return TypeId.get(Class.forName(prefix + name));
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+    public static Array ofElements(Type elementType, int nDimensions) {
+        if (elementType instanceof Array array) {
+            return new Array(array.getElementType(), nDimensions + array.getNDimensions());
         }
-    }
-
-    @Override
-    public boolean canAssignTo(Type other) {
-        if (other.getClass() != Array.class)
-            return false;
-        Array array = (Array) other;
-        return elementType.canAssignTo(array.elementType);
+        return new Array(elementType, nDimensions);
     }
 }

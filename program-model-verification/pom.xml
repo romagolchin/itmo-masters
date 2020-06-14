@@ -12,9 +12,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <antlr4.visitor>true</antlr4.visitor>
         <antlr4.listener>true</antlr4.listener>
-<!--        <maven.compiler.source>14</maven.compiler.source>-->
-<!--        <maven.compiler.target>14</maven.compiler.target>-->
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -31,6 +36,17 @@
             <groupId>guru.nidi</groupId>
             <artifactId>graphviz-java</artifactId>
             <version>0.15.1</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.linkedin.dexmaker</groupId>-->
+<!--            <artifactId>dexmaker</artifactId>-->
+<!--            <version>2.25.1</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>

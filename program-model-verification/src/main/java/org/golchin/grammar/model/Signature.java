@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Signature {
     public final String name;
-    public List<Type> types;
+    public final List<Type> types;
 
     public Signature(String name, List<Type> types) {
         this.name = name;

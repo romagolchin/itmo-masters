@@ -1,634 +1,863 @@
-L1,C0 source class C\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    method getA(): int\n    begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;\nend\n\nmethod gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;\n\nmethod f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;\n\nmethod main (args: array[] of string)\nbegin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
-  L1,C0 sourceItem.classDef class C\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    method getA(): int\n    begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;\nend
-    L1,C0 'class': class
-    L1,C6 identifier: C
-    L2,C4 varsSpec var\n        a,b: int;\n        x, y: char;
-      L2,C4 'var': var
-      L3,C8 identifierList a,b
-        L3,C8 identifier: a
-        L3,C9 ',': ,
-        L3,C10 identifier: b
-      L3,C11 ':': :
-      L3,C13 typeRef.builtin int
-        L3,C13 builtin: int
-      L3,C16 ';': ;
-      L4,C8 identifierList x, y
-        L4,C8 identifier: x
-        L4,C9 ',': ,
-        L4,C11 identifier: y
-      L4,C12 ':': :
-      L4,C14 typeRef.builtin char
-        L4,C14 builtin: char
-      L4,C18 ';': ;
-    L5,C0 'begin': begin
-    L6,C4 member method getA(): int\n    begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
-      L6,C4 funcDef method getA(): int\n    begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
-        L6,C4 'method': method
-        L6,C11 funcSignature getA(): int
-          L6,C11 identifier: getA
-          L6,C15 '(': (
-          L6,C16 argDefList 
-          L6,C16 ')': )
-          L6,C17 ':': :
-          L6,C19 typeRef.builtin int
-            L6,C19 builtin: int
-        L7,C4 body begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
-          L7,C4 block begin\n        B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
-            L7,C4 'begin': begin
-            L8,C8 statement.expression B().b(x, yz(b, a).zzz(1));
-              L8,C8 expr B().b(x, yz(b, a).zzz(1))
-                L8,C8 expr B().b(x, yz(b, a).zzz(1))
-                  L8,C8 memberAccessChain B().b(x, yz(b, a).zzz(1))
-                    L8,C8 memberAccess B()
-                      L8,C8 call B()
-                        L8,C8 identifier: B
-                        L8,C9 '(': (
-                        L8,C10 exprList 
-                        L8,C10 ')': )
-                    L8,C11 '.': .
-                    L8,C12 memberAccess b(x, yz(b, a).zzz(1))
-                      L8,C12 call b(x, yz(b, a).zzz(1))
-                        L8,C12 identifier: b
-                        L8,C13 '(': (
-                        L8,C14 exprList x, yz(b, a).zzz(1)
-                          L8,C14 expr x
-                            L8,C14 expr x
-                              L8,C14 memberAccessChain x
-                                L8,C14 memberAccess x
-                                  L8,C14 identifier: x
-                          L8,C15 ',': ,
-                          L8,C17 expr yz(b, a).zzz(1)
-                            L8,C17 expr yz(b, a).zzz(1)
-                              L8,C17 memberAccessChain yz(b, a).zzz(1)
-                                L8,C17 memberAccess yz(b, a)
-                                  L8,C17 call yz(b, a)
-                                    L8,C17 identifier: yz
-                                    L8,C19 '(': (
-                                    L8,C20 exprList b, a
-                                      L8,C20 expr b
-                                        L8,C20 expr b
-                                          L8,C20 memberAccessChain b
-                                            L8,C20 memberAccess b
-                                              L8,C20 identifier: b
-                                      L8,C21 ',': ,
-                                      L8,C23 expr a
-                                        L8,C23 expr a
-                                          L8,C23 memberAccessChain a
-                                            L8,C23 memberAccess a
-                                              L8,C23 identifier: a
-                                    L8,C24 ')': )
-                                L8,C25 '.': .
-                                L8,C26 memberAccess zzz(1)
-                                  L8,C26 call zzz(1)
-                                    L8,C26 identifier: zzz
-                                    L8,C29 '(': (
-                                    L8,C30 exprList 1
-                                      L8,C30 expr 1
-                                        L8,C30 expr 1
-                                          L8,C30 literal 1
-                                            L8,C30 dec: 1
-                                    L8,C31 ')': )
-                        L8,C32 ')': )
-              L8,C33 ';': ;
-            L9,C8 statement.expression a;
-              L9,C8 expr a
-                L9,C8 expr a
-                  L9,C8 memberAccessChain a
-                    L9,C8 memberAccess a
-                      L9,C8 identifier: a
-              L9,C9 ';': ;
-            L10,C4 'end': end
-            L10,C7 ';': ;
-    L11,C0 'end': end
-  L13,C0 sourceItem.funcDefAlt method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
-    L13,C0 funcDef method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
-      L13,C0 'method': method
-      L13,C7 funcSignature gcd(a: int, b: int)
-        L13,C7 identifier: gcd
-        L13,C10 '(': (
-        L13,C11 argDefList a: int, b: int
-          L13,C11 argDef a: int
-            L13,C11 identifier: a
-            L13,C12 ':': :
-            L13,C14 typeRef.builtin int
-              L13,C14 builtin: int
-          L13,C17 ',': ,
-          L13,C19 argDef b: int
-            L13,C19 identifier: b
-            L13,C20 ':': :
-            L13,C22 typeRef.builtin int
-              L13,C22 builtin: int
-        L13,C25 ')': )
-      L14,C0 body begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
-        L14,C0 block begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
-          L14,C0 'begin': begin
-          L15,C4 statement.if if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
-            L15,C4 'if': if
-            L15,C7 expr a = 0
-              L15,C7 binary a = 0
-                L15,C7 expr a
-                  L15,C7 memberAccessChain a
-                    L15,C7 memberAccess a
-                      L15,C7 identifier: a
-                L15,C9 '=': =
-                L15,C11 expr 0
-                  L15,C11 expr 0
-                    L15,C11 literal 0
-                      L15,C11 dec: 0
-            L16,C8 'then': then
-            L16,C13 statement.expression b;
-              L16,C13 expr b
-                L16,C13 expr b
-                  L16,C13 memberAccessChain b
-                    L16,C13 memberAccess b
-                      L16,C13 identifier: b
-              L16,C14 ';': ;
-            L17,C8 'else': else
-            L18,C12 statement.block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
-              L18,C12 block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
-                L18,C12 'begin': begin
-                L19,C16 statement.if if b = 0\n                    then a;\n                    else gcd(b, b % a);
-                  L19,C16 'if': if
-                  L19,C19 expr b = 0
-                    L19,C19 binary b = 0
-                      L19,C19 expr b
-                        L19,C19 memberAccessChain b
-                          L19,C19 memberAccess b
-                            L19,C19 identifier: b
-                      L19,C21 '=': =
-                      L19,C23 expr 0
-                        L19,C23 expr 0
-                          L19,C23 literal 0
-                            L19,C23 dec: 0
-                  L20,C20 'then': then
-                  L20,C25 statement.expression a;
-                    L20,C25 expr a
-                      L20,C25 expr a
-                        L20,C25 memberAccessChain a
-                          L20,C25 memberAccess a
-                            L20,C25 identifier: a
-                    L20,C26 ';': ;
-                  L21,C20 'else': else
-                  L21,C25 statement.expression gcd(b, b % a);
-                    L21,C25 expr gcd(b, b % a)
-                      L21,C25 expr gcd(b, b % a)
-                        L21,C25 memberAccessChain gcd(b, b % a)
-                          L21,C25 memberAccess gcd(b, b % a)
-                            L21,C25 call gcd(b, b % a)
-                              L21,C25 identifier: gcd
-                              L21,C28 '(': (
-                              L21,C29 exprList b, b % a
-                                L21,C29 expr b
-                                  L21,C29 expr b
-                                    L21,C29 memberAccessChain b
-                                      L21,C29 memberAccess b
-                                        L21,C29 identifier: b
-                                L21,C30 ',': ,
-                                L21,C32 expr b % a
-                                  L21,C32 binary b % a
-                                    L21,C32 expr b
-                                      L21,C32 memberAccessChain b
-                                        L21,C32 memberAccess b
-                                          L21,C32 identifier: b
-                                    L21,C34 '%': %
-                                    L21,C36 expr a
-                                      L21,C36 expr a
-                                        L21,C36 memberAccessChain a
-                                          L21,C36 memberAccess a
-                                            L21,C36 identifier: a
-                              L21,C37 ')': )
-                    L21,C38 ';': ;
-                L22,C12 'end': end
-                L22,C15 ';': ;
-          L24,C4 statement.expression writeln("hw!");
-            L24,C4 expr writeln("hw!")
-              L24,C4 expr writeln("hw!")
-                L24,C4 memberAccessChain writeln("hw!")
-                  L24,C4 memberAccess writeln("hw!")
-                    L24,C4 call writeln("hw!")
-                      L24,C4 identifier: writeln
-                      L24,C11 '(': (
-                      L24,C12 exprList "hw!"
-                        L24,C12 expr "hw!"
-                          L24,C12 expr "hw!"
-                            L24,C12 literal "hw!"
-                              L24,C12 str: "hw!"
-                      L24,C17 ')': )
-            L24,C18 ';': ;
-          L25,C0 'end': end
-          L25,C3 ';': ;
-  L27,C0 sourceItem.funcDefAlt method f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
-    L27,C0 funcDef method f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
-      L27,C0 'method': method
-      L27,C7 funcSignature f(z: byte)
-        L27,C7 identifier: f
-        L27,C8 '(': (
-        L27,C9 argDefList z: byte
-          L27,C9 argDef z: byte
-            L27,C9 identifier: z
-            L27,C10 ':': :
-            L27,C12 typeRef.builtin byte
-              L27,C12 builtin: byte
-        L27,C16 ')': )
-      L28,C4 body var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
-        L28,C4 varsSpec var\n        a,b: int;\n        x, y: char;
-          L28,C4 'var': var
-          L29,C8 identifierList a,b
-            L29,C8 identifier: a
-            L29,C9 ',': ,
-            L29,C10 identifier: b
-          L29,C11 ':': :
-          L29,C13 typeRef.builtin int
-            L29,C13 builtin: int
-          L29,C16 ';': ;
-          L30,C8 identifierList x, y
-            L30,C8 identifier: x
-            L30,C9 ',': ,
-            L30,C11 identifier: y
-          L30,C12 ':': :
-          L30,C14 typeRef.builtin char
-            L30,C14 builtin: char
-          L30,C18 ';': ;
-        L31,C0 block begin\n    print(x, b);\n    a := z * z;\n    a;\nend;
-          L31,C0 'begin': begin
-          L32,C4 statement.expression print(x, b);
-            L32,C4 expr print(x, b)
-              L32,C4 expr print(x, b)
-                L32,C4 memberAccessChain print(x, b)
-                  L32,C4 memberAccess print(x, b)
-                    L32,C4 call print(x, b)
-                      L32,C4 identifier: print
-                      L32,C9 '(': (
-                      L32,C10 exprList x, b
-                        L32,C10 expr x
-                          L32,C10 expr x
-                            L32,C10 memberAccessChain x
-                              L32,C10 memberAccess x
-                                L32,C10 identifier: x
-                        L32,C11 ',': ,
-                        L32,C13 expr b
-                          L32,C13 expr b
-                            L32,C13 memberAccessChain b
-                              L32,C13 memberAccess b
-                                L32,C13 identifier: b
-                      L32,C14 ')': )
-            L32,C15 ';': ;
-          L33,C4 statement.assign a := z * z;
-            L33,C4 identifier: a
-            L33,C6 ':=': :=
-            L33,C9 expr z * z
-              L33,C9 binary z * z
-                L33,C9 expr z
-                  L33,C9 memberAccessChain z
-                    L33,C9 memberAccess z
-                      L33,C9 identifier: z
-                L33,C11 '*': *
-                L33,C13 expr z
-                  L33,C13 expr z
-                    L33,C13 memberAccessChain z
-                      L33,C13 memberAccess z
-                        L33,C13 identifier: z
-            L33,C14 ';': ;
-          L34,C4 statement.expression a;
-            L34,C4 expr a
-              L34,C4 expr a
-                L34,C4 memberAccessChain a
-                  L34,C4 memberAccess a
-                    L34,C4 identifier: a
-            L34,C5 ';': ;
-          L35,C0 'end': end
-          L35,C3 ';': ;
-  L37,C0 sourceItem.funcDefAlt method main (args: array[] of string)\nbegin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
-    L37,C0 funcDef method main (args: array[] of string)\nbegin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
-      L37,C0 'method': method
-      L37,C7 funcSignature main (args: array[] of string)
-        L37,C7 identifier: main
-        L37,C12 '(': (
-        L37,C13 argDefList args: array[] of string
-          L37,C13 argDef args: array[] of string
-            L37,C13 identifier: args
-            L37,C17 ':': :
-            L37,C19 typeRef.array array[] of string
-              L37,C19 typeRef.custom array
-                L37,C19 identifier: array
-              L37,C24 arrayDepthSpec []
-                L37,C24 '[': [
-                L37,C25 ']': ]
-              L37,C27 'of': of
-              L37,C30 typeRef.builtin string
-                L37,C30 builtin: string
-        L37,C36 ')': )
-      L38,C0 body begin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
-        L38,C0 block begin\n    f(-10);\n    a---b;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)];\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
-          L38,C0 'begin': begin
-          L39,C4 statement.expression f(-10);
-            L39,C4 expr f(-10)
-              L39,C4 expr f(-10)
-                L39,C4 memberAccessChain f(-10)
-                  L39,C4 memberAccess f(-10)
-                    L39,C4 call f(-10)
-                      L39,C4 identifier: f
-                      L39,C5 '(': (
-                      L39,C6 exprList -10
-                        L39,C6 expr -10
-                          L39,C6 expr -10
-                            L39,C6 unary -10
-                              L39,C6 '-': -
-                              L39,C7 expr 10
-                                L39,C7 expr 10
-                                  L39,C7 literal 10
-                                    L39,C7 dec: 10
-                      L39,C9 ')': )
-            L39,C10 ';': ;
-          L40,C4 statement.expression a---b;
-            L40,C4 expr a---b
-              L40,C4 binary a---b
-                L40,C4 expr a
-                  L40,C4 memberAccessChain a
-                    L40,C4 memberAccess a
-                      L40,C4 identifier: a
-                L40,C5 '-': -
-                L40,C6 expr --b
-                  L40,C6 expr --b
-                    L40,C6 unary --b
-                      L40,C6 '-': -
-                      L40,C7 expr -b
-                        L40,C7 expr -b
-                          L40,C7 unary -b
-                            L40,C7 '-': -
-                            L40,C8 expr b
-                              L40,C8 expr b
-                                L40,C8 memberAccessChain b
-                                  L40,C8 memberAccess b
-                                    L40,C8 identifier: b
-            L40,C9 ';': ;
-          L41,C4 statement.expression -(b+c*d);
-            L41,C4 expr -(b+c*d)
-              L41,C4 expr -(b+c*d)
-                L41,C4 unary -(b+c*d)
-                  L41,C4 '-': -
-                  L41,C5 expr (b+c*d)
-                    L41,C5 expr (b+c*d)
-                      L41,C5 braces (b+c*d)
-                        L41,C5 '(': (
-                        L41,C6 expr b+c*d
-                          L41,C6 binary b+c*d
-                            L41,C6 expr b
-                              L41,C6 memberAccessChain b
-                                L41,C6 memberAccess b
-                                  L41,C6 identifier: b
-                            L41,C7 '+': +
-                            L41,C8 expr c*d
-                              L41,C8 binary c*d
-                                L41,C8 expr c
-                                  L41,C8 memberAccessChain c
-                                    L41,C8 memberAccess c
-                                      L41,C8 identifier: c
-                                L41,C9 '*': *
-                                L41,C10 expr d
-                                  L41,C10 expr d
-                                    L41,C10 memberAccessChain d
-                                      L41,C10 memberAccess d
-                                        L41,C10 identifier: d
-                        L41,C11 ')': )
-            L41,C12 ';': ;
-          L42,C4 statement.assign c := 12 - d[-42 -Y(z), e * (98 / f)];
-            L42,C4 identifier: c
-            L42,C6 ':=': :=
-            L42,C9 expr 12 - d[-42 -Y(z), e * (98 / f)]
-              L42,C9 binary 12 - d[-42 -Y(z), e * (98 / f)]
-                L42,C9 expr 12
-                  L42,C9 literal 12
-                    L42,C9 dec: 12
-                L42,C12 '-': -
-                L42,C14 expr d[-42 -Y(z), e * (98 / f)]
-                  L42,C14 expr d[-42 -Y(z), e * (98 / f)]
-                    L42,C14 indexer d[-42 -Y(z), e * (98 / f)]
-                      L42,C14 identifier: d
-                      L42,C15 '[': [
-                      L42,C16 exprList -42 -Y(z), e * (98 / f)
-                        L42,C16 expr -42 -Y(z)
-                          L42,C16 expr -42 -Y(z)
-                            L42,C16 unary -42 -Y(z)
-                              L42,C16 '-': -
-                              L42,C17 expr 42 -Y(z)
-                                L42,C17 binary 42 -Y(z)
-                                  L42,C17 expr 42
-                                    L42,C17 literal 42
-                                      L42,C17 dec: 42
-                                  L42,C20 '-': -
-                                  L42,C21 expr Y(z)
-                                    L42,C21 expr Y(z)
-                                      L42,C21 memberAccessChain Y(z)
-                                        L42,C21 memberAccess Y(z)
-                                          L42,C21 call Y(z)
-                                            L42,C21 identifier: Y
-                                            L42,C22 '(': (
-                                            L42,C23 exprList z
-                                              L42,C23 expr z
-                                                L42,C23 expr z
-                                                  L42,C23 memberAccessChain z
-                                                    L42,C23 memberAccess z
-                                                      L42,C23 identifier: z
-                                            L42,C24 ')': )
-                        L42,C25 ',': ,
-                        L42,C27 expr e * (98 / f)
-                          L42,C27 binary e * (98 / f)
-                            L42,C27 expr e
-                              L42,C27 memberAccessChain e
-                                L42,C27 memberAccess e
-                                  L42,C27 identifier: e
-                            L42,C29 '*': *
-                            L42,C31 expr (98 / f)
-                              L42,C31 expr (98 / f)
-                                L42,C31 braces (98 / f)
-                                  L42,C31 '(': (
-                                  L42,C32 expr 98 / f
-                                    L42,C32 binary 98 / f
-                                      L42,C32 expr 98
-                                        L42,C32 literal 98
-                                          L42,C32 dec: 98
-                                      L42,C35 '/': /
-                                      L42,C37 expr f
-                                        L42,C37 expr f
-                                          L42,C37 memberAccessChain f
-                                            L42,C37 memberAccess f
-                                              L42,C37 identifier: f
-                                  L42,C38 ')': )
-                      L42,C39 ']': ]
-            L42,C40 ';': ;
-          L43,C4 statement.assign a:=true;
-            L43,C4 identifier: a
-            L43,C5 ':=': :=
-            L43,C7 expr true
-              L43,C7 expr true
-                L43,C7 literal true
-                  L43,C7 bool: true
-            L43,C11 ';': ;
-          L44,C4 statement.assign h := 'x';
-            L44,C4 identifier: h
-            L44,C6 ':=': :=
-            L44,C9 expr 'x'
-              L44,C9 expr 'x'
-                L44,C9 literal 'x'
-                  L44,C9 char: 'x'
-            L44,C12 ';': ;
-          L45,C4 statement.while while true do begin\n        print("hello");\n        if tired then break;\n    end;
-            L45,C4 'while': while
-            L45,C10 expr true
-              L45,C10 expr true
-                L45,C10 literal true
-                  L45,C10 bool: true
-            L45,C15 'do': do
-            L45,C18 statement.block begin\n        print("hello");\n        if tired then break;\n    end;
-              L45,C18 block begin\n        print("hello");\n        if tired then break;\n    end;
-                L45,C18 'begin': begin
-                L46,C8 statement.expression print("hello");
-                  L46,C8 expr print("hello")
-                    L46,C8 expr print("hello")
-                      L46,C8 memberAccessChain print("hello")
-                        L46,C8 memberAccess print("hello")
-                          L46,C8 call print("hello")
-                            L46,C8 identifier: print
-                            L46,C13 '(': (
-                            L46,C14 exprList "hello"
-                              L46,C14 expr "hello"
-                                L46,C14 expr "hello"
-                                  L46,C14 literal "hello"
-                                    L46,C14 str: "hello"
-                            L46,C21 ')': )
-                  L46,C22 ';': ;
-                L47,C8 statement.if if tired then break;
-                  L47,C8 'if': if
-                  L47,C11 expr tired
-                    L47,C11 expr tired
-                      L47,C11 memberAccessChain tired
-                        L47,C11 memberAccess tired
-                          L47,C11 identifier: tired
-                  L47,C17 'then': then
-                  L47,C22 statement.break break;
-                    L47,C22 'break': break
-                    L47,C27 ';': ;
-                L48,C4 'end': end
-                L48,C7 ';': ;
-          L49,C4 statement.if if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';
-            L49,C4 'if': if
-            L49,C7 expr k(t + 0xa)
-              L49,C7 expr k(t + 0xa)
-                L49,C7 memberAccessChain k(t + 0xa)
-                  L49,C7 memberAccess k(t + 0xa)
-                    L49,C7 call k(t + 0xa)
-                      L49,C7 identifier: k
-                      L49,C8 '(': (
-                      L49,C9 exprList t + 0xa
-                        L49,C9 expr t + 0xa
-                          L49,C9 binary t + 0xa
-                            L49,C9 expr t
-                              L49,C9 memberAccessChain t
-                                L49,C9 memberAccess t
-                                  L49,C9 identifier: t
-                            L49,C11 '+': +
-                            L49,C13 expr 0xa
-                              L49,C13 expr 0xa
-                                L49,C13 literal 0xa
-                                  L49,C13 hex: 0xa
-                      L49,C16 ')': )
-            L49,C18 'then': then
-            L50,C8 statement.block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
-              L50,C8 block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
-                L50,C8 'begin': begin
-                L51,C12 statement.expression 'x';
-                  L51,C12 expr 'x'
-                    L51,C12 expr 'x'
-                      L51,C12 literal 'x'
-                        L51,C12 char: 'x'
-                  L51,C15 ';': ;
-                L52,C12 statement.assign z := 3 + "abc";
-                  L52,C12 identifier: z
-                  L52,C14 ':=': :=
-                  L52,C17 expr 3 + "abc"
-                    L52,C17 binary 3 + "abc"
-                      L52,C17 expr 3
-                        L52,C17 literal 3
-                          L52,C17 dec: 3
-                      L52,C19 '+': +
-                      L52,C21 expr "abc"
-                        L52,C21 expr "abc"
-                          L52,C21 literal "abc"
-                            L52,C21 str: "abc"
-                  L52,C26 ';': ;
-                L53,C12 statement.if if true then true;
-                  L53,C12 'if': if
-                  L53,C15 expr true
-                    L53,C15 expr true
-                      L53,C15 literal true
-                        L53,C15 bool: true
-                  L53,C20 'then': then
-                  L53,C25 statement.expression true;
-                    L53,C25 expr true
-                      L53,C25 expr true
-                        L53,C25 literal true
-                          L53,C25 bool: true
-                    L53,C29 ';': ;
-                L54,C8 'end': end
-                L54,C11 ';': ;
-            L55,C8 'else': else
-            L55,C13 statement.expression 'y';
-              L55,C13 expr 'y'
-                L55,C13 expr 'y'
-                  L55,C13 literal 'y'
-                    L55,C13 char: 'y'
-              L55,C16 ';': ;
-          L56,C4 statement.assign x := f('y', '\'', "z\"zz\"z", 1+2);
-            L56,C4 identifier: x
-            L56,C6 ':=': :=
-            L56,C9 expr f('y', '\'', "z\"zz\"z", 1+2)
-              L56,C9 expr f('y', '\'', "z\"zz\"z", 1+2)
-                L56,C9 memberAccessChain f('y', '\'', "z\"zz\"z", 1+2)
-                  L56,C9 memberAccess f('y', '\'', "z\"zz\"z", 1+2)
-                    L56,C9 call f('y', '\'', "z\"zz\"z", 1+2)
-                      L56,C9 identifier: f
-                      L56,C10 '(': (
-                      L56,C11 exprList 'y', '\'', "z\"zz\"z", 1+2
-                        L56,C11 expr 'y'
-                          L56,C11 expr 'y'
-                            L56,C11 literal 'y'
-                              L56,C11 char: 'y'
-                        L56,C14 ',': ,
-                        L56,C16 expr '\''
-                          L56,C16 expr '\''
-                            L56,C16 literal '\''
-                              L56,C16 char: '\''
-                        L56,C20 ',': ,
-                        L56,C22 expr "z\"zz\"z"
-                          L56,C22 expr "z\"zz\"z"
-                            L56,C22 literal "z\"zz\"z"
-                              L56,C22 str: "z\"zz\"z"
-                        L56,C32 ',': ,
-                        L56,C34 expr 1+2
-                          L56,C34 binary 1+2
-                            L56,C34 expr 1
-                              L56,C34 literal 1
-                                L56,C34 dec: 1
-                            L56,C35 '+': +
-                            L56,C36 expr 2
-                              L56,C36 expr 2
-                                L56,C36 literal 2
-                                  L56,C36 dec: 2
-                      L56,C37 ')': )
-            L56,C38 ';': ;
-          L57,C4 statement.expression "\"\"\"";
-            L57,C4 expr "\"\"\""
-              L57,C4 expr "\"\"\""
-                L57,C4 literal "\"\"\""
-                  L57,C4 str: "\"\"\""
-            L57,C12 ';': ;
-          L58,C4 statement.expression "\"a\"\"";
-            L58,C4 expr "\"a\"\""
-              L58,C4 expr "\"a\"\""
-                L58,C4 literal "\"a\"\""
-                  L58,C4 str: "\"a\"\""
-            L58,C13 ';': ;
-          L59,C0 'end': end
-          L59,C3 ';': ;
-  L59,C4 : <EOF>
+L1,C0 source method main ()\nbegin\n    f(-10);\n    a---b;\n    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;\n\nclass C\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    method getA(c: int): int\n    begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;\nend\n\nmethod gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;\n\nmethod f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;\n
+  L1,C0 sourceItem.funcDefAlt method main ()\nbegin\n    f(-10);\n    a---b;\n    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+    L1,C0 funcDef method main ()\nbegin\n    f(-10);\n    a---b;\n    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+      L1,C0 'method': method
+      L1,C7 funcSignature main ()
+        L1,C7 identifier: main
+        L1,C12 '(': (
+        L1,C13 argDefList 
+        L1,C13 ')': )
+      L2,C0 body begin\n    f(-10);\n    a---b;\n    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+        L2,C0 block begin\n    f(-10);\n    a---b;\n    !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;\n    -(b+c*d);\n    c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;\n    a:=true;\n    h := 'x';\n    while true do begin\n        print("hello");\n        if tired then break;\n    end;\n    if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';\n    x := f('y', '\'', "z\"zz\"z", 1+2);\n    "\"\"\"";\n    "\"a\"\"";\nend;
+          L2,C0 'begin': begin
+          L3,C4 statement.expression f(-10);
+            L3,C4 expr f(-10)
+              L3,C4 arithmetical f(-10)
+                L3,C4 product f(-10)
+                  L3,C4 arithmeticalTerm f(-10)
+                    L3,C4 expr.memberAccessChainAlt f(-10)
+                      L3,C4 memberAccessChain f(-10)
+                        L3,C4 call f(-10)
+                          L3,C4 identifier: f
+                          L3,C5 '(': (
+                          L3,C6 exprList -10
+                            L3,C6 expr -10
+                              L3,C6 arithmetical -10
+                                L3,C6 product -10
+                                  L3,C6 arithmeticalTerm -10
+                                    L3,C6 '-': -
+                                    L3,C7 arithmeticalTerm 10
+                                      L3,C7 expr.literalAlt 10
+                                        L3,C7 literal 10
+                                          L3,C7 dec: 10
+                          L3,C9 ')': )
+            L3,C10 ';': ;
+          L4,C4 statement.expression a---b;
+            L4,C4 expr a---b
+              L4,C4 arithmetical a---b
+                L4,C4 product a
+                  L4,C4 arithmeticalTerm a
+                    L4,C4 expr.memberAccessChainAlt a
+                      L4,C4 memberAccessChain a
+                        L4,C4 instance a
+                          L4,C4 identifier: a
+                L4,C5 '-': -
+                L4,C6 product --b
+                  L4,C6 arithmeticalTerm --b
+                    L4,C6 '-': -
+                    L4,C7 arithmeticalTerm -b
+                      L4,C7 '-': -
+                      L4,C8 arithmeticalTerm b
+                        L4,C8 expr.memberAccessChainAlt b
+                          L4,C8 memberAccessChain b
+                            L4,C8 instance b
+                              L4,C8 identifier: b
+            L4,C9 ';': ;
+          L5,C4 statement.expression !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq;
+            L5,C4 expr !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq
+              L5,C4 logical !!!!f(x+-y)&&!(1+-2=3) || zzz && qqq
+                L5,C4 logical !!!!f(x+-y)&&!(1+-2=3)
+                  L5,C4 conjunction !!!!f(x+-y)&&!(1+-2=3)
+                    L5,C4 conjunction !!!!f(x+-y)
+                      L5,C4 conjunct !!!!f(x+-y)
+                        L5,C4 logicalTerm !!!!f(x+-y)
+                          L5,C4 '!': !
+                          L5,C5 logicalTerm !!!f(x+-y)
+                            L5,C5 '!': !
+                            L5,C6 logicalTerm !!f(x+-y)
+                              L5,C6 '!': !
+                              L5,C7 logicalTerm !f(x+-y)
+                                L5,C7 '!': !
+                                L5,C8 logicalTerm f(x+-y)
+                                  L5,C8 expr.memberAccessChainAlt f(x+-y)
+                                    L5,C8 memberAccessChain f(x+-y)
+                                      L5,C8 call f(x+-y)
+                                        L5,C8 identifier: f
+                                        L5,C9 '(': (
+                                        L5,C10 exprList x+-y
+                                          L5,C10 expr x+-y
+                                            L5,C10 arithmetical x+-y
+                                              L5,C10 product x
+                                                L5,C10 arithmeticalTerm x
+                                                  L5,C10 expr.memberAccessChainAlt x
+                                                    L5,C10 memberAccessChain x
+                                                      L5,C10 instance x
+                                                        L5,C10 identifier: x
+                                              L5,C11 '+': +
+                                              L5,C12 product -y
+                                                L5,C12 arithmeticalTerm -y
+                                                  L5,C12 '-': -
+                                                  L5,C13 arithmeticalTerm y
+                                                    L5,C13 expr.memberAccessChainAlt y
+                                                      L5,C13 memberAccessChain y
+                                                        L5,C13 instance y
+                                                          L5,C13 identifier: y
+                                        L5,C14 ')': )
+                    L5,C15 '&&': &&
+                    L5,C17 conjunct !(1+-2=3)
+                      L5,C17 logicalTerm !(1+-2=3)
+                        L5,C17 '!': !
+                        L5,C18 logicalTerm (1+-2=3)
+                          L5,C18 expr.bracesAlt (1+-2=3)
+                            L5,C18 braces (1+-2=3)
+                              L5,C18 '(': (
+                              L5,C19 expr 1+-2=3
+                                L5,C19 logical 1+-2=3
+                                  L5,C19 conjunction 1+-2=3
+                                    L5,C19 conjunct 1+-2=3
+                                      L5,C19 arithmetical 1+-2
+                                        L5,C19 product 1
+                                          L5,C19 arithmeticalTerm 1
+                                            L5,C19 expr.literalAlt 1
+                                              L5,C19 literal 1
+                                                L5,C19 dec: 1
+                                        L5,C20 '+': +
+                                        L5,C21 product -2
+                                          L5,C21 arithmeticalTerm -2
+                                            L5,C21 '-': -
+                                            L5,C22 arithmeticalTerm 2
+                                              L5,C22 expr.literalAlt 2
+                                                L5,C22 literal 2
+                                                  L5,C22 dec: 2
+                                      L5,C23 comparison: =
+                                      L5,C24 arithmetical 3
+                                        L5,C24 product 3
+                                          L5,C24 arithmeticalTerm 3
+                                            L5,C24 expr.literalAlt 3
+                                              L5,C24 literal 3
+                                                L5,C24 dec: 3
+                              L5,C25 ')': )
+                L5,C27 '||': ||
+                L5,C30 conjunction zzz && qqq
+                  L5,C30 conjunction zzz
+                    L5,C30 conjunct zzz
+                      L5,C30 logicalTerm zzz
+                        L5,C30 expr.memberAccessChainAlt zzz
+                          L5,C30 memberAccessChain zzz
+                            L5,C30 instance zzz
+                              L5,C30 identifier: zzz
+                  L5,C34 '&&': &&
+                  L5,C37 conjunct qqq
+                    L5,C37 logicalTerm qqq
+                      L5,C37 expr.memberAccessChainAlt qqq
+                        L5,C37 memberAccessChain qqq
+                          L5,C37 instance qqq
+                            L5,C37 identifier: qqq
+            L5,C40 ';': ;
+          L6,C4 statement.expression -(b+c*d);
+            L6,C4 expr -(b+c*d)
+              L6,C4 arithmetical -(b+c*d)
+                L6,C4 product -(b+c*d)
+                  L6,C4 arithmeticalTerm -(b+c*d)
+                    L6,C4 '-': -
+                    L6,C5 arithmeticalTerm (b+c*d)
+                      L6,C5 expr.bracesAlt (b+c*d)
+                        L6,C5 braces (b+c*d)
+                          L6,C5 '(': (
+                          L6,C6 expr b+c*d
+                            L6,C6 arithmetical b+c*d
+                              L6,C6 product b
+                                L6,C6 arithmeticalTerm b
+                                  L6,C6 expr.memberAccessChainAlt b
+                                    L6,C6 memberAccessChain b
+                                      L6,C6 instance b
+                                        L6,C6 identifier: b
+                              L6,C7 '+': +
+                              L6,C8 product c*d
+                                L6,C8 arithmeticalTerm c
+                                  L6,C8 expr.memberAccessChainAlt c
+                                    L6,C8 memberAccessChain c
+                                      L6,C8 instance c
+                                        L6,C8 identifier: c
+                                L6,C9 '*': *
+                                L6,C10 arithmeticalTerm d
+                                  L6,C10 expr.memberAccessChainAlt d
+                                    L6,C10 memberAccessChain d
+                                      L6,C10 instance d
+                                        L6,C10 identifier: d
+                          L6,C11 ')': )
+            L6,C12 ';': ;
+          L7,C4 statement.assign c := 12 - d[-42 -Y(z), e * (98 / f)] + -1;
+            L7,C4 identifier: c
+            L7,C6 ':=': :=
+            L7,C9 expr 12 - d[-42 -Y(z), e * (98 / f)] + -1
+              L7,C9 arithmetical 12 - d[-42 -Y(z), e * (98 / f)] + -1
+                L7,C9 product 12
+                  L7,C9 arithmeticalTerm 12
+                    L7,C9 expr.literalAlt 12
+                      L7,C9 literal 12
+                        L7,C9 dec: 12
+                L7,C12 '-': -
+                L7,C14 product d[-42 -Y(z), e * (98 / f)]
+                  L7,C14 arithmeticalTerm d[-42 -Y(z), e * (98 / f)]
+                    L7,C14 expr.indexerAlt d[-42 -Y(z), e * (98 / f)]
+                      L7,C14 indexer d[-42 -Y(z), e * (98 / f)]
+                        L7,C14 identifier: d
+                        L7,C15 '[': [
+                        L7,C16 exprList -42 -Y(z), e * (98 / f)
+                          L7,C16 expr -42 -Y(z)
+                            L7,C16 arithmetical -42 -Y(z)
+                              L7,C16 product -42
+                                L7,C16 arithmeticalTerm -42
+                                  L7,C16 '-': -
+                                  L7,C17 arithmeticalTerm 42
+                                    L7,C17 expr.literalAlt 42
+                                      L7,C17 literal 42
+                                        L7,C17 dec: 42
+                              L7,C20 '-': -
+                              L7,C21 product Y(z)
+                                L7,C21 arithmeticalTerm Y(z)
+                                  L7,C21 expr.memberAccessChainAlt Y(z)
+                                    L7,C21 memberAccessChain Y(z)
+                                      L7,C21 call Y(z)
+                                        L7,C21 identifier: Y
+                                        L7,C22 '(': (
+                                        L7,C23 exprList z
+                                          L7,C23 expr z
+                                            L7,C23 arithmetical z
+                                              L7,C23 product z
+                                                L7,C23 arithmeticalTerm z
+                                                  L7,C23 expr.memberAccessChainAlt z
+                                                    L7,C23 memberAccessChain z
+                                                      L7,C23 instance z
+                                                        L7,C23 identifier: z
+                                        L7,C24 ')': )
+                          L7,C25 ',': ,
+                          L7,C27 expr e * (98 / f)
+                            L7,C27 arithmetical e * (98 / f)
+                              L7,C27 product e * (98 / f)
+                                L7,C27 arithmeticalTerm e
+                                  L7,C27 expr.memberAccessChainAlt e
+                                    L7,C27 memberAccessChain e
+                                      L7,C27 instance e
+                                        L7,C27 identifier: e
+                                L7,C29 '*': *
+                                L7,C31 arithmeticalTerm (98 / f)
+                                  L7,C31 expr.bracesAlt (98 / f)
+                                    L7,C31 braces (98 / f)
+                                      L7,C31 '(': (
+                                      L7,C32 expr 98 / f
+                                        L7,C32 arithmetical 98 / f
+                                          L7,C32 product 98 / f
+                                            L7,C32 arithmeticalTerm 98
+                                              L7,C32 expr.literalAlt 98
+                                                L7,C32 literal 98
+                                                  L7,C32 dec: 98
+                                            L7,C35 '/': /
+                                            L7,C37 arithmeticalTerm f
+                                              L7,C37 expr.memberAccessChainAlt f
+                                                L7,C37 memberAccessChain f
+                                                  L7,C37 instance f
+                                                    L7,C37 identifier: f
+                                      L7,C38 ')': )
+                        L7,C39 ']': ]
+                L7,C41 '+': +
+                L7,C43 product -1
+                  L7,C43 arithmeticalTerm -1
+                    L7,C43 '-': -
+                    L7,C44 arithmeticalTerm 1
+                      L7,C44 expr.literalAlt 1
+                        L7,C44 literal 1
+                          L7,C44 dec: 1
+            L7,C45 ';': ;
+          L8,C4 statement.assign a:=true;
+            L8,C4 identifier: a
+            L8,C5 ':=': :=
+            L8,C7 expr true
+              L8,C7 arithmetical true
+                L8,C7 product true
+                  L8,C7 arithmeticalTerm true
+                    L8,C7 expr.literalAlt true
+                      L8,C7 literal true
+                        L8,C7 bool: true
+            L8,C11 ';': ;
+          L9,C4 statement.assign h := 'x';
+            L9,C4 identifier: h
+            L9,C6 ':=': :=
+            L9,C9 expr 'x'
+              L9,C9 arithmetical 'x'
+                L9,C9 product 'x'
+                  L9,C9 arithmeticalTerm 'x'
+                    L9,C9 expr.literalAlt 'x'
+                      L9,C9 literal 'x'
+                        L9,C9 char: 'x'
+            L9,C12 ';': ;
+          L10,C4 statement.while while true do begin\n        print("hello");\n        if tired then break;\n    end;
+            L10,C4 'while': while
+            L10,C10 expr true
+              L10,C10 arithmetical true
+                L10,C10 product true
+                  L10,C10 arithmeticalTerm true
+                    L10,C10 expr.literalAlt true
+                      L10,C10 literal true
+                        L10,C10 bool: true
+            L10,C15 'do': do
+            L10,C18 statement.block begin\n        print("hello");\n        if tired then break;\n    end;
+              L10,C18 block begin\n        print("hello");\n        if tired then break;\n    end;
+                L10,C18 'begin': begin
+                L11,C8 statement.expression print("hello");
+                  L11,C8 expr print("hello")
+                    L11,C8 arithmetical print("hello")
+                      L11,C8 product print("hello")
+                        L11,C8 arithmeticalTerm print("hello")
+                          L11,C8 expr.memberAccessChainAlt print("hello")
+                            L11,C8 memberAccessChain print("hello")
+                              L11,C8 call print("hello")
+                                L11,C8 identifier: print
+                                L11,C13 '(': (
+                                L11,C14 exprList "hello"
+                                  L11,C14 expr "hello"
+                                    L11,C14 arithmetical "hello"
+                                      L11,C14 product "hello"
+                                        L11,C14 arithmeticalTerm "hello"
+                                          L11,C14 expr.literalAlt "hello"
+                                            L11,C14 literal "hello"
+                                              L11,C14 str: "hello"
+                                L11,C21 ')': )
+                  L11,C22 ';': ;
+                L12,C8 statement.if if tired then break;
+                  L12,C8 'if': if
+                  L12,C11 expr tired
+                    L12,C11 arithmetical tired
+                      L12,C11 product tired
+                        L12,C11 arithmeticalTerm tired
+                          L12,C11 expr.memberAccessChainAlt tired
+                            L12,C11 memberAccessChain tired
+                              L12,C11 instance tired
+                                L12,C11 identifier: tired
+                  L12,C17 'then': then
+                  L12,C22 statement.break break;
+                    L12,C22 'break': break
+                    L12,C27 ';': ;
+                L13,C4 'end': end
+                L13,C7 ';': ;
+          L14,C4 statement.if if k(t + 0xa) then\n        begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;\n        else 'y';
+            L14,C4 'if': if
+            L14,C7 expr k(t + 0xa)
+              L14,C7 arithmetical k(t + 0xa)
+                L14,C7 product k(t + 0xa)
+                  L14,C7 arithmeticalTerm k(t + 0xa)
+                    L14,C7 expr.memberAccessChainAlt k(t + 0xa)
+                      L14,C7 memberAccessChain k(t + 0xa)
+                        L14,C7 call k(t + 0xa)
+                          L14,C7 identifier: k
+                          L14,C8 '(': (
+                          L14,C9 exprList t + 0xa
+                            L14,C9 expr t + 0xa
+                              L14,C9 arithmetical t + 0xa
+                                L14,C9 product t
+                                  L14,C9 arithmeticalTerm t
+                                    L14,C9 expr.memberAccessChainAlt t
+                                      L14,C9 memberAccessChain t
+                                        L14,C9 instance t
+                                          L14,C9 identifier: t
+                                L14,C11 '+': +
+                                L14,C13 product 0xa
+                                  L14,C13 arithmeticalTerm 0xa
+                                    L14,C13 expr.literalAlt 0xa
+                                      L14,C13 literal 0xa
+                                        L14,C13 hex: 0xa
+                          L14,C16 ')': )
+            L14,C18 'then': then
+            L15,C8 statement.block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
+              L15,C8 block begin\n            'x';\n            z := 3 + "abc";\n            if true then true;\n        end;
+                L15,C8 'begin': begin
+                L16,C12 statement.expression 'x';
+                  L16,C12 expr 'x'
+                    L16,C12 arithmetical 'x'
+                      L16,C12 product 'x'
+                        L16,C12 arithmeticalTerm 'x'
+                          L16,C12 expr.literalAlt 'x'
+                            L16,C12 literal 'x'
+                              L16,C12 char: 'x'
+                  L16,C15 ';': ;
+                L17,C12 statement.assign z := 3 + "abc";
+                  L17,C12 identifier: z
+                  L17,C14 ':=': :=
+                  L17,C17 expr 3 + "abc"
+                    L17,C17 arithmetical 3 + "abc"
+                      L17,C17 product 3
+                        L17,C17 arithmeticalTerm 3
+                          L17,C17 expr.literalAlt 3
+                            L17,C17 literal 3
+                              L17,C17 dec: 3
+                      L17,C19 '+': +
+                      L17,C21 product "abc"
+                        L17,C21 arithmeticalTerm "abc"
+                          L17,C21 expr.literalAlt "abc"
+                            L17,C21 literal "abc"
+                              L17,C21 str: "abc"
+                  L17,C26 ';': ;
+                L18,C12 statement.if if true then true;
+                  L18,C12 'if': if
+                  L18,C15 expr true
+                    L18,C15 arithmetical true
+                      L18,C15 product true
+                        L18,C15 arithmeticalTerm true
+                          L18,C15 expr.literalAlt true
+                            L18,C15 literal true
+                              L18,C15 bool: true
+                  L18,C20 'then': then
+                  L18,C25 statement.expression true;
+                    L18,C25 expr true
+                      L18,C25 arithmetical true
+                        L18,C25 product true
+                          L18,C25 arithmeticalTerm true
+                            L18,C25 expr.literalAlt true
+                              L18,C25 literal true
+                                L18,C25 bool: true
+                    L18,C29 ';': ;
+                L19,C8 'end': end
+                L19,C11 ';': ;
+            L20,C8 'else': else
+            L20,C13 statement.expression 'y';
+              L20,C13 expr 'y'
+                L20,C13 arithmetical 'y'
+                  L20,C13 product 'y'
+                    L20,C13 arithmeticalTerm 'y'
+                      L20,C13 expr.literalAlt 'y'
+                        L20,C13 literal 'y'
+                          L20,C13 char: 'y'
+              L20,C16 ';': ;
+          L21,C4 statement.assign x := f('y', '\'', "z\"zz\"z", 1+2);
+            L21,C4 identifier: x
+            L21,C6 ':=': :=
+            L21,C9 expr f('y', '\'', "z\"zz\"z", 1+2)
+              L21,C9 arithmetical f('y', '\'', "z\"zz\"z", 1+2)
+                L21,C9 product f('y', '\'', "z\"zz\"z", 1+2)
+                  L21,C9 arithmeticalTerm f('y', '\'', "z\"zz\"z", 1+2)
+                    L21,C9 expr.memberAccessChainAlt f('y', '\'', "z\"zz\"z", 1+2)
+                      L21,C9 memberAccessChain f('y', '\'', "z\"zz\"z", 1+2)
+                        L21,C9 call f('y', '\'', "z\"zz\"z", 1+2)
+                          L21,C9 identifier: f
+                          L21,C10 '(': (
+                          L21,C11 exprList 'y', '\'', "z\"zz\"z", 1+2
+                            L21,C11 expr 'y'
+                              L21,C11 arithmetical 'y'
+                                L21,C11 product 'y'
+                                  L21,C11 arithmeticalTerm 'y'
+                                    L21,C11 expr.literalAlt 'y'
+                                      L21,C11 literal 'y'
+                                        L21,C11 char: 'y'
+                            L21,C14 ',': ,
+                            L21,C16 expr '\''
+                              L21,C16 arithmetical '\''
+                                L21,C16 product '\''
+                                  L21,C16 arithmeticalTerm '\''
+                                    L21,C16 expr.literalAlt '\''
+                                      L21,C16 literal '\''
+                                        L21,C16 char: '\''
+                            L21,C20 ',': ,
+                            L21,C22 expr "z\"zz\"z"
+                              L21,C22 arithmetical "z\"zz\"z"
+                                L21,C22 product "z\"zz\"z"
+                                  L21,C22 arithmeticalTerm "z\"zz\"z"
+                                    L21,C22 expr.literalAlt "z\"zz\"z"
+                                      L21,C22 literal "z\"zz\"z"
+                                        L21,C22 str: "z\"zz\"z"
+                            L21,C32 ',': ,
+                            L21,C34 expr 1+2
+                              L21,C34 arithmetical 1+2
+                                L21,C34 product 1
+                                  L21,C34 arithmeticalTerm 1
+                                    L21,C34 expr.literalAlt 1
+                                      L21,C34 literal 1
+                                        L21,C34 dec: 1
+                                L21,C35 '+': +
+                                L21,C36 product 2
+                                  L21,C36 arithmeticalTerm 2
+                                    L21,C36 expr.literalAlt 2
+                                      L21,C36 literal 2
+                                        L21,C36 dec: 2
+                          L21,C37 ')': )
+            L21,C38 ';': ;
+          L22,C4 statement.expression "\"\"\"";
+            L22,C4 expr "\"\"\""
+              L22,C4 arithmetical "\"\"\""
+                L22,C4 product "\"\"\""
+                  L22,C4 arithmeticalTerm "\"\"\""
+                    L22,C4 expr.literalAlt "\"\"\""
+                      L22,C4 literal "\"\"\""
+                        L22,C4 str: "\"\"\""
+            L22,C12 ';': ;
+          L23,C4 statement.expression "\"a\"\"";
+            L23,C4 expr "\"a\"\""
+              L23,C4 arithmetical "\"a\"\""
+                L23,C4 product "\"a\"\""
+                  L23,C4 arithmeticalTerm "\"a\"\""
+                    L23,C4 expr.literalAlt "\"a\"\""
+                      L23,C4 literal "\"a\"\""
+                        L23,C4 str: "\"a\"\""
+            L23,C13 ';': ;
+          L24,C0 'end': end
+          L24,C3 ';': ;
+  L26,C0 sourceItem.classDef class C\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    method getA(c: int): int\n    begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;\nend
+    L26,C0 'class': class
+    L26,C6 identifier: C
+    L27,C4 varsSpec var\n        a,b: int;\n        x, y: char;
+      L27,C4 'var': var
+      L28,C8 identifierList a,b
+        L28,C8 identifier: a
+        L28,C9 ',': ,
+        L28,C10 identifier: b
+      L28,C11 ':': :
+      L28,C13 typeRef.builtin int
+        L28,C13 builtin: int
+      L28,C16 ';': ;
+      L29,C8 identifierList x, y
+        L29,C8 identifier: x
+        L29,C9 ',': ,
+        L29,C11 identifier: y
+      L29,C12 ':': :
+      L29,C14 typeRef.builtin char
+        L29,C14 builtin: char
+      L29,C18 ';': ;
+    L30,C0 'begin': begin
+    L31,C4 member method getA(c: int): int\n    begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
+      L31,C4 funcDef method getA(c: int): int\n    begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
+        L31,C4 'method': method
+        L31,C11 funcSignature getA(c: int): int
+          L31,C11 identifier: getA
+          L31,C15 '(': (
+          L31,C16 argDefList c: int
+            L31,C16 argDef c: int
+              L31,C16 identifier: c
+              L31,C17 ':': :
+              L31,C19 typeRef.builtin int
+                L31,C19 builtin: int
+          L31,C22 ')': )
+          L31,C23 ':': :
+          L31,C25 typeRef.builtin int
+            L31,C25 builtin: int
+        L32,C4 body begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
+          L32,C4 block begin\n        new B().b(x, yz(b, a).zzz(1));\n        a;\n    end;
+            L32,C4 'begin': begin
+            L33,C8 statement.expression new B().b(x, yz(b, a).zzz(1));
+              L33,C8 expr new B().b(x, yz(b, a).zzz(1))
+                L33,C8 arithmetical new B().b(x, yz(b, a).zzz(1))
+                  L33,C8 product new B().b(x, yz(b, a).zzz(1))
+                    L33,C8 arithmeticalTerm new B().b(x, yz(b, a).zzz(1))
+                      L33,C8 expr.memberAccessChainAlt new B().b(x, yz(b, a).zzz(1))
+                        L33,C8 memberAccessChain new B().b(x, yz(b, a).zzz(1))
+                          L33,C8 instance new B()
+                            L33,C8 ctorCall new B()
+                              L33,C8 'new': new
+                              L33,C12 identifier: B
+                              L33,C13 '(': (
+                              L33,C14 ')': )
+                          L33,C15 '.': .
+                          L33,C16 memberAccess b(x, yz(b, a).zzz(1))
+                            L33,C16 call b(x, yz(b, a).zzz(1))
+                              L33,C16 identifier: b
+                              L33,C17 '(': (
+                              L33,C18 exprList x, yz(b, a).zzz(1)
+                                L33,C18 expr x
+                                  L33,C18 arithmetical x
+                                    L33,C18 product x
+                                      L33,C18 arithmeticalTerm x
+                                        L33,C18 expr.memberAccessChainAlt x
+                                          L33,C18 memberAccessChain x
+                                            L33,C18 instance x
+                                              L33,C18 identifier: x
+                                L33,C19 ',': ,
+                                L33,C21 expr yz(b, a).zzz(1)
+                                  L33,C21 arithmetical yz(b, a).zzz(1)
+                                    L33,C21 product yz(b, a).zzz(1)
+                                      L33,C21 arithmeticalTerm yz(b, a).zzz(1)
+                                        L33,C21 expr.memberAccessChainAlt yz(b, a).zzz(1)
+                                          L33,C21 memberAccessChain yz(b, a).zzz(1)
+                                            L33,C21 call yz(b, a)
+                                              L33,C21 identifier: yz
+                                              L33,C23 '(': (
+                                              L33,C24 exprList b, a
+                                                L33,C24 expr b
+                                                  L33,C24 arithmetical b
+                                                    L33,C24 product b
+                                                      L33,C24 arithmeticalTerm b
+                                                        L33,C24 expr.memberAccessChainAlt b
+                                                          L33,C24 memberAccessChain b
+                                                            L33,C24 instance b
+                                                              L33,C24 identifier: b
+                                                L33,C25 ',': ,
+                                                L33,C27 expr a
+                                                  L33,C27 arithmetical a
+                                                    L33,C27 product a
+                                                      L33,C27 arithmeticalTerm a
+                                                        L33,C27 expr.memberAccessChainAlt a
+                                                          L33,C27 memberAccessChain a
+                                                            L33,C27 instance a
+                                                              L33,C27 identifier: a
+                                              L33,C28 ')': )
+                                            L33,C29 '.': .
+                                            L33,C30 memberAccess zzz(1)
+                                              L33,C30 call zzz(1)
+                                                L33,C30 identifier: zzz
+                                                L33,C33 '(': (
+                                                L33,C34 exprList 1
+                                                  L33,C34 expr 1
+                                                    L33,C34 arithmetical 1
+                                                      L33,C34 product 1
+                                                        L33,C34 arithmeticalTerm 1
+                                                          L33,C34 expr.literalAlt 1
+                                                            L33,C34 literal 1
+                                                              L33,C34 dec: 1
+                                                L33,C35 ')': )
+                              L33,C36 ')': )
+              L33,C37 ';': ;
+            L34,C8 statement.expression a;
+              L34,C8 expr a
+                L34,C8 arithmetical a
+                  L34,C8 product a
+                    L34,C8 arithmeticalTerm a
+                      L34,C8 expr.memberAccessChainAlt a
+                        L34,C8 memberAccessChain a
+                          L34,C8 instance a
+                            L34,C8 identifier: a
+              L34,C9 ';': ;
+            L35,C4 'end': end
+            L35,C7 ';': ;
+    L36,C0 'end': end
+  L38,C0 sourceItem.funcDefAlt method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+    L38,C0 funcDef method gcd(a: int, b: int)\nbegin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+      L38,C0 'method': method
+      L38,C7 funcSignature gcd(a: int, b: int)
+        L38,C7 identifier: gcd
+        L38,C10 '(': (
+        L38,C11 argDefList a: int, b: int
+          L38,C11 argDef a: int
+            L38,C11 identifier: a
+            L38,C12 ':': :
+            L38,C14 typeRef.builtin int
+              L38,C14 builtin: int
+          L38,C17 ',': ,
+          L38,C19 argDef b: int
+            L38,C19 identifier: b
+            L38,C20 ':': :
+            L38,C22 typeRef.builtin int
+              L38,C22 builtin: int
+        L38,C25 ')': )
+      L39,C0 body begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+        L39,C0 block begin\n    if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;\n\n    writeln("hw!");\nend;
+          L39,C0 'begin': begin
+          L40,C4 statement.if if a = 0\n        then b;\n        else\n            begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+            L40,C4 'if': if
+            L40,C7 expr a = 0
+              L40,C7 logical a = 0
+                L40,C7 conjunction a = 0
+                  L40,C7 conjunct a = 0
+                    L40,C7 arithmetical a
+                      L40,C7 product a
+                        L40,C7 arithmeticalTerm a
+                          L40,C7 expr.memberAccessChainAlt a
+                            L40,C7 memberAccessChain a
+                              L40,C7 instance a
+                                L40,C7 identifier: a
+                    L40,C9 comparison: =
+                    L40,C11 arithmetical 0
+                      L40,C11 product 0
+                        L40,C11 arithmeticalTerm 0
+                          L40,C11 expr.literalAlt 0
+                            L40,C11 literal 0
+                              L40,C11 dec: 0
+            L41,C8 'then': then
+            L41,C13 statement.expression b;
+              L41,C13 expr b
+                L41,C13 arithmetical b
+                  L41,C13 product b
+                    L41,C13 arithmeticalTerm b
+                      L41,C13 expr.memberAccessChainAlt b
+                        L41,C13 memberAccessChain b
+                          L41,C13 instance b
+                            L41,C13 identifier: b
+              L41,C14 ';': ;
+            L42,C8 'else': else
+            L43,C12 statement.block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+              L43,C12 block begin\n                if b = 0\n                    then a;\n                    else gcd(b, b % a);\n            end;
+                L43,C12 'begin': begin
+                L44,C16 statement.if if b = 0\n                    then a;\n                    else gcd(b, b % a);
+                  L44,C16 'if': if
+                  L44,C19 expr b = 0
+                    L44,C19 logical b = 0
+                      L44,C19 conjunction b = 0
+                        L44,C19 conjunct b = 0
+                          L44,C19 arithmetical b
+                            L44,C19 product b
+                              L44,C19 arithmeticalTerm b
+                                L44,C19 expr.memberAccessChainAlt b
+                                  L44,C19 memberAccessChain b
+                                    L44,C19 instance b
+                                      L44,C19 identifier: b
+                          L44,C21 comparison: =
+                          L44,C23 arithmetical 0
+                            L44,C23 product 0
+                              L44,C23 arithmeticalTerm 0
+                                L44,C23 expr.literalAlt 0
+                                  L44,C23 literal 0
+                                    L44,C23 dec: 0
+                  L45,C20 'then': then
+                  L45,C25 statement.expression a;
+                    L45,C25 expr a
+                      L45,C25 arithmetical a
+                        L45,C25 product a
+                          L45,C25 arithmeticalTerm a
+                            L45,C25 expr.memberAccessChainAlt a
+                              L45,C25 memberAccessChain a
+                                L45,C25 instance a
+                                  L45,C25 identifier: a
+                    L45,C26 ';': ;
+                  L46,C20 'else': else
+                  L46,C25 statement.expression gcd(b, b % a);
+                    L46,C25 expr gcd(b, b % a)
+                      L46,C25 arithmetical gcd(b, b % a)
+                        L46,C25 product gcd(b, b % a)
+                          L46,C25 arithmeticalTerm gcd(b, b % a)
+                            L46,C25 expr.memberAccessChainAlt gcd(b, b % a)
+                              L46,C25 memberAccessChain gcd(b, b % a)
+                                L46,C25 call gcd(b, b % a)
+                                  L46,C25 identifier: gcd
+                                  L46,C28 '(': (
+                                  L46,C29 exprList b, b % a
+                                    L46,C29 expr b
+                                      L46,C29 arithmetical b
+                                        L46,C29 product b
+                                          L46,C29 arithmeticalTerm b
+                                            L46,C29 expr.memberAccessChainAlt b
+                                              L46,C29 memberAccessChain b
+                                                L46,C29 instance b
+                                                  L46,C29 identifier: b
+                                    L46,C30 ',': ,
+                                    L46,C32 expr b % a
+                                      L46,C32 arithmetical b % a
+                                        L46,C32 product b % a
+                                          L46,C32 arithmeticalTerm b
+                                            L46,C32 expr.memberAccessChainAlt b
+                                              L46,C32 memberAccessChain b
+                                                L46,C32 instance b
+                                                  L46,C32 identifier: b
+                                          L46,C34 '%': %
+                                          L46,C36 arithmeticalTerm a
+                                            L46,C36 expr.memberAccessChainAlt a
+                                              L46,C36 memberAccessChain a
+                                                L46,C36 instance a
+                                                  L46,C36 identifier: a
+                                  L46,C37 ')': )
+                    L46,C38 ';': ;
+                L47,C12 'end': end
+                L47,C15 ';': ;
+          L49,C4 statement.expression writeln("hw!");
+            L49,C4 expr writeln("hw!")
+              L49,C4 arithmetical writeln("hw!")
+                L49,C4 product writeln("hw!")
+                  L49,C4 arithmeticalTerm writeln("hw!")
+                    L49,C4 expr.memberAccessChainAlt writeln("hw!")
+                      L49,C4 memberAccessChain writeln("hw!")
+                        L49,C4 call writeln("hw!")
+                          L49,C4 identifier: writeln
+                          L49,C11 '(': (
+                          L49,C12 exprList "hw!"
+                            L49,C12 expr "hw!"
+                              L49,C12 arithmetical "hw!"
+                                L49,C12 product "hw!"
+                                  L49,C12 arithmeticalTerm "hw!"
+                                    L49,C12 expr.literalAlt "hw!"
+                                      L49,C12 literal "hw!"
+                                        L49,C12 str: "hw!"
+                          L49,C17 ')': )
+            L49,C18 ';': ;
+          L50,C0 'end': end
+          L50,C3 ';': ;
+  L52,C0 sourceItem.funcDefAlt method f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+    L52,C0 funcDef method f(z: byte)\n    var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+      L52,C0 'method': method
+      L52,C7 funcSignature f(z: byte)
+        L52,C7 identifier: f
+        L52,C8 '(': (
+        L52,C9 argDefList z: byte
+          L52,C9 argDef z: byte
+            L52,C9 identifier: z
+            L52,C10 ':': :
+            L52,C12 typeRef.builtin byte
+              L52,C12 builtin: byte
+        L52,C16 ')': )
+      L53,C4 body var\n        a,b: int;\n        x, y: char;\nbegin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+        L53,C4 varsSpec var\n        a,b: int;\n        x, y: char;
+          L53,C4 'var': var
+          L54,C8 identifierList a,b
+            L54,C8 identifier: a
+            L54,C9 ',': ,
+            L54,C10 identifier: b
+          L54,C11 ':': :
+          L54,C13 typeRef.builtin int
+            L54,C13 builtin: int
+          L54,C16 ';': ;
+          L55,C8 identifierList x, y
+            L55,C8 identifier: x
+            L55,C9 ',': ,
+            L55,C11 identifier: y
+          L55,C12 ':': :
+          L55,C14 typeRef.builtin char
+            L55,C14 builtin: char
+          L55,C18 ';': ;
+        L56,C0 block begin\n    print(x, b);\n    a := z * z;\n    a;\nend;
+          L56,C0 'begin': begin
+          L57,C4 statement.expression print(x, b);
+            L57,C4 expr print(x, b)
+              L57,C4 arithmetical print(x, b)
+                L57,C4 product print(x, b)
+                  L57,C4 arithmeticalTerm print(x, b)
+                    L57,C4 expr.memberAccessChainAlt print(x, b)
+                      L57,C4 memberAccessChain print(x, b)
+                        L57,C4 call print(x, b)
+                          L57,C4 identifier: print
+                          L57,C9 '(': (
+                          L57,C10 exprList x, b
+                            L57,C10 expr x
+                              L57,C10 arithmetical x
+                                L57,C10 product x
+                                  L57,C10 arithmeticalTerm x
+                                    L57,C10 expr.memberAccessChainAlt x
+                                      L57,C10 memberAccessChain x
+                                        L57,C10 instance x
+                                          L57,C10 identifier: x
+                            L57,C11 ',': ,
+                            L57,C13 expr b
+                              L57,C13 arithmetical b
+                                L57,C13 product b
+                                  L57,C13 arithmeticalTerm b
+                                    L57,C13 expr.memberAccessChainAlt b
+                                      L57,C13 memberAccessChain b
+                                        L57,C13 instance b
+                                          L57,C13 identifier: b
+                          L57,C14 ')': )
+            L57,C15 ';': ;
+          L58,C4 statement.assign a := z * z;
+            L58,C4 identifier: a
+            L58,C6 ':=': :=
+            L58,C9 expr z * z
+              L58,C9 arithmetical z * z
+                L58,C9 product z * z
+                  L58,C9 arithmeticalTerm z
+                    L58,C9 expr.memberAccessChainAlt z
+                      L58,C9 memberAccessChain z
+                        L58,C9 instance z
+                          L58,C9 identifier: z
+                  L58,C11 '*': *
+                  L58,C13 arithmeticalTerm z
+                    L58,C13 expr.memberAccessChainAlt z
+                      L58,C13 memberAccessChain z
+                        L58,C13 instance z
+                          L58,C13 identifier: z
+            L58,C14 ';': ;
+          L59,C4 statement.expression a;
+            L59,C4 expr a
+              L59,C4 arithmetical a
+                L59,C4 product a
+                  L59,C4 arithmeticalTerm a
+                    L59,C4 expr.memberAccessChainAlt a
+                      L59,C4 memberAccessChain a
+                        L59,C4 instance a
+                          L59,C4 identifier: a
+            L59,C5 ';': ;
+          L60,C0 'end': end
+          L60,C3 ';': ;
+  L61,C0 : <EOF>

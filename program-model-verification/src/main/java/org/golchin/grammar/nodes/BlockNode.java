@@ -1,8 +1,7 @@
 package org.golchin.grammar.nodes;
 
-import com.android.dx.Code;
-import com.android.dx.Local;
-import org.golchin.grammar.bytecode.ByteCodeVisitor;
+import org.golchin.grammar.ir.Address;
+import org.golchin.grammar.ir.InstructionGeneratingVisitor;
 
 import java.util.List;
 
@@ -11,15 +10,11 @@ public class BlockNode extends ExpressionNode {
         super(children);
         ExpressionNode last = children.get(children.size() - 1);
         type = last.getType();
+        address = last.getAddress();
     }
 
     @Override
-    public Local<?> getOrCreateLocal(Code code) {
-        return children.get(children.size() - 1).getLocal();
-    }
-
-    @Override
-    public Local<?> accept(ByteCodeVisitor byteCodeVisitor) {
-        return byteCodeVisitor.visitBlockNode(this);
+    public Address accept(InstructionGeneratingVisitor instructionGeneratingVisitor) {
+        return instructionGeneratingVisitor.visitBlockNode(this);
     }
 }

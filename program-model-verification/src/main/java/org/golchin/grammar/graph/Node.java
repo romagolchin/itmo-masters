@@ -1,17 +1,18 @@
 package org.golchin.grammar.graph;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Node<T, S> {
-    public T content;
-    public Collection<Edge<T, S>> outEdges;
-    public Collection<Edge<T, S>> inEdges;
+    private T content;
+    public final Collection<Edge<T, S>> outEdges;
+    public final Collection<Edge<T, S>> inEdges;
+
+    public static <E, S> Node<List<E>, S> getInstance(List<E> content) {
+        return new Node<>(new ArrayList<>(content));
+    }
 
     public Node(T content, Set<Edge<T, S>> outEdges, Set<Edge<T, S>> inEdges) {
-        this.content = content;
+        this.setContent(content);
         this.outEdges = outEdges;
         this.inEdges = inEdges;
     }
@@ -44,6 +45,14 @@ public class Node<T, S> {
 
     @Override
     public String toString() {
-        return content.toString();
+        return getContent().toString();
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
     }
 }

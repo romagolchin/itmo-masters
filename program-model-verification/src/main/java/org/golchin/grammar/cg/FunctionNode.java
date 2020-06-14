@@ -10,7 +10,6 @@ public class FunctionNode extends Node<String, String> {
     private FunctionDefinition functionDefinition;
 
     public FunctionNode(String name) {
-        // fixme
         super(name);
         this.name = name;
     }

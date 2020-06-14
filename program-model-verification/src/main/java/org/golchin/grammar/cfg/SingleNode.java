@@ -1,34 +1,26 @@
 package org.golchin.grammar.cfg;
 
 import org.golchin.grammar.graph.Node;
-import org.golchin.grammar.ir.Instruction;
+import org.golchin.grammar.ir.CommonCfgVisitor;
+import org.golchin.grammar.model.Type;
 
-import java.util.Collections;
 import java.util.List;
 
-import static java.util.Collections.singletonList;
+public class SingleNode<T> extends Cfg<T> {
+    public Node<List<T>, String> node;
 
-public class SingleNode extends Cfg {
-    public Node<List<Instruction>, String> node;
-
-    public SingleNode(Node<List<Instruction>, String> node) {
-        this(node, false);
-    }
-
-    public SingleNode(Node<List<Instruction>, String> node, boolean isBreak) {
-        super(isBreak ? singletonList(node) : Collections.emptyList());
-        this.node = node;
-        this.isBreak = isBreak;
+    public SingleNode(Node<List<T>, String> node) {
+        super(List.of());
+        this.end = node;
     }
 
     @Override
-    public Node<List<Instruction>, String> getStart() {
-        return node;
+    public Node<List<T>, String> getStart() {
+        return end;
     }
 
     @Override
-    public void resetNext(Node<List<Instruction>, String> next) {
-        if (!isBreak)
-            node.addEdge(next);
+    public void accept(CommonCfgVisitor<T> visitor, Type returnType) {
+        visitor.visitSingleNode(this, returnType);
     }
 }

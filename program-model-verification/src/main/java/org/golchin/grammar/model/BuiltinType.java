@@ -1,6 +1,5 @@
 package org.golchin.grammar.model;
 
-import com.android.dx.TypeId;
 import lombok.Getter;
 
 import java.math.BigInteger;
@@ -29,16 +28,17 @@ public enum BuiltinType implements Type {
         this.javaClass = javaClass;
     }
 
-    @Override
-    public TypeId<?> toJavaTypeId() {
-        return TypeId.get(javaClass);
+    public static BuiltinType checkAndGetBuiltinType(Type type) {
+        if (type instanceof BuiltinType builtinType) {
+            return builtinType;
+        } else throw new IllegalArgumentException("Expected built-in type");
     }
 
     @Override
     public boolean canAssignTo(Type other) {
         if (this == other) return true;
         if (other == null || getClass() != other.getClass()) return false;
-        if (!isNumeric())
+        if (!isNumeric() || !((BuiltinType) other).isNumeric)
             return false;
         return getByteCount() <= ((BuiltinType) other).getByteCount();
     }

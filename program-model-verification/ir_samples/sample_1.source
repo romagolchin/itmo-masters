@@ -1,0 +1,62 @@
+class C
+    var
+        a,b: int;
+        x, y: char;
+        d: D;
+begin
+    method main (a: int, b: int)
+    var
+        c, d: int;
+        veryLong: ulong;
+    begin
+        if a > 0 then
+            a+b;
+        else
+            b*d;
+        a+b-c*d;
+        0b100 * veryLong;
+        0x4 * veryLong;
+        4 * veryLong;
+        sample_2::writeln("a");
+    end;
+
+    method getA(): int
+    begin
+        this.a;
+    end;
+
+    method setA(a: int)
+    begin
+        this.a := a;
+        this.d := new D();
+        this.d.c := this;
+        this.d.e := new E();
+        # this.d.e.setArray(new array[42] of int);
+    end;
+
+    method gcd(a: int, b: int) : int
+    var t: int;
+        tooMuch, tired: bool;
+    begin
+        while (a > 0) && (b > 0) do begin
+            t := a;
+            a := b;
+            b := t % b;
+        end;
+        if a = 0 then b + 1; else a - 1;
+    end;
+
+    method hasNegative(a: array[] of int) : bool
+    var i: int; ans: bool;
+    begin
+        while i < a.length do begin
+            if a[i] < 0 then begin
+                ans := true;
+                break;
+            end;
+            i := i + 1;
+        end;
+        ans;
+    end;
+end
+
