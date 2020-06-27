@@ -2,33 +2,37 @@ package org.golchin.grammar.graph;
 
 import java.util.*;
 
-public class Node {
-    public List<String> labels;
-    public Collection<Edge> outEdges;
-    public Collection<Edge> inEdges;
+public class Node<T, S> {
+    private T content;
+    public final Collection<Edge<T, S>> outEdges;
+    public final Collection<Edge<T, S>> inEdges;
 
-    public Node(List<String> labels, Set<Edge> outEdges, Set<Edge> inEdges) {
-        this.labels = labels;
+    public static <E, S> Node<List<E>, S> getInstance(List<E> content) {
+        return new Node<>(new ArrayList<>(content));
+    }
+
+    public Node(T content, Set<Edge<T, S>> outEdges, Set<Edge<T, S>> inEdges) {
+        this.setContent(content);
         this.outEdges = outEdges;
         this.inEdges = inEdges;
     }
 
-    public Node(List<String> labels) {
-        this(new ArrayList<>(labels), new HashSet<>(), new HashSet<>());
+    public Node(T content) {
+        this(content, new HashSet<>(), new HashSet<>());
     }
 
-    public Edge addEdge(Node otherNode) {
+    public Edge<T, S> addEdge(Node<T, S> otherNode) {
         return addEdge(otherNode, null);
     }
 
-    public Edge addEdge(Node otherNode, String label) {
-        Edge edge = new Edge(label, this, otherNode);
+    public Edge<T, S> addEdge(Node<T, S> otherNode, S label) {
+        Edge<T, S> edge = new Edge<>(label, this, otherNode);
         outEdges.add(edge);
         otherNode.inEdges.add(edge);
         return edge;
     }
 
-    public void removeEdge(Edge edge) {
+    public void removeEdge(Edge<T, S> edge) {
         if (edge == null) {
             return;
         }
@@ -41,6 +45,14 @@ public class Node {
 
     @Override
     public String toString() {
-        return String.join("\n", labels);
+        return getContent().toString();
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public void setContent(T content) {
+        this.content = content;
     }
 }

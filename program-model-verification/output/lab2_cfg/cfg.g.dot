@@ -1,7 +1,4 @@
 digraph {
-  0 [label="empty();"];
-  1 [label=""];
-  2 [label="43;"];
-  2 -> 1 [label=""];
-  0 -> 2 [label=""];
+  0 [label="empty();
+43;"];
 }

@@ -2,12 +2,12 @@ package org.golchin.grammar.graph;
 
 import java.util.Objects;
 
-public class Edge {
-    public String label;
-    public Node source;
-    public Node destination;
+public class Edge<T, S> {
+    public final S label;
+    public final Node<T, S> source;
+    public final Node<T, S> destination;
 
-    public Edge(String label, Node source, Node destination) {
+    public Edge(S label, Node<T, S> source, Node<T, S> destination) {
         this.label = label;
         this.source = source;
         this.destination = destination;
@@ -17,7 +17,7 @@ public class Edge {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Edge edge = (Edge) o;
+        Edge<T, S> edge = (Edge<T, S>) o;
         return Objects.equals(label, edge.label) &&
                 Objects.equals(source, edge.source) &&
                 Objects.equals(destination, edge.destination);

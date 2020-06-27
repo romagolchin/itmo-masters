@@ -1,5 +1,6 @@
 package org.golchin.grammar.cfg;
 
+import lombok.AllArgsConstructor;
 import org.antlr.v4.runtime.RuleContext;
 import org.golchin.grammar.GrammarBaseVisitor;
 import org.golchin.grammar.GrammarParser;
@@ -7,45 +8,50 @@ import org.golchin.grammar.graph.Node;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
 
-public class CfgVisitor extends GrammarBaseVisitor<Cfg> {
+@AllArgsConstructor
+public class CfgVisitor<T> extends GrammarBaseVisitor<Cfg<T>> {
+    private final Function<RuleContext, T> ruleContextFunction;
+
     @Override
-    public Cfg visitSourceItem(GrammarParser.SourceItemContext ctx) {
-        Cfg cfg = ctx.body().block().getRuleContext().accept(this);
-        cfg.name = ctx.funcSignature().IDENTIFIER().getSymbol().getText();
+    public Cfg<T> visitFuncDefAlt(GrammarParser.FuncDefAltContext ctx) {
+        GrammarParser.FuncDefContext funcDefContext = ctx.funcDef();
+        Cfg<T> cfg = funcDefContext.body().block().getRuleContext().accept(this);
+        cfg.name = funcDefContext.funcSignature().IDENTIFIER().getSymbol().getText();
         return cfg;
     }
 
-    private SingleNode createSingleNode(RuleContext ctx) {
-        return new SingleNode(new Node(singletonList(getText(ctx))));
+    private SingleNode<T> createSingleNode(RuleContext ctx) {
+        return new SingleNode<>(getNode(ctx));
     }
 
-    private String getText(RuleContext ctx) {
-        return ctx.getText()
-                .replace("\\", "\\\\")
-                .replace("\"", "\\\"");
+    private Node<List<T>, String> getNode(RuleContext ruleContext) {
+        return Node.getInstance(getInstructions(ruleContext));
+    }
+
+    private List<T> getInstructions(RuleContext ctx) {
+        return List.of(ruleContextFunction.apply(ctx));
     }
 
     @Override
-    public Cfg visitExpression(GrammarParser.ExpressionContext ctx) {
+    public Cfg<T> visitExpression(GrammarParser.ExpressionContext ctx) {
         return createSingleNode(ctx);
     }
 
     @Override
-    public Cfg visitAssign(GrammarParser.AssignContext ctx) {
+    public Cfg<T> visitAssign(GrammarParser.AssignContext ctx) {
         return createSingleNode(ctx);
     }
 
     @Override
-    public Cfg visitIf(GrammarParser.IfContext ctx) {
+    public Cfg<T> visitIf(GrammarParser.IfContext ctx) {
         List<GrammarParser.StatementContext> statement = ctx.statement();
-        List<String> labels = singletonList(getText(ctx.expr()));
-        Node condition = new Node(labels);
-        Cfg thenCfg = ctx.statement(0).accept(this);
-        Cfg elseCfg = null;
+        Node<List<T>, String> condition = getNode(ctx.expr());
+        Cfg<T> thenCfg = ctx.statement(0).accept(this);
+        Cfg<T> elseCfg = null;
         var exitPoints = new ArrayList<>(thenCfg.exitPoints);
         if (statement.size() > 1) {
             GrammarParser.StatementContext elseCtx;
@@ -53,15 +59,15 @@ public class CfgVisitor extends GrammarBaseVisitor<Cfg> {
             elseCfg = elseCtx.accept(this);
             exitPoints.addAll(elseCfg.exitPoints);
         }
-        return new If(condition, thenCfg, elseCfg, exitPoints);
+        return new If<>(condition, thenCfg, elseCfg, exitPoints);
     }
 
     @Override
-    public Cfg visitBlock(GrammarParser.BlockContext ctx) {
-        var elements = new ArrayList<Cfg>();
-        var exitPoints = new ArrayList<Node>();
+    public Cfg<T> visitBlock(GrammarParser.BlockContext ctx) {
+        var elements = new ArrayList<Cfg<T>>();
+        var exitPoints = new ArrayList<Node<List<T>, String>>();
         for (GrammarParser.StatementContext statementContext : ctx.statement()) {
-            Cfg cfg = statementContext.accept(this);
+            Cfg<T> cfg = statementContext.accept(this);
             exitPoints.addAll(cfg.getExitPoints());
             elements.add(cfg);
         }
@@ -69,24 +75,24 @@ public class CfgVisitor extends GrammarBaseVisitor<Cfg> {
             var cfg = elements.get(i);
             cfg.resetNext(elements.get(i + 1));
         }
-        return new Block(elements, exitPoints);
+        return new Block<>(elements, exitPoints);
     }
 
     @Override
-    public Cfg visitWhile(GrammarParser.WhileContext ctx) {
-        Node condition = new Node(singletonList(getText(ctx.expr())));
-        return new While(condition, ctx.statement().accept(this));
+    public Cfg<T> visitWhile(GrammarParser.WhileContext ctx) {
+        Node<List<T>, String> condition = getNode(ctx.expr());
+        return new While<>(condition, ctx.statement().accept(this));
     }
 
     @Override
-    public Cfg visitDo(GrammarParser.DoContext ctx) {
-        Node condition = new Node(singletonList(getText(ctx.expr())));
+    public Cfg<T> visitDo(GrammarParser.DoContext ctx) {
+        Node<List<T>, String> condition = getNode(ctx.expr());
         boolean isDoWhile = "while".equals(ctx.whileSpec().getText());
-        return new Do(condition, ctx.statement().accept(this), isDoWhile);
+        return new Do<>(condition, ctx.statement().accept(this), isDoWhile);
     }
 
     @Override
-    public Cfg visitBreak(GrammarParser.BreakContext ctx) {
-        return new SingleNode(new Node(emptyList()), true);
+    public Cfg<T> visitBreak(GrammarParser.BreakContext ctx) {
+        return new SingleNode<>(Node.getInstance(emptyList()));
     }
 }

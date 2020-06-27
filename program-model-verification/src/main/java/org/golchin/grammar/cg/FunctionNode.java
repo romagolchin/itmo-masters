@@ -1,16 +1,16 @@
 package org.golchin.grammar.cg;
 
 import org.golchin.grammar.graph.Node;
+import org.golchin.grammar.model.Signature;
 
-import java.util.List;
 import java.util.Objects;
 
-public class FunctionNode extends Node {
-    private String name;
+public class FunctionNode extends Node<String, String> {
+    private final String name;
     private FunctionDefinition functionDefinition;
 
     public FunctionNode(String name) {
-        super(List.of(name));
+        super(name);
         this.name = name;
     }
 

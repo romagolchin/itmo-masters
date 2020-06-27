@@ -1,0 +1,24 @@
+Source file sample_2
+  writeln
+  Class D
+    Methods
+    Fields
+    e : E
+    c : C
+  Class E
+    Methods
+    setArray
+       0 t~48 = 42
+       1 t~49 = 12
+       2 a[t~49] = t~48
+    createArray
+       0 t~50 = 2
+       1 t~51 = 3
+       2 t~52 = new array [t~50, t~51]
+       3 b = t~52
+       4 t~53 = 1
+       5 t~54 = new array [t~53]
+       6 t~55 = this
+       7 call sample_2::setArray(t~55,t~54)
+    Fields
+    x : INT
