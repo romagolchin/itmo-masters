@@ -1,12 +1,18 @@
-package org.golchin.grammar.cg;
+package org.golchin.grammar.model;
+
+import lombok.Getter;
 
 import java.util.Objects;
 
-public class Array extends Type {
+public class Array extends ReferenceType {
+    @Getter
     private final Type elementType;
+    @Getter
     private final int nDimensions;
 
     public Array(Type elementType, int nDimensions) {
+        super("array");
+        addField(new Field("length", BuiltinType.INT, this));
         this.elementType = elementType;
         this.nDimensions = nDimensions;
     }
@@ -23,5 +29,12 @@ public class Array extends Type {
     @Override
     public int hashCode() {
         return Objects.hash(elementType, nDimensions);
+    }
+
+    public static Array ofElements(Type elementType, int nDimensions) {
+        if (elementType instanceof Array array) {
+            return new Array(array.getElementType(), nDimensions + array.getNDimensions());
+        }
+        return new Array(elementType, nDimensions);
     }
 }

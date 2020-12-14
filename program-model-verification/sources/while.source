@@ -14,5 +14,5 @@ begin
     end;
     repeat
         writeln("hw!");
-    until tired;
+    while tired;
 end;

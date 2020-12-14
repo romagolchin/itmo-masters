@@ -1,0 +1,25 @@
+class D
+var
+    e: E;
+    c: C;
+begin
+end
+
+class E
+var
+    x: int;
+begin
+    private method setArray(a: array[] of int)
+    begin
+        a[12] := 42;
+    end;
+
+    method createArray(a: array[] of int)
+    var b: array[,] of int;
+    begin
+        b := new array[2, 3] of int;
+        this.setArray(new array[1] of int);
+    end;
+end
+
+method writeln(s: string);

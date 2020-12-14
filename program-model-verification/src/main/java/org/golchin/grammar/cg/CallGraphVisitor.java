@@ -4,16 +4,18 @@ import org.antlr.v4.runtime.tree.RuleNode;
 import org.golchin.grammar.GrammarBaseVisitor;
 import org.golchin.grammar.GrammarParser;
 import org.golchin.grammar.graph.Graph;
+import org.golchin.grammar.ir.GlobalScope;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CallGraphVisitor extends GrammarBaseVisitor<Graph> {
+public class CallGraphVisitor extends GrammarBaseVisitor<Graph<String, String>> {
     private final Map<String, FunctionNode> nameToNode = new HashMap<>();
+    private final GlobalScope globalScope = new GlobalScope();
 
     @Override
-    protected Graph aggregateResult(Graph aggregate, Graph nextResult) {
+    protected Graph<String, String> aggregateResult(Graph<String, String> aggregate,
+                                                    Graph<String, String> nextResult) {
         if (aggregate == null) {
             return nextResult;
         }
@@ -24,26 +26,26 @@ public class CallGraphVisitor extends GrammarBaseVisitor<Graph> {
     }
 
     @Override
-    protected Graph defaultResult() {
+    protected Graph<String, String> defaultResult() {
         return null;
     }
 
     @Override
-    public Graph visitChildren(RuleNode node) {
-        Graph graph = super.visitChildren(node);
-        return graph == null ? new Graph() : graph;
+    public Graph<String, String> visitChildren(RuleNode node) {
+        Graph<String, String> graph = super.visitChildren(node);
+        return graph == null ? new Graph<>() : graph;
     }
 
     @Override
-    public Graph visitSource(GrammarParser.SourceContext ctx) {
+    public Graph<String, String> visitSource(GrammarParser.SourceContext ctx) {
         nameToNode.clear();
         return super.visitSource(ctx);
     }
 
     @Override
-    public Graph visitSourceItem(GrammarParser.SourceItemContext ctx) {
-        Graph graph = visitChildren(ctx);
-        FunctionDefinition functionDefinition = createFunctionDefinition(ctx);
+    public Graph<String, String> visitFuncDefAlt(GrammarParser.FuncDefAltContext ctx) {
+        Graph<String, String> graph = visitChildren(ctx);
+        FunctionDefinition functionDefinition = FunctionDefinition.createFunctionDefinition(ctx.funcDef(), globalScope);
         FunctionNode curFunction = nameToNode.computeIfAbsent(functionDefinition.getName(), FunctionNode::new);
         curFunction.setFunctionDefinition(functionDefinition);
         graph.getNodes().forEach(node -> graph.addEdge(curFunction.addEdge(node, null)));
@@ -51,21 +53,10 @@ public class CallGraphVisitor extends GrammarBaseVisitor<Graph> {
         return graph;
     }
 
-    private FunctionDefinition createFunctionDefinition(GrammarParser.SourceItemContext ctx) {
-        GrammarParser.FuncSignatureContext funcSignatureContext = ctx.funcSignature();
-        LinkedHashMap<String, Type> parameterTypes = new LinkedHashMap<>();
-        for (GrammarParser.ArgDefContext context : funcSignatureContext.argDefList().argDef()) {
-            parameterTypes.put(context.IDENTIFIER().toString(), Type.createInstance(context.typeRef()));
-        }
-        String functionName = funcSignatureContext.IDENTIFIER().toString();
-        Type returnType = Type.createInstance(funcSignatureContext.typeRef());
-        return new FunctionDefinition(functionName, returnType, parameterTypes);
-    }
-
     @Override
-    public Graph visitCall(GrammarParser.CallContext ctx) {
-        Graph graph = visitChildren(ctx);
-        String functionName = ctx.IDENTIFIER().toString();
+    public Graph<String, String> visitCall(GrammarParser.CallContext ctx) {
+        Graph<String, String> graph = visitChildren(ctx);
+        String functionName = ctx.identifierChain().getText();
         FunctionNode node = nameToNode.computeIfAbsent(functionName, FunctionNode::new);
         graph.addNode(node);
         return graph;

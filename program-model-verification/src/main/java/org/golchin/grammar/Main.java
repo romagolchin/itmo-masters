@@ -26,6 +26,7 @@ public class Main {
         try(BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(args[0]))) {
             IndentedWriter indentedWriter = new IndentedWriter(bufferedWriter);
             System.out.println(tree.toStringTree(parser)); // print LISP-style tree
+            TestRig.main(new String[]{"org.golchin.grammar.Grammar", "source", "-gui"});
             String[] ruleNames = parser.getRuleNames();
             String[] tokenNames = parser.getTokenNames();
             ParseTreeVisitor<Object> parseTreeVisitor = new AbstractParseTreeVisitor<>() {
@@ -55,7 +56,7 @@ public class Main {
                     String ruleName = ruleNames[ruleContext.getRuleIndex()];
                     String fullName = ruleName.equalsIgnoreCase(alternativeName) ? ruleName
                             : ruleName + "." + alternativeName;
-                    fullName = fullName.replace("block1", "block")
+                    fullName = fullName.replace("blockAlt", "block")
                             .replace("operand", "expr");
                     indentedWriter.writeLine(position + " " + fullName + " " + text);
                     indentedWriter.indent();
@@ -67,6 +68,5 @@ public class Main {
             };
             parseTreeVisitor.visit(tree);
         }
-        TestRig.main(new String[]{"org.golchin.grammar.Grammar", "source", "-gui"});
     }
 }
