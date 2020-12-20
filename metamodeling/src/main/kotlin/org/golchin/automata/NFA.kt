@@ -70,14 +70,19 @@ open class NFA(
         }
     }
 
-    private fun addEdges() {
-        transitions.forEach { (state, trans) ->
-            val revNeighbors = reverseEpsMoves[state]
-            trans.forEach { (c, neighbors) ->
-                revNeighbors?.forEach { revNeighbor ->
-                    neighbors.forEach { neighbor ->
-                        addEdge(revNeighbor, neighbor, c)
+    private fun moveEpsMovesRedundant() {
+        transitions.forEach { (u, trans) ->
+            val newEdges = mutableMapOf<Char, MutableSet<State>>()
+            trans[null]?.forEach { v ->
+                transitions[v]?.forEach { (c, w) ->
+                    if (c != null) {
+                        newEdges.computeIfAbsent(c) { mutableSetOf() }.addAll(w)
                     }
+                }
+            }
+            newEdges.forEach { (c, neighbors) ->
+                neighbors.forEach { w ->
+                    addEdge(u, w, c)
                 }
             }
         }
@@ -87,7 +92,7 @@ open class NFA(
         if (hasEpsMoves()) {
             transitivelyClose()
             addAcceptingStates()
-            addEdges()
+            moveEpsMovesRedundant()
             transitions.values.forEach { trans ->
                 trans.remove(null)
             }
