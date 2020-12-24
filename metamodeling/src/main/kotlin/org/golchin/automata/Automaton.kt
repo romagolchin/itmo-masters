@@ -21,6 +21,23 @@ abstract class Automaton<TransitionFunctionRange>(
 
     fun getAllStates() = transitions.keys.plus(start).plus(acceptingStates)
 
+    fun renumber() {
+        val allStates = ArrayList(transitions.keys)
+        allStates.addAll(acceptingStates)
+        allStates.add(start)
+        transitions.values.forEach {
+            it.values.forEach { state ->
+                if (state is Set<*>) {
+                    allStates.addAll(state as Set<State>)
+                } else if (state is State) {
+                    allStates.add(state)
+                }
+            }
+        }
+        allStates.groupBy { it }.values
+            .forEachIndexed { index, states -> states.forEach { it.id = index } }
+    }
+
     override fun toString(): String {
         return transitions.map { it.toString() }.joinToString("\n")
     }

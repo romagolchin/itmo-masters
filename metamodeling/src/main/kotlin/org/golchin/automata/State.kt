@@ -3,7 +3,7 @@ package org.golchin.automata
 import java.util.concurrent.atomic.AtomicInteger
 
 open class State {
-    val id = atomicInteger.incrementAndGet()
+    var id = atomicInteger.incrementAndGet()
 
     override fun toString(): String {
         return id.toString()
