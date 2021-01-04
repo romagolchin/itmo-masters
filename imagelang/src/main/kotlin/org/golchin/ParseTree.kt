@@ -21,7 +21,7 @@ fun parse(filePath: String) {
 }
 
 
-fun main(args: Array<String>) {
+fun main() {
     parse("example.il")
 }
 
