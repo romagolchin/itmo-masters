@@ -1,6 +1,7 @@
 package org.golchin
 
 import java.awt.Graphics2D
+import java.awt.RenderingHints
 import java.awt.geom.AffineTransform
 import java.awt.geom.Rectangle2D
 import java.awt.image.BufferedImage
@@ -22,13 +23,16 @@ open class Image(
         transform.createTransformedShape(bounds).bounds2D
 
     infix fun drawInto(file: String) {
-        val width = bounds.maxX.intCeil()
-        val height = bounds.maxY.intCeil()
-        val image = BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR)
-        val graphics = image.createGraphics()
-        draw(graphics, transform)
-        ImageIO.write(image, getExtension(file), File(file))
-        graphics.dispose()
+        val width = ceil(bounds.maxX).toInt()
+        val height = ceil(bounds.maxY).toInt()
+        if (width > 0 && height > 0) {
+            val image = BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR)
+            val graphics = image.createGraphics()
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
+            draw(graphics, transform)
+            ImageIO.write(image, getExtension(file), File(file))
+            graphics.dispose()
+        }
     }
 
     private fun getExtension(file: String): String {
@@ -37,25 +41,33 @@ open class Image(
         return file.substring(lastDotIndex + 1)
     }
 
-    protected open fun draw(graphics: Graphics2D, transform: AffineTransform, ) {
+    protected open fun draw(graphics: Graphics2D, transform: AffineTransform) {
         graphics.clip(bounds)
+        graphics.transform = transform
         val curClip = graphics.clip
-        children.forEach { child ->
+        for (child in children) {
             graphics.transform = transform
+            graphics.clip = curClip
             val childTransform = AffineTransform(transform)
             childTransform.concatenate(child.transform)
             child.draw(graphics, childTransform)
-            graphics.clip = curClip
         }
     }
 
     infix fun besides(image: Image) : Image {
-        val translate = translate(bounds.maxX.intCeil(), 0)
+        val translate = translate(bounds.maxX)
         return Image(listOf(this, translate(image)))
     }
 
+    infix fun above(image: Image) : Image {
+        val translate = translate(y = bounds.maxY)
+        return Image(listOf(this, translate(image)))
+    }
+
+    infix fun behind(image: Image): Image = Image(listOf(this, image))
+
     companion object {
-        internal val IDENTITY_TRANSFORM = AffineTransform()
+        private val IDENTITY_TRANSFORM = AffineTransform()
 
         private fun calculateBounds(children: Collection<Image>): Rectangle2D {
             var maxX = 0.0
@@ -71,17 +83,4 @@ open class Image(
     }
 }
 
-internal fun Double.intCeil() = ceil(this).toInt()
-
-fun main() {
-    val penguin = FileImage("penguin.jpg")
-    val penguins = penguin besides penguin
-//    penguins drawInto "2penguins.jpg"
-//    penguins drawInto "2penguins.png"
-//    val transform = lowerHalf then rotateBbox(90)
-//    transform(penguin) drawInto "lower_penguin_rotate_bbox.jpg"
-//    (lowerHalf then rotate(90))(penguin) drawInto "lower_penguin_rotate.jpg"
-//    lowerHalfClip(penguins) drawInto "lower_half_penguins.png"
-//    lowerHalfClip(lowerHalfClip(penguins)) drawInto "lower_half_penguins.png"
-    lowerHalfClip(rotate(90)(penguin)) besides upperHalf(false)(penguin) drawInto "lower_and_upper.png"
-}
+fun reduce(binOp: (Image, Image) -> Image, image: Image, images: Sequence<Image>) = images.fold(image, binOp)
