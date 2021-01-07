@@ -1,6 +1,6 @@
 package org.golchin
 
-import java.awt.Color
+import java.awt.Color.*
 
 fun main() {
     val penguin = FileImage("penguin.jpg")
@@ -26,5 +26,17 @@ fun main() {
     grid(3, 2)(penguin) drawInto "grid.png"
     repeat(-42)(penguin) drawInto "must_not_draw.png"
 
-    rotateBbox(60.0)(Triangle(100, Color.CYAN)) drawInto "triangle.png"
+    val redTriangle = rotateBbox(-45.0)(Triangle(100.0, RED))
+    val greenTriangle = verticalMirror(rotateBbox(-45.0)(Triangle(100.0, GREEN)))
+    redTriangle besides greenTriangle drawInto "junit.png"
+
+    Square(600.0, RED) behind Circle(300.0, GREEN) drawInto "square_and_circle.png"
+
+    val bowTie = Polygon(WHITE, true, 1.0 to 1.0, 1.0 to -1.0, -1.0 to 1.0, -1.0 to -1.0)
+    bbox(scaleEvenly(100.0)(bowTie)) drawInto "bow_tie.png"
+
+    val line = Line(100.0, 100.0)
+    line behind horizontalMirror(line) drawInto "diagonals.png"
+
+    star(100.0, YELLOW) drawInto "star.png"
 }

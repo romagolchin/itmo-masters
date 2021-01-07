@@ -23,13 +23,13 @@ fun rotate(x: Double, y: Double, angle: Double): TransformFun = transform {
 }
 
 fun rotate(angle: Double): TransformFun = { image ->
-    rotate(image.bounds.centerX, image.bounds.centerY, angle)(image)
+    rotate(image.bbox.centerX, image.bbox.centerY, angle)(image)
 }
 
 fun rotateBbox(angle: Double) = rotate(angle) then bbox
 
 val bbox: TransformFun = { image ->
-    translate(-image.bounds.x, -image.bounds.y)(image)
+    translate(-image.bbox.x, -image.bbox.y)(image)
 }
 
 fun shearX(shearX: Double = 0.0) = transform {
@@ -44,13 +44,15 @@ fun scale(scaleX: Double = 1.0, scaleY: Double = 1.0): TransformFun = transform 
     scale(scaleX, scaleY)
 }
 
+fun scaleEvenly(factor: Double) = scale(factor, factor)
+
 val verticalMirror: TransformFun = { image ->
-    val transformFun = scale(-1.0) then translate(image.bounds.width)
+    val transformFun = scale(-1.0) then translate(image.bbox.width)
     transformFun(image)
 }
 
 val horizontalMirror: TransformFun = { image ->
-    val transformFun = scale(scaleY = -1.0) then translate(y = image.bounds.height)
+    val transformFun = scale(scaleY = -1.0) then translate(y = image.bbox.height)
     transformFun(image)
 }
 
@@ -67,14 +69,14 @@ fun clipOrCrop(x: Double, y: Double, width: Double, height: Double, useCrop: Boo
 }
 
 fun lowerHalf(useCrop: Boolean = true): TransformFun = { image ->
-    val height = image.bounds.height
-    val y = image.bounds.y + height / 2
-    clipOrCrop(image.bounds.x, y, image.bounds.width, height / 2, useCrop)(image)
+    val height = image.bbox.height
+    val y = image.bbox.y + height / 2
+    clipOrCrop(image.bbox.x, y, image.bbox.width, height / 2, useCrop)(image)
 }
 
 fun upperHalf(useCrop: Boolean = true): TransformFun = { image ->
-    val height = image.bounds.height
-    clipOrCrop(image.bounds.x, image.bounds.y, image.bounds.width, height / 2, useCrop)(image)
+    val height = image.bbox.height
+    clipOrCrop(image.bbox.x, image.bbox.y, image.bbox.width, height / 2, useCrop)(image)
 }
 
 val lowerHalf: TransformFun = lowerHalf()
@@ -82,10 +84,10 @@ val lowerHalf: TransformFun = lowerHalf()
 val lowerHalfClip: TransformFun = lowerHalf(false)
 
 fun center(useCrop: Boolean = true): TransformFun = { image ->
-    val centerX = image.bounds.centerX
-    val centerY = image.bounds.centerY
-    val halfWidth = image.bounds.width / 4
-    val halfHeight = image.bounds.height / 4
+    val centerX = image.bbox.centerX
+    val centerY = image.bbox.centerY
+    val halfWidth = image.bbox.width / 4
+    val halfHeight = image.bbox.height / 4
     val transform = clipOrCrop(centerX - halfWidth, centerY - halfHeight, 2 * halfWidth, 2 * halfHeight, useCrop)
     transform(image)
 }
