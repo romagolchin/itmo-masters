@@ -38,5 +38,5 @@ fun main() {
     val line = Line(100.0, 100.0)
     line behind horizontalMirror(line) drawInto "diagonals.png"
 
-    star(100.0, YELLOW) drawInto "star.png"
+    Star(100.0, YELLOW) drawInto "star.png"
 }

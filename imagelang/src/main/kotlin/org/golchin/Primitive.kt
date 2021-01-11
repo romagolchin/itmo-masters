@@ -37,8 +37,11 @@ abstract class Shape(
     }
 }
 
+open class Ellipse(width: Double, height: Double, color: Color = WHITE, isFilled: Boolean = true) :
+    Shape(Ellipse2D.Double(0.0, 0.0, width, height), color, isFilled)
+
 class Circle(radius: Double, color: Color = WHITE, isFilled: Boolean = true) :
-    Shape(Ellipse2D.Double(0.0, 0.0, 2 * radius, 2 * radius), color, isFilled)
+    Ellipse(2 * radius, 2 * radius, color, isFilled)
 
 class Line(x0: Double, y0: Double, x1: Double, y1: Double, color: Color = WHITE) :
     Shape(Line2D.Double(x0, y0, x1, y1), color, false) {
@@ -80,16 +83,19 @@ fun createStar(size: Double): Path2D {
     val firstExternalPoint: Point2D = Point2D.Double(0.0, -distance - size * sin(2 * PI / 5))
     val rotate = AffineTransform()
     rotate.rotate(2 * PI / 5)
+    val translate = AffineTransform()
+    translate.translate(cathetus + size, -firstExternalPoint.y)
     val pointSequence: Sequence<Point2D> = generateSequence(sequenceOf(firstExternalPoint, firstInternalPoint)) { points ->
         points.map { rotate.transform(it, null) }
     }
         .take(5)
         .flatten()
+        .map { translate.transform(it, null) }
     val points = pointSequence.map { it.x to it.y }.toList().toTypedArray()
     return createPolygon(*points)
 }
 
-fun star(size: Double, color: Color = WHITE, isFilled: Boolean = true) = bbox(Polygon(color, isFilled, createStar(size)))
+class Star(size: Double, color: Color = WHITE, isFilled: Boolean = true) : Polygon(color, isFilled, createStar(size))
 
 class FileImage(private val image: BufferedImage) : Primitive(image.width.toDouble(), image.height.toDouble()) {
     constructor(fileName: String) : this(ImageIO.read(File(fileName)))

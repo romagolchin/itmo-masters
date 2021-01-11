@@ -31,7 +31,6 @@ open class Image(
         if (width > 0 && height > 0) {
             val image = BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR)
             val graphics = image.createGraphics()
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
             draw(graphics, transform)
             ImageIO.write(image, getFormatName(file), File(file))
             graphics.dispose()
@@ -44,7 +43,10 @@ open class Image(
         return file.substring(lastDotIndex + 1)
     }
 
+    fun draw(graphics: Graphics2D) = draw(graphics, transform)
+
     protected open fun draw(graphics: Graphics2D, transform: AffineTransform) {
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         graphics.clip(bbox)
         graphics.transform = transform
         val curClip = graphics.clip
