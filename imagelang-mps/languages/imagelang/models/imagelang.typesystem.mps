@@ -264,14 +264,14 @@
     </node>
   </node>
   <node concept="18kY7G" id="3v9$RrA50bX">
-    <property role="TrG5h" value="check_IReference" />
+    <property role="TrG5h" value="check_Reference" />
     <node concept="3clFbS" id="3v9$RrA50bY" role="18ibNy">
       <node concept="3cpWs8" id="3v9$RrA4Yab" role="3cqZAp">
         <node concept="3cpWsn" id="3v9$RrA4Yac" role="3cpWs9">
           <property role="TrG5h" value="cur" />
           <node concept="3Tqbb2" id="3v9$RrA4Yaa" role="1tU5fm" />
           <node concept="1YBJjd" id="3v9$RrA50hc" role="33vP2m">
-            <ref role="1YBMHb" node="3v9$RrA50c0" resolve="iReference" />
+            <ref role="1YBMHb" node="3v9$RrA50c0" resolve="reference" />
           </node>
         </node>
       </node>
@@ -322,10 +322,10 @@
               <node concept="2OqwBi" id="3v9$RrA536P" role="1m5AlR">
                 <node concept="2OqwBi" id="3v9$RrA536Q" role="2Oq$k0">
                   <node concept="1YBJjd" id="3v9$RrA536R" role="2Oq$k0">
-                    <ref role="1YBMHb" node="3v9$RrA50c0" resolve="iReference" />
+                    <ref role="1YBMHb" node="3v9$RrA50c0" resolve="reference" />
                   </node>
-                  <node concept="3TrEf2" id="3v9$RrA7ilp" role="2OqNvi">
-                    <ref role="3Tt5mk" to="i5hu:3v9$RrA7hQv" resolve="target" />
+                  <node concept="3TrEf2" id="7mguUt1Yf04" role="2OqNvi">
+                    <ref role="3Tt5mk" to="i5hu:7mguUt1XDo5" resolve="target" />
                   </node>
                 </node>
                 <node concept="1mfA1w" id="3v9$RrA536T" role="2OqNvi" />
@@ -349,10 +349,10 @@
                 <node concept="2OqwBi" id="3v9$RrA55Uy" role="3uHU7w">
                   <node concept="2OqwBi" id="3v9$RrA55vt" role="2Oq$k0">
                     <node concept="1YBJjd" id="3v9$RrA55hS" role="2Oq$k0">
-                      <ref role="1YBMHb" node="3v9$RrA50c0" resolve="iReference" />
+                      <ref role="1YBMHb" node="3v9$RrA50c0" resolve="reference" />
                     </node>
-                    <node concept="3TrEf2" id="3v9$RrA7imZ" role="2OqNvi">
-                      <ref role="3Tt5mk" to="i5hu:3v9$RrA7hQv" resolve="target" />
+                    <node concept="3TrEf2" id="7mguUt1Yf27" role="2OqNvi">
+                      <ref role="3Tt5mk" to="i5hu:7mguUt1XDo5" resolve="target" />
                     </node>
                   </node>
                   <node concept="3TrcHB" id="3v9$RrA7iwX" role="2OqNvi">
@@ -362,7 +362,7 @@
               </node>
             </node>
             <node concept="1YBJjd" id="3v9$RrA57hd" role="1urrMF">
-              <ref role="1YBMHb" node="3v9$RrA50c0" resolve="iReference" />
+              <ref role="1YBMHb" node="3v9$RrA50c0" resolve="reference" />
             </node>
           </node>
         </node>
@@ -376,8 +376,8 @@
                 <node concept="2yIwOk" id="3v9$RrA6mMY" role="2OqNvi" />
               </node>
               <node concept="2Zo12i" id="3v9$RrA6LUo" role="2OqNvi">
-                <node concept="chp4Y" id="3v9$RrA6M2m" role="2Zo12j">
-                  <ref role="cht4Q" to="i5hu:24qcwCbhIhF" resolve="Image" />
+                <node concept="chp4Y" id="daz9VSLMkK" role="2Zo12j">
+                  <ref role="cht4Q" to="i5hu:daz9VSLAtC" resolve="ImageOrReference" />
                 </node>
               </node>
             </node>
@@ -397,23 +397,26 @@
       </node>
     </node>
     <node concept="1YaCAy" id="3v9$RrA50c0" role="1YuTPh">
-      <property role="TrG5h" value="iReference" />
-      <ref role="1YaFvo" to="i5hu:3v9$RrA7hQq" resolve="IReference" />
+      <property role="TrG5h" value="reference" />
+      <ref role="1YaFvo" to="i5hu:7mguUt1XDmB" resolve="Reference" />
     </node>
   </node>
   <node concept="1YbPZF" id="3v9$RrAal89">
     <property role="TrG5h" value="typeof_Declaration" />
     <node concept="3clFbS" id="3v9$RrAal8a" role="18ibNy">
       <node concept="1Z5TYs" id="3v9$RrAbdUw" role="3cqZAp">
-        <node concept="mw_s8" id="3v9$RrAbdUy" role="1ZfhK$">
-          <node concept="1Z2H0r" id="3v9$RrAbdUz" role="mwGJk">
-            <node concept="2OqwBi" id="3v9$RrAbdU$" role="1Z2MuG">
-              <node concept="1YBJjd" id="3v9$RrAbdU_" role="2Oq$k0">
+        <node concept="mw_s8" id="daz9VSLojv" role="1ZfhK$">
+          <node concept="2OqwBi" id="daz9VSLoHg" role="mwGJk">
+            <node concept="2OqwBi" id="daz9VSLoqY" role="2Oq$k0">
+              <node concept="1YBJjd" id="daz9VSLojp" role="2Oq$k0">
                 <ref role="1YBMHb" node="3v9$RrAale6" resolve="declaration" />
               </node>
-              <node concept="3TrEf2" id="3v9$RrAbdUA" role="2OqNvi">
+              <node concept="3TrEf2" id="daz9VSLo$A" role="2OqNvi">
                 <ref role="3Tt5mk" to="i5hu:4q8PBg22YLQ" resolve="variable" />
               </node>
+            </node>
+            <node concept="3TrEf2" id="daz9VSLoRG" role="2OqNvi">
+              <ref role="3Tt5mk" to="i5hu:daz9VSLceS" resolve="type" />
             </node>
           </node>
         </node>
@@ -491,13 +494,13 @@
     </node>
   </node>
   <node concept="1YbPZF" id="3v9$RrAaUm3">
-    <property role="TrG5h" value="typeof_IReference" />
+    <property role="TrG5h" value="typeof_Reference" />
     <node concept="3clFbS" id="3v9$RrAaUm4" role="18ibNy">
       <node concept="1Z5TYs" id="3v9$RrAaUm5" role="3cqZAp">
         <node concept="mw_s8" id="3v9$RrAaUm6" role="1ZfhK$">
           <node concept="1Z2H0r" id="3v9$RrAaUm7" role="mwGJk">
             <node concept="1YBJjd" id="3v9$RrAaUm8" role="1Z2MuG">
-              <ref role="1YBMHb" node="3v9$RrAaUme" resolve="iReference" />
+              <ref role="1YBMHb" node="3v9$RrAaUme" resolve="reference" />
             </node>
           </node>
         </node>
@@ -505,10 +508,10 @@
           <node concept="1Z2H0r" id="3v9$RrAaUma" role="mwGJk">
             <node concept="2OqwBi" id="3v9$RrAaUmb" role="1Z2MuG">
               <node concept="1YBJjd" id="3v9$RrAaUmc" role="2Oq$k0">
-                <ref role="1YBMHb" node="3v9$RrAaUme" resolve="iReference" />
+                <ref role="1YBMHb" node="3v9$RrAaUme" resolve="reference" />
               </node>
-              <node concept="3TrEf2" id="3v9$RrAaUmd" role="2OqNvi">
-                <ref role="3Tt5mk" to="i5hu:3v9$RrA7hQv" resolve="target" />
+              <node concept="3TrEf2" id="7mguUt1YfdO" role="2OqNvi">
+                <ref role="3Tt5mk" to="i5hu:7mguUt1XDo5" resolve="target" />
               </node>
             </node>
           </node>
@@ -516,8 +519,8 @@
       </node>
     </node>
     <node concept="1YaCAy" id="3v9$RrAaUme" role="1YuTPh">
-      <property role="TrG5h" value="iReference" />
-      <ref role="1YaFvo" to="i5hu:3v9$RrA7hQq" resolve="IReference" />
+      <property role="TrG5h" value="reference" />
+      <ref role="1YaFvo" to="i5hu:7mguUt1XDmB" resolve="Reference" />
     </node>
   </node>
   <node concept="18kY7G" id="3v9$RrAeu6w">
@@ -570,6 +573,34 @@
     <node concept="1YaCAy" id="3v9$RrAeu7a" role="1YuTPh">
       <property role="TrG5h" value="polygon" />
       <ref role="1YaFvo" to="i5hu:4Fmodk112zJ" resolve="Polygon" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="daz9VSN_nG">
+    <property role="TrG5h" value="typeof_Variable" />
+    <node concept="3clFbS" id="daz9VSN_nH" role="18ibNy">
+      <node concept="1Z5TYs" id="daz9VSN_B3" role="3cqZAp">
+        <node concept="mw_s8" id="daz9VSN_Bx" role="1ZfhKB">
+          <node concept="2OqwBi" id="daz9VSN_Jk" role="mwGJk">
+            <node concept="1YBJjd" id="daz9VSN_Bv" role="2Oq$k0">
+              <ref role="1YBMHb" node="daz9VSN_nV" resolve="variable" />
+            </node>
+            <node concept="3TrEf2" id="daz9VSN_S7" role="2OqNvi">
+              <ref role="3Tt5mk" to="i5hu:daz9VSLceS" resolve="type" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="daz9VSN_B6" role="1ZfhK$">
+          <node concept="1Z2H0r" id="daz9VSN_p0" role="mwGJk">
+            <node concept="1YBJjd" id="daz9VSN_qO" role="1Z2MuG">
+              <ref role="1YBMHb" node="daz9VSN_nV" resolve="variable" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="daz9VSN_nV" role="1YuTPh">
+      <property role="TrG5h" value="variable" />
+      <ref role="1YaFvo" to="i5hu:4q8PBg22YGV" resolve="Variable" />
     </node>
   </node>
 </model>

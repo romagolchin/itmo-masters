@@ -23,12 +23,15 @@
         <child id="2385273971366356384" name="right" index="EnduE" />
       </concept>
       <concept id="2385273971366356866" name="imagelang.structure.Besides" flags="ng" index="Endm8" />
+      <concept id="8471406857380337063" name="imagelang.structure.Reference" flags="ng" index="OpIS0">
+        <reference id="8471406857380337157" name="target" index="OpIQy" />
+      </concept>
       <concept id="1739531870974198255" name="imagelang.structure.Shape" flags="ng" index="OLOVE">
         <child id="2951236858139479543" name="color" index="1DxmIY" />
       </concept>
-      <concept id="5082547973226484796" name="imagelang.structure.ImageReference" flags="ng" index="14wK98" />
-      <concept id="5082547973226490683" name="imagelang.structure.Variable" flags="ng" index="14wNPf" />
-      <concept id="5082547973226855764" name="imagelang.structure.TransformReference" flags="ng" index="14AqGw" />
+      <concept id="5082547973226490683" name="imagelang.structure.Variable" flags="ng" index="14wNPf">
+        <child id="237156544796738488" name="type" index="3Vz$WA" />
+      </concept>
       <concept id="5392604071784098031" name="imagelang.structure.Polygon" flags="ng" index="1bO$wU">
         <child id="5953258603455585833" name="points" index="DB2s1" />
       </concept>
@@ -41,9 +44,8 @@
       <concept id="5392604071784099687" name="imagelang.structure.FileImage" flags="ng" index="1bO$YM">
         <property id="5392604071784099829" name="path" index="1bO$Ww" />
       </concept>
-      <concept id="4019906281280970138" name="imagelang.structure.IReference" flags="ng" index="3hP8VG">
-        <reference id="4019906281280970143" name="target" index="3hP8VD" />
-      </concept>
+      <concept id="4019906281281741166" name="imagelang.structure.ImageType" flags="ig" index="3hSn8o" />
+      <concept id="4019906281281888505" name="imagelang.structure.TransformType" flags="ig" index="3hSFef" />
       <concept id="4019906281282109742" name="imagelang.structure.HexColor" flags="ng" index="3hTL9o">
         <property id="4019906281282109743" name="color" index="3hTL9p" />
       </concept>
@@ -54,16 +56,9 @@
         <property id="1687683561014707768" name="upperLeftX" index="3sTTPT" />
         <property id="1687683561014707945" name="upperLeftY" index="3sTTQC" />
       </concept>
-      <concept id="1687683561014696467" name="imagelang.structure.Then" flags="ng" index="3sTW5i">
-        <child id="1687683561014697574" name="right" index="3sTWkB" />
-        <child id="1687683561014697422" name="left" index="3sTWqf" />
-      </concept>
       <concept id="1687683561014703000" name="imagelang.structure.Scale" flags="ng" index="3sTYzp">
         <property id="1687683561014703001" name="scaleX" index="3sTYzo" />
         <property id="1687683561014703231" name="scaleY" index="3sTYWY" />
-      </concept>
-      <concept id="1687683561014702617" name="imagelang.structure.Rotate" flags="ng" index="3sTY_o">
-        <property id="1687683561014702848" name="angle" index="3sTYx1" />
       </concept>
       <concept id="1687683561014703484" name="imagelang.structure.Shear" flags="ng" index="3sTYSX">
         <property id="1687683561014703485" name="factor" index="3sTYSW" />
@@ -118,79 +113,83 @@
   </node>
   <node concept="1Dxa89" id="4Fmodk11dV2">
     <property role="TrG5h" value="Penguin" />
-    <node concept="E9TOz" id="3v9$RrA8ek3" role="Emk9O">
-      <node concept="14wNPf" id="3v9$RrA8ek4" role="14wNC2">
+    <node concept="E9TOz" id="daz9VSMkjz" role="Emk9O">
+      <node concept="14wNPf" id="daz9VSMkj$" role="14wNC2">
         <property role="TrG5h" value="t" />
+        <node concept="3hSFef" id="daz9VSN1eh" role="3Vz$WA" />
       </node>
-      <node concept="3sZ9tF" id="3v9$RrA8ens" role="14wxtG" />
-    </node>
-    <node concept="Endm8" id="1tFQO7bAEWG" role="1Dxa8f">
-      <node concept="14wK98" id="3v9$RrA97DG" role="EnduE">
-        <ref role="3hP8VD" node="4q8PBg28g8i" resolve="penguin1" />
-      </node>
-      <node concept="3sYjhc" id="4q8PBg2fDIt" role="End5B">
-        <node concept="14AqGw" id="3v9$RrA8D2R" role="3sYiDb">
-          <ref role="3hP8VD" node="4q8PBg2fDCj" resolve="transform" />
-        </node>
-        <node concept="14wK98" id="3v9$RrA8D3l" role="3sYiGo">
-          <ref role="3hP8VD" node="4q8PBg2dqVn" resolve="twoPenguins" />
-        </node>
-      </node>
+      <node concept="3sZ9tF" id="daz9VSO8hX" role="14wxtG" />
     </node>
     <node concept="E9TOz" id="4q8PBg27SL0" role="Emk9O">
       <node concept="14wNPf" id="4q8PBg27SL1" role="14wNC2">
         <property role="TrG5h" value="penguin" />
+        <node concept="3hSn8o" id="daz9VSN1fy" role="3Vz$WA" />
       </node>
       <node concept="1bO$YM" id="4Fmodk11tAC" role="14wxtG">
-        <property role="1bO$Ww" value="/home/roman/itmo-masters/imagelang/penguin.jpg" />
+        <property role="1bO$Ww" value="../imagelang/penguin.jpg" />
       </node>
     </node>
     <node concept="E9TOz" id="4q8PBg28g8h" role="Emk9O">
       <node concept="14wNPf" id="4q8PBg28g8i" role="14wNC2">
         <property role="TrG5h" value="penguin1" />
+        <node concept="3hSn8o" id="daz9VSN1gd" role="3Vz$WA" />
       </node>
-      <node concept="14wK98" id="3v9$RrAbvhy" role="14wxtG">
-        <ref role="3hP8VD" node="4q8PBg27SL1" resolve="penguin" />
+      <node concept="OpIS0" id="7mguUt205IZ" role="14wxtG">
+        <ref role="OpIQy" node="4q8PBg27SL1" resolve="penguin" />
       </node>
     </node>
     <node concept="E9TOz" id="4q8PBg2dqVm" role="Emk9O">
       <node concept="14wNPf" id="4q8PBg2dqVn" role="14wNC2">
         <property role="TrG5h" value="twoPenguins" />
+        <node concept="3hSn8o" id="daz9VSN1gs" role="3Vz$WA" />
       </node>
       <node concept="Endm8" id="4q8PBg2dqVB" role="14wxtG">
-        <node concept="14wK98" id="3v9$RrA8D1V" role="End5B">
-          <ref role="3hP8VD" node="4q8PBg27SL1" resolve="penguin" />
+        <node concept="OpIS0" id="7mguUt1ZuHX" role="End5B">
+          <ref role="OpIQy" node="4q8PBg27SL1" resolve="penguin" />
         </node>
-        <node concept="14wK98" id="3v9$RrA8D2p" role="EnduE">
-          <ref role="3hP8VD" node="4q8PBg27SL1" resolve="penguin" />
+        <node concept="OpIS0" id="7mguUt1ZuJ$" role="EnduE">
+          <ref role="OpIQy" node="4q8PBg27SL1" resolve="penguin" />
         </node>
       </node>
     </node>
     <node concept="E9TOz" id="4q8PBg27SUJ" role="Emk9O">
       <node concept="14wNPf" id="4q8PBg27SUK" role="14wNC2">
         <property role="TrG5h" value="transformed" />
+        <node concept="3hSn8o" id="daz9VSN1gK" role="3Vz$WA" />
       </node>
       <node concept="3sYjhc" id="4q8PBg27TBd" role="14wxtG">
-        <node concept="14wK98" id="3v9$RrA8Dbs" role="3sYiGo">
-          <ref role="3hP8VD" node="4q8PBg27SL1" resolve="penguin" />
-        </node>
         <node concept="3sTTzA" id="1tFQO7bAQvE" role="3sYiDb">
           <property role="3sTTPT" value="300.0" />
           <property role="3sTTQC" value="300.0" />
           <property role="3sTTN3" value="100.0" />
           <property role="3sTTMg" value="100.0" />
         </node>
+        <node concept="OpIS0" id="7mguUt20oBQ" role="3sYiGo">
+          <ref role="OpIQy" node="4q8PBg27SL1" resolve="penguin" />
+        </node>
       </node>
     </node>
     <node concept="E9TOz" id="4q8PBg2fDCi" role="Emk9O">
       <node concept="14wNPf" id="4q8PBg2fDCj" role="14wNC2">
         <property role="TrG5h" value="transform" />
+        <node concept="3hSFef" id="daz9VSNzPL" role="3Vz$WA" />
       </node>
-      <node concept="3sTW5i" id="4q8PBg2fDG5" role="14wxtG">
-        <node concept="3sZ9tF" id="4q8PBg2fDGD" role="3sTWqf" />
-        <node concept="3sTY_o" id="4q8PBg2fDH7" role="3sTWkB">
-          <property role="3sTYx1" value="100.0" />
+      <node concept="OpIS0" id="7mguUt20oy1" role="14wxtG">
+        <ref role="OpIQy" node="daz9VSMkj$" resolve="t" />
+      </node>
+    </node>
+    <node concept="Endm8" id="7mguUt22n8r" role="1Dxa8f">
+      <node concept="3sYjhc" id="7mguUt22n$k" role="End5B">
+        <node concept="3sTYzp" id="7mguUt22n_m" role="3sYiDb">
+          <property role="3sTYzo" value="0.5" />
+          <property role="3sTYWY" value="0.5" />
         </node>
+        <node concept="OpIS0" id="7mguUt22nC4" role="3sYiGo">
+          <ref role="OpIQy" node="4q8PBg2dqVn" resolve="twoPenguins" />
+        </node>
+      </node>
+      <node concept="OpIS0" id="7mguUt22naj" role="EnduE">
+        <ref role="OpIQy" node="4q8PBg27SUK" resolve="transformed" />
       </node>
     </node>
   </node>
@@ -245,6 +244,7 @@
     <node concept="E9TOz" id="3v9$RrAhbvb" role="Emk9O">
       <node concept="14wNPf" id="3v9$RrAhbvc" role="14wNC2">
         <property role="TrG5h" value="parallelogram" />
+        <node concept="3hSn8o" id="daz9VSO8mK" role="3Vz$WA" />
       </node>
       <node concept="3sYjhc" id="3v9$RrAh4op" role="14wxtG">
         <node concept="3sTuSR" id="3v9$RrAh4px" role="3sYiDb">
@@ -264,17 +264,22 @@
     <node concept="E9TOz" id="3v9$RrAhoJM" role="Emk9O">
       <node concept="14wNPf" id="3v9$RrAhoJN" role="14wNC2">
         <property role="TrG5h" value="scale" />
+        <node concept="3hSFef" id="daz9VSO8n4" role="3Vz$WA" />
       </node>
-      <node concept="3sTYzp" id="3v9$RrAh4wG" role="14wxtG">
-        <property role="3sTYzo" value="3.0" />
-        <property role="3sTYWY" value="1.0" />
+      <node concept="3sTYzp" id="daz9VSO8_x" role="14wxtG">
+        <property role="3sTYzo" value="0.0" />
+        <property role="3sTYWY" value="0.0" />
       </node>
     </node>
     <node concept="E9TOz" id="3v9$RrAhbEh" role="Emk9O">
       <node concept="14wNPf" id="3v9$RrAhbEi" role="14wNC2">
         <property role="TrG5h" value="ellipse" />
+        <node concept="3hSn8o" id="daz9VSO8n$" role="3Vz$WA" />
       </node>
       <node concept="3sYjhc" id="3v9$RrAh4v$" role="14wxtG">
+        <node concept="OpIS0" id="7mguUt20oMD" role="3sYiDb">
+          <ref role="OpIQy" node="3v9$RrAhoJN" resolve="scale" />
+        </node>
         <node concept="1Dxa86" id="3v9$RrAh4zz" role="3sYiGo">
           <property role="1Dxa8g" value="50.0" />
           <node concept="3sXqdt" id="3v9$RrAh4$p" role="3sXSwK">
@@ -284,17 +289,14 @@
             <ref role="1Dxgl0" to="ll63:2zOT$_1sowQ" resolve="red" />
           </node>
         </node>
-        <node concept="14AqGw" id="3v9$RrAhoLG" role="3sYiDb">
-          <ref role="3hP8VD" node="3v9$RrAhoJN" resolve="scale" />
-        </node>
       </node>
     </node>
     <node concept="Endm8" id="3v9$RrAh4lC" role="1Dxa8f">
-      <node concept="14wK98" id="3v9$RrAhbCk" role="End5B">
-        <ref role="3hP8VD" node="3v9$RrAhbvc" resolve="parallelogram" />
+      <node concept="OpIS0" id="7mguUt20oNK" role="End5B">
+        <ref role="OpIQy" node="3v9$RrAhbvc" resolve="parallelogram" />
       </node>
-      <node concept="14wK98" id="3v9$RrAhbIZ" role="EnduE">
-        <ref role="3hP8VD" node="3v9$RrAhbEi" resolve="ellipse" />
+      <node concept="OpIS0" id="7mguUt20oOF" role="EnduE">
+        <ref role="OpIQy" node="3v9$RrAhbEi" resolve="ellipse" />
       </node>
     </node>
   </node>
