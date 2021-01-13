@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="imagelang-dsl" uuid="9c95c47c-f8eb-4d05-99e7-e289866467b8" moduleVersion="0" compileInMPS="true">
   <models>
-    <modelRoot contentPath="${module}" type="default">
-      <sourceRoot location="models" />
+    <modelRoot contentPath="${module}" type="java_classes">
       <sourceRoot location="imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     </modelRoot>
-    <modelRoot contentPath="${module}" type="java_classes">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     </modelRoot>
   </models>
