@@ -1,8 +1,8 @@
 package org.golchin.automata
 
 import org.antlr.v4.runtime.ParserRuleContext
-import org.golchin.grammar.GrammarBaseVisitor
-import org.golchin.grammar.GrammarParser
+import org.golchin.automata.GrammarBaseVisitor
+import org.golchin.automata.GrammarParser
 
 class RegexVisitor : GrammarBaseVisitor<RegexNFA>() {
     private fun visitOperator(

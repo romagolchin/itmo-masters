@@ -1,0 +1,19 @@
+automaton a {
+    states: s0, s1, s2
+    final: s1, s2
+    transitions:
+        s0 { 'a' -> s0, 'b' -> s1 },
+        s1 { 'a' -> s0, 'b' -> s2},
+        s2 { 'a' -> s2, 'b' -> s2 }
+    run(input) {
+        move(s0)
+        while (hasNext(input)) {
+            transition(s0, next(input))
+        }
+        if (isFinal()) {
+            accept
+        } else {
+            reject
+        }
+    }
+}
