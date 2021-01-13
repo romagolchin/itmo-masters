@@ -3,8 +3,9 @@
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
+      <sourceRoot location="imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     </modelRoot>
-    <modelRoot contentPath="/home/roman/itmo-masters/imagelang/target" type="java_classes">
+    <modelRoot contentPath="${module}" type="java_classes">
       <sourceRoot location="imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     </modelRoot>
   </models>
@@ -14,7 +15,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="/home/roman/itmo-masters/imagelang/target/imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+    <stubModelEntry path="${module}/imagelang-1.0-SNAPSHOT-jar-with-dependencies.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
