@@ -1,0 +1,78 @@
+automaton
+  ID a
+  states
+    identifierList
+      ID s0
+      ID s1
+      ID s2
+  finals
+    identifierList
+      ID s1
+      ID s2
+  transitions
+    transitionsFromState
+      ID s0
+      transitionMap
+        transition
+          'a'
+          ID s0
+        transition
+          'b'
+          ID s1
+    transitionsFromState
+      ID s1
+      transitionMap
+        transition
+          'a'
+          ID s0
+        transition
+          'b'
+          ID s2
+    transitionsFromState
+      ID s2
+      transitionMap
+        transition
+          'a'
+          ID s2
+        transition
+          'b'
+          ID s2
+  function
+    signature
+      ID run
+      identifierList
+        ID input
+    statement
+      call
+        ID move
+        expressionList
+          expression
+            ID s0
+    statement
+      whileStat
+        call
+          ID hasNext
+          expressionList
+            expression
+              ID input
+        statement
+          call
+            ID transition
+            expressionList
+              expression
+                ID s0
+              expression
+                call
+                  ID next
+                  expressionList
+                    expression
+                      ID input
+    statement
+      ifStat
+        call
+          ID isFinal
+          expressionList
+        statement
+          accept
+        statement
+          reject

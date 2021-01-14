@@ -4,6 +4,8 @@ import org.antlr.v4.runtime.ANTLRInputStream
 import org.antlr.v4.runtime.CommonTokenStream
 import org.antlr.v4.runtime.misc.TestRig
 import org.antlr.v4.runtime.tree.ParseTree
+import org.antlr.v4.runtime.tree.ParseTreeListener
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import java.io.FileInputStream
 
 fun parse(filePath: String) {
@@ -16,6 +18,7 @@ fun parse(filePath: String) {
     val parser = GrammarParser(tokens)
     val tree: ParseTree = parser.source()
     println(tree.toStringTree(parser))
+    ParseTreeWalker.DEFAULT.walk(null, tree)
     System.setIn(FileInputStream(filePath))
     TestRig.main(arrayOf("org.golchin.automata.Grammar", "source", "-gui"))
 }

@@ -80,6 +80,11 @@
     </build>
     <dependencies>
         <dependency>
+            <groupId>ru.golchin.roman</groupId>
+            <artifactId>program-model-verification</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit5</artifactId>
             <version>1.4.10</version>
